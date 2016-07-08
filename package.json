@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "node www",
-    "dev": "webpack-dev-server --hot --devtool source-map --inline --progress --colors --content-base dist/",
+    "dev": "webpack-dev-server --hot --devtool eval-source-map --inline --progress --colors --content-base dist/",
     "prod": "webpack --config webpack-production.config.js  --progress --profile --colors",
     "test": "BABEL_ENV=test mocha --compilers js:babel-register tests/**/*-test.js"
   },

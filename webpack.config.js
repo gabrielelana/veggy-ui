@@ -10,7 +10,7 @@ module.exports = {
         path.resolve(__dirname, 'src/components/App.jsx'),
         './src/index.html'
       ],
-      vendor: ['react', 'react-dom', 'superagent', 'jquery', 'ramda']
+      vendor: ['react', 'react-dom']
     },
     output: {
         filename: '/js/app.js',
