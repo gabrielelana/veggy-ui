@@ -50,10 +50,16 @@ const LayoutContainer = React.createClass({
                 Users
               </p>
               <a className="panel-block is-active" href="#">
-                bulma-website
+                <span className="panel-icon">
+                  <i className="fa fa-user"></i>
+                </span>
+                user 1
               </a>
               <a className="panel-block" href="#">
-                bulma
+                user 2
+                <span className="panel-icon">
+                  <i className="fa fa-user"></i>
+                </span>
               </a>
             </nav>
           </div>

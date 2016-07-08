@@ -11,6 +11,9 @@ const NavBar = React.createClass({
         </div>
         <div className="nav-right nav-menu">
           <a className="nav-item" href="#">
+            <span className="icon">
+              <i className="fa fa-user"></i>
+            </span>
             User
           </a>
         </div>

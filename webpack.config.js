@@ -7,6 +7,7 @@ module.exports = {
       app:[
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/dev-server',
+        'font-awesome-sass-loader',
         path.resolve(__dirname, 'src/components/App.jsx'),
         './src/index.html'
       ],
