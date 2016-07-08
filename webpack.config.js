@@ -30,7 +30,7 @@ module.exports = {
       new webpack.ProvidePlugin({$: "jquery", jQuery: "jquery"}),
       new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),  
       new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
+      //new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
     ],
     module: {

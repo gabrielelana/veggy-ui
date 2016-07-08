@@ -13,7 +13,7 @@ const Index = React.createClass({
   render(){ 
     return (
       <div className="foo">
-        <button onClick={this.count}>Click to count</button>
+        <button className="button is-primary" onClick={this.count}>Click to count</button>
         <div>{this.state.counter}</div>
       </div>
     )

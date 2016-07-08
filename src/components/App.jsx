@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Route, Router, hashHistory } from 'react-router'
+import {Route, Router, IndexRoute, hashHistory } from 'react-router'
+import NavBar from './NavBar'
 
 require('../sass/style.scss')
 
@@ -9,7 +10,10 @@ export const App = React.createClass({
     let children = React.cloneElement(this.props.children, { store: {} })
     return (
       <div>
-        {children}
+        <NavBar />
+        <div className="container" style={{marginTop: '10px'}}>
+          {children}
+        </div>
       </div>
     )
   }
@@ -17,8 +21,9 @@ export const App = React.createClass({
 
 ReactDOM.render((
   <Router history={hashHistory}>
-    <Route component={App}>
-      <Route path="/" component={require('./Index')} />
+    <Route path="/" component={App}>
+      <IndexRoute component={require('./LayoutContainer')} />
+      <Route path="/index" component={require('./Index')} />
     </Route>
   </Router>
-  ), document.getElementById('container'))
+  ), document.getElementById('app'))
