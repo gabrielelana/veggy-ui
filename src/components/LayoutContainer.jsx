@@ -1,8 +1,10 @@
 const React = require('react')
+const Wrapper = require('./Wrapper')
 const Display = require('./Display')
 const Controls = require('./Controls')
 const TaskList = require('./TaskList')
 const UserList = require('./UserList')
+
   
 const LayoutContainer = React.createClass({
   render(){ 
@@ -21,4 +23,4 @@ const LayoutContainer = React.createClass({
   }
 })
 
-export default LayoutContainer
+export default Wrapper(LayoutContainer)

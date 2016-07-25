@@ -1,4 +1,6 @@
-const React = require('react')
+import React from 'react'
+import store from './store'
+import Wrapper from './Wrapper'
 
 const Controls = React.createClass({
   render(){
