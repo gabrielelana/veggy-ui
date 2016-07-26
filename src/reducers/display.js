@@ -3,7 +3,7 @@ import dispatcher from '../redux/dispatcher'
 export default function displayReducers(state, action){
   if (action.type === 'START_TIMER'){
     const timerId = setInterval(() => {
-      const timer = decrease(state.timer)
+      const timer = nextTick(state.timer)
       dispatcher.dispatch({type: 'UPDATE_TIMER', payload: {timer: timer}})
     }, 1000)
     return {timerId: timerId}
@@ -17,7 +17,7 @@ export default function displayReducers(state, action){
   }
 }
 
-function decrease(timeStr){
+function nextTick(timeStr){
   var minutes = parseInt(timeStr.split(':')[0], 10)
   var seconds = parseInt(timeStr.split(':')[1], 10)
   if (seconds === 0){
@@ -26,7 +26,7 @@ function decrease(timeStr){
   } else {
     seconds = seconds - 1
   }
-  const minutesStr = '00'.substring(0, 2 - minutes.toString().lenght) + minutes.toString()
-  const secondsStr = '00'.substring(0, 2 - seconds.toString().lenght) + seconds.toString()
-  return `${minutes}:${seconds}`
+  const minutesStr = '00'.substring(0, 2 - minutes.toString().length) + minutes
+  const secondsStr = '00'.substring(0, 2 - seconds.toString().length) + seconds
+  return `${minutesStr}:${secondsStr}`
 }
