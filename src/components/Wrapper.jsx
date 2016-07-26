@@ -10,14 +10,15 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
     }
   }
   componentWillMount() {
-    console.log('CWM')
     this.subscriptionToken = dispatcher.register(action => {
-      console.log('received', action)
       // - passo il payload ai reducers
       // - ogni reducer riceve lo srtato e la action
       //   verifica la action type e se ok riduce (altrimenti ritorna lo stato)
       // - finiti i reducer chiamo il setState
-      const newState = reducers.reduce((acc, r) => r(acc, action), this.state.childState)
+      const newState = reducers.reduce((acc, r) => {
+        return Object.assign(this.state.childState, r(this.state.childState, action))  
+      }, this.state.childState)
+
 
       this.setState({childState: newState})
       console.log('newState', newState)

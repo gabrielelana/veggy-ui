@@ -3,15 +3,18 @@ var prefix = 'SUB'
 var lastSubscriber = 1
 
 const dispatcher = {
-  register: function(subscriber) {
+  register: subscriber => {
     var id = prefix + lastSubscriber++
     subscribers[id] = subscriber
     return id
   },
-  dispatch: function(payload) {
+  dispatch: payload => {
     Object.keys(subscribers).forEach(sub => {
       subscribers[sub](payload)
     })    
+  },
+  unregister: id => {
+    // TODO
   }
 }
 

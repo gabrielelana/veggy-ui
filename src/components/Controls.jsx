@@ -6,14 +6,18 @@ import dispatcher from './dispatcher'
 const Controls = React.createClass({
   startTimer(){
     dispatcher.dispatch({type: 'START_TIMER', payload: {}})
+    this.timer = setInterval(() => {
+      dispatcher.dispatch({type: 'UPDATE_TIMER', payload: {time: this.props.time + 1}})
+    }, 1000)
   }, 
   stopTimer(){
+    clearInterval(this.timer)
     dispatcher.dispatch({type: 'STOP_TIMER', payload: {}})
   }, 
   render(){
     return (
       <div className="column">
-        {this.props.running ? 'R':'S'}
+        {this.props.time}
         <div className="box">
           <div className="control is-grouped ">
             <div className="control">
@@ -47,8 +51,13 @@ function r2(state, action){
   } 
 }
 
-const INITIAL_STATE = { startDisabled: false, stopDisabled: true, running: false }
+function r3(state, action){
+  if (action.type === 'UPDATE_TIMER'){
+    return {time: action.payload.time}
+  }
+}
+
+const INITIAL_STATE = { startDisabled: false, stopDisabled: true, running: false, time: 0 }
 
 
-
-export default Wrapper(Controls, [r1, r2], INITIAL_STATE)
+export default Wrapper(Controls, [r1, r2, r3], INITIAL_STATE)
