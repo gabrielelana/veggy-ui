@@ -1,16 +1,27 @@
 import React from 'react'
-//import dispatcher from './AppDispatcher'
+import dispatcher from './dispatcher'
+import R from 'ramda'
 
-const Wrapper = (Container, procs = []) => class WrapperClass extends React.Component {
+const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperClass extends React.Component {
   constructor(props) {
     super(props)
-    console.log(procs)
     this.state = {
-      props: {name: 'hello'}
+      childState: initialState
     }
   }
   componentWillMount() {
-    // this.subscriptionToken = dispatcher.register(action => {
+    console.log('CWM')
+    this.subscriptionToken = dispatcher.register(action => {
+      console.log('received', action)
+      // - passo il payload ai reducers
+      // - ogni reducer riceve lo srtato e la action
+      //   verifica la action type e se ok riduce (altrimenti ritorna lo stato)
+      // - finiti i reducer chiamo il setState
+      const newState = reducers.reduce((acc, r) => r(acc, action), this.state.childState)
+
+      this.setState({childState: newState})
+      console.log('newState', newState)
+
     //   if (action.type === 'UPDATE_PROPS') {
     //     var newData = null;
     //     if(typeof(action.data) === 'function') {
@@ -24,13 +35,13 @@ const Wrapper = (Container, procs = []) => class WrapperClass extends React.Comp
     //       this.setState({props: newData})
     //     }
     //   }
-    // })
+    })
   }
   componentWillUnmount() {
     //dispatcher.unregister(this.subscriptionToken)
   }
   render() {
-    return <Container {...this.state.props} {...this.props}/>
+    return <Container {...this.state.childState} {...this.props} dispatcher={dispatcher} />
   }
 }
 

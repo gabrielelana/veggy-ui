@@ -21,7 +21,6 @@ function subscribe(listener) {
 }
 
 function dispatch(action) {
-  console.log('dispatch', action)
   listeners.slice().forEach(listener => listener())
   return action
 }
