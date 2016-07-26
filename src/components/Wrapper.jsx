@@ -21,7 +21,6 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
 
 
       this.setState({childState: newState})
-      console.log('newState', newState)
 
     //   if (action.type === 'UPDATE_PROPS') {
     //     var newData = null;
