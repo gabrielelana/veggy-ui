@@ -11,7 +11,7 @@ export const App = React.createClass({
     return (
       <div>
         <NavBar />
-        <div className="container" style={{marginTop: '10px'}}>
+        <div className="container" style={{marginTop: '20px'}}>
           {children}
         </div>
       </div>

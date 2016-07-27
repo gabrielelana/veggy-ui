@@ -23,7 +23,7 @@
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
     "react-router": "^2.5.2",
-    "superagent": "^2.0.0"
+    "superagent": "^2.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",

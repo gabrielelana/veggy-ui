@@ -1,4 +1,5 @@
 import React from 'react'
+import request from 'superagent'
 import Wrapper from '../redux/Wrapper'
 import INITIAL_STATE from './INITIAL_STATE'
 import Display from './Display'
@@ -6,9 +7,27 @@ import Controls from './Controls'
 import TaskList from './TaskList'
 import UserList from './UserList'
 import reducers from '../reducers'
+import dispatcher from '../redux/dispatcher'
+
+const pomodoroActions = {
+  startPomodoro() {
+
+    request
+      .post('/timer')
+      .set('Content-Type', 'application/json')
+      .send({command: 'StartPomodoro'})
+      .end((err, res) => {
+        if (err){
+          return dispatcher.dispatch({type: 'API_ERROR', payload: err})          
+        } 
+        dispatcher.dispatch({type: 'START_TIMER'})    
+      })
+  }
+}
 
 const LayoutContainer = React.createClass({
   handleStart(){
+    //pomodoroActions.startPomodoro()
     this.props.dispatcher.dispatch({type: 'START_TIMER'})
   },
   handleStop(){
@@ -16,7 +35,7 @@ const LayoutContainer = React.createClass({
   },
   render(){ 
     return (
-      <div style={{marginTop: '20px'}}>
+      <div>
         <div className="columns">
           <Display timer={this.props.timer} />
           <Controls startDisabled={this.props.startDisabled} stopDisabled={this.props.stopDisabled} onStart={this.handleStart} onStop={this.handleStop} />
