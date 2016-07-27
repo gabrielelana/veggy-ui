@@ -19,10 +19,17 @@ export const App = React.createClass({
   }
 })
 
+const LayoutContainer = require('./LayoutContainer')
+const Wrapper = require('../redux/Wrapper')
+import reducers from '../reducers'
+import INITIAL_STATE from './INITIAL_STATE'
+const Main = Wrapper(LayoutContainer, reducers, INITIAL_STATE)
+
+
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={require('./LayoutContainer')} />
+      <IndexRoute component={Main} />
       <Route path="/index" component={require('./Index')} />
     </Route>
   </Router>

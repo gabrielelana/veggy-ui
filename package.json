@@ -9,7 +9,7 @@
     "start": "node www",
     "dev": "webpack-dev-server --hot --devtool eval-source-map --inline --progress --colors --content-base dist/",
     "prod": "webpack --config webpack-production.config.js  --progress --profile --colors",
-    "test": "BABEL_ENV=test mocha --compilers js:babel-register tests/**/*-test.js"
+    "test": "BABEL_ENV=test mocha --compilers js:babel-register tests/.setup.js tests/**/*-test.js"
   },
   "author": "Emanuele DelBono",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
     "react-router": "^2.5.2",
+    "sinon": "^1.17.5",
     "superagent": "^2.1.0"
   },
   "devDependencies": {

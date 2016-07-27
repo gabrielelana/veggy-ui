@@ -1,12 +1,9 @@
 import React from 'react'
 import request from 'superagent'
-import Wrapper from '../redux/Wrapper'
-import INITIAL_STATE from './INITIAL_STATE'
 import Display from './Display'
 import Controls from './Controls'
 import TaskList from './TaskList'
 import UserList from './UserList'
-import reducers from '../reducers'
 import dispatcher from '../redux/dispatcher'
 
 const pomodoroActions = {
@@ -49,4 +46,4 @@ const LayoutContainer = React.createClass({
   }
 })
 
-export default Wrapper(LayoutContainer, reducers, INITIAL_STATE)
+export default LayoutContainer

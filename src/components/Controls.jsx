@@ -4,16 +4,11 @@ const Controls = React.createClass({
   getDefaultProps() {
     return {
       startDisabled: false,
-      stopDisabled: true
+      stopDisabled: true,
+      onStart: () => {},
+      onStop: () => {}
     }
   },
-  startTimer() {
-    this.timer = setInterval(() => {
-    }, 1000)
-  }, 
-  stopTimer() {
-    clearInterval(this.timer)
-  }, 
   render() {
     return (
       <div className="column">
