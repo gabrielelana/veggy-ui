@@ -17,6 +17,7 @@ export default function displayReducers(state, action){
   }
 }
 
+// TODO: spostare da qui 
 function nextTick(timeStr){
   var minutes = parseInt(timeStr.split(':')[0], 10)
   var seconds = parseInt(timeStr.split(':')[1], 10)
