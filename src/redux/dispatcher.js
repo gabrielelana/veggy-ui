@@ -8,9 +8,9 @@ const dispatcher = {
     subscribers[id] = subscriber
     return id
   },
-  dispatch: payload => {
+  dispatch: action => {
     Object.keys(subscribers).forEach(sub => {
-      subscribers[sub](payload)
+      subscribers[sub](action)
     })    
   },
   unregister: id => {
