@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Route, Router, IndexRoute, hashHistory } from 'react-router'
+
+import Wrapper from '../redux/Wrapper'
+
 import NavBar from './NavBar'
 
 require('../sass/style.scss')
@@ -19,12 +22,11 @@ export const App = React.createClass({
   }
 })
 
-const LayoutContainer = require('./LayoutContainer')
-const Wrapper = require('../redux/Wrapper')
+import LayoutContainer from './LayoutContainer'
 import reducers from '../reducers'
 import INITIAL_STATE from './INITIAL_STATE'
-const Main = Wrapper(LayoutContainer, reducers, INITIAL_STATE)
 
+const Main = Wrapper(LayoutContainer, reducers, INITIAL_STATE)
 
 ReactDOM.render((
   <Router history={hashHistory}>

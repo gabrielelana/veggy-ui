@@ -3,6 +3,7 @@ const INITIAL_STATE = {
   squashDisabled: true,
   timer: '25:00',
   timerId: null,
+  message: ''
 }
 
 export default INITIAL_STATE

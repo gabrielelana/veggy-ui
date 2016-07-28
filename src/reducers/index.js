@@ -1,6 +1,7 @@
 const reducers = [
   require('./controls'),
-  require('./display')
+  require('./display'),
+  require('./errors')
 ]
 
 export default reducers

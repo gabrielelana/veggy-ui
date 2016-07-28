@@ -1,4 +1,5 @@
 import React from 'react'
+import ErrorBar from './ErrorBar'
 import Display from './Display'
 import Controls from './Controls'
 import TaskList from './TaskList'
@@ -23,6 +24,9 @@ const LayoutContainer = React.createClass({
         <div className="columns">
           <TaskList />
           <UserList />
+        </div>
+        <div className="columns">
+         <ErrorBar message={this.props.message} />
         </div>
       </div>
     )
