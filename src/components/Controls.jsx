@@ -4,9 +4,9 @@ const Controls = React.createClass({
   getDefaultProps() {
     return {
       startDisabled: false,
-      stopDisabled: true,
+      squashDisabled: true,
       onStart: () => {},
-      onStop: () => {}
+      onSquash: () => {}
     }
   },
   render() {
@@ -18,7 +18,7 @@ const Controls = React.createClass({
               <button disabled={this.props.startDisabled} onClick={this.props.onStart} className="button is-primary is-large">Start</button>
             </div>
             <div className="control">
-              <button disabled={this.props.stopDisabled} onClick={this.props.onStop} className="button is-danger is-large">Stop</button>
+              <button disabled={this.props.squashDisabled} onClick={this.props.onSquash} className="button is-danger is-large">Squash</button>
             </div>
           </div>
         </div>

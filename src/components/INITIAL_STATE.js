@@ -1,6 +1,6 @@
 const INITIAL_STATE = { 
   startDisabled: false, 
-  stopDisabled: true,
+  squashDisabled: true,
   timer: '25:00',
   timerId: null,
 }

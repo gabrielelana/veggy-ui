@@ -1,9 +1,9 @@
 
 export default function controls(state, action){
   if (action.type === 'START_TIMER'){
-    return { startDisabled: true, stopDisabled: false }
+    return { startDisabled: true, squashDisabled: false }
   }
-  if (action.type === 'STOP_TIMER') {
-    return { startDisabled: false, stopDisabled: true } 
+  if (action.type === 'SQUASH_TIMER') {
+    return { startDisabled: false, squashDisabled: true } 
   }
 }

@@ -27,15 +27,15 @@ const LayoutContainer = React.createClass({
     //pomodoroActions.startPomodoro()
     this.props.dispatcher.dispatch({type: 'START_TIMER'})
   },
-  handleStop(){
-    this.props.dispatcher.dispatch({type: 'STOP_TIMER'})
+  handleSquash(){
+    this.props.dispatcher.dispatch({type: 'SQUASH_TIMER'})
   },
   render(){ 
     return (
       <div>
         <div className="columns">
           <Display timer={this.props.timer} />
-          <Controls startDisabled={this.props.startDisabled} stopDisabled={this.props.stopDisabled} onStart={this.handleStart} onStop={this.handleStop} />
+          <Controls startDisabled={this.props.startDisabled} squashDisabled={this.props.squashDisabled} onStart={this.handleStart} onSquash={this.handleSquash} />
         </div>
         <div className="columns">
           <TaskList />

@@ -8,7 +8,7 @@ export default function displayReducers(state, action){
     }, 1000)
     return {timerId: timerId}
   }
-  if (action.type === 'STOP_TIMER') {
+  if (action.type === 'SQUASH_TIMER') {
     clearInterval(state.timerId)
     return {timerId: null}
   }

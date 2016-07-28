@@ -10,9 +10,9 @@ const Controls = React.createClass({
       dispatcher.dispatch({type: 'UPDATE_TIMER', payload: {time: this.props.time + 1}})
     }, 1000)
   }, 
-  stopTimer(){
+  squashTimer(){
     clearInterval(this.timer)
-    dispatcher.dispatch({type: 'STOP_TIMER', payload: {}})
+    dispatcher.dispatch({type: 'SQUASH_TIMER', payload: {}})
   }, 
   render(){
     return (
@@ -24,7 +24,7 @@ const Controls = React.createClass({
               <button disabled={this.props.startDisabled} onClick={this.startTimer} className="button is-primary is-large">Start</button>
             </div>
             <div className="control">
-              <button disabled={this.props.stopDisabled} onClick={this.stopTimer} className="button is-danger is-large">Stop</button>
+              <button disabled={this.props.squashDisabled} onClick={this.squashTimer} className="button is-danger is-large">Squash</button>
             </div>
           </div>
         </div>
@@ -35,10 +35,10 @@ const Controls = React.createClass({
 
 function r1(state, action){
   if (action.type === 'START_TIMER'){
-    return { startDisabled: true, stopDisabled: false }
+    return { startDisabled: true, squashDisabled: false }
   }
-  if (action.type === 'STOP_TIMER') {
-    return { startDisabled: false, stopDisabled: true } 
+  if (action.type === 'SQUASH_TIMER') {
+    return { startDisabled: false, squashDisabled: true } 
   }
 }
 
@@ -46,7 +46,7 @@ function r2(state, action){
   if (action.type === 'START_TIMER'){
     return { running: true }
   }
-  if (action.type === 'STOP_TIMER') {
+  if (action.type === 'SQUASH_TIMER') {
     return { running: false } 
   } 
 }
@@ -57,7 +57,7 @@ function r3(state, action){
   }
 }
 
-const INITIAL_STATE = { startDisabled: false, stopDisabled: true, running: false, time: 0 }
+const INITIAL_STATE = { startDisabled: false, squashDisabled: true, running: false, time: 0 }
 
 
 export default Wrapper(Controls, [r1, r2, r3], INITIAL_STATE)
