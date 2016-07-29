@@ -6,15 +6,32 @@ var LayoutContainer = require('../../src/components/LayoutContainer')
 var Controls = require('../../src/components/Controls')
 var sinon = require('sinon')
 var assert = require('chai').assert
+var nock = require('nock');
 
 describe('<LayoutContainer />', () => {
   
-  // it('should ', () => {
-  //   const dispatcher = {dispatch: sinon.spy()}
-  //   const component = mount(<LayoutContainer dispatcher={dispatcher} />)
-  //   component.find('.is-primary').simulate('click')
-  //   assert.isTrue(dispatcher.dispatch.called)
-  // })
+  it('should call the api', () => {
+    var request = nock('http://localhost:3000')
+                    .post('/timer')
+                    .reply(201, { fake: 'yo' });
+
+    const component = mount(<LayoutContainer dispatcher={dispatcher} />)
+    component.find('.is-primary').simulate('click')
+    assert.isTrue(request.isDone())
+  })
+
+  it('should call the api and manage the error', () => {
+    var request = nock('http://localhost:3000')
+                    .post('/timer')
+                    .reply(500, { fake: 'yo' });
+
+    const component = mount(<LayoutContainer dispatcher={dispatcher} />)
+    component.find('.is-primary').simulate('click')
+    assert.isTrue(request.isDone())
+
+    // TODO:Assert sull'errore visualizzato
+  })
+
 
   it('should ...', (done) => {
     // TODO: qui vengono chiamate le vere API (usare nock per stubbare le chiamate)
