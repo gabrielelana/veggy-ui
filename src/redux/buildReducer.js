@@ -15,7 +15,7 @@ const buildReducer = function(mapOrFn, projector = s => s){
     return state
   }
   reducer.project = projector
-  return reducer   
+  return reducer
 }
 
 export default buildReducer

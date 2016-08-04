@@ -9,7 +9,7 @@ describe('Controls reducers', () => {
     assert.isFalse(state.squashDisabled)
   })
 
-  it('SUASH_TIMER should return buttons status', () => {
+  it('SQUASH_TIMER should return buttons status', () => {
     const state = controls({}, {type: 'SQUASH_TIMER'})
     assert.isFalse(state.startDisabled)
     assert.isTrue(state.squashDisabled)
