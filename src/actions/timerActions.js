@@ -2,12 +2,12 @@ import request from 'superagent'
 import dispatcher from '../redux/dispatcher'
   
 const timerActions = {
-  host: 'http://localhost:3000',
+  host: 'http://localhost:4000',
   startPomodoro() {
     request
       .post(`${this.host}/timer`)
       .set('Content-Type', 'application/json')
-      .send({command: 'StartPomodoro'})
+      .send({command: 'StartPomodoro', duration: 10 * 1000 })
       .then(res => {
         /* 
           TODO: Qui e' meglio TIMER_STARTED? O forse dovrei sparare START_TIMER prima di 
