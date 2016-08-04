@@ -16,6 +16,10 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
       //   verifica la action type e se ok riduce (altrimenti ritorna lo stato)
       // - finiti i reducer chiamo il setState
       const newState = reducers.reduce((acc, r) => {
+        // TODO: aggiungere una projection sul reducer per 
+        // estrapolare la parte di stato che serve al reducer
+        //  r(r.project(this.state.childState),action)
+        
         return Object.assign(this.state.childState, r(this.state.childState, action))  
       }, this.state.childState)
 

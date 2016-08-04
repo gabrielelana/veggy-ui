@@ -39,6 +39,7 @@ describe('<LayoutContainer />', () => {
     const component = mount(<LayoutContainer />)
     // TODO: IMHO e' un grosso smell. Sto facendo assunzioni sull'implementazione 
     // interna di un componente (private)
+    // TODO: USA GLI ID! component.find('#startTimer').simulate('click')
     component.find('.is-primary').simulate('click')
   })
 

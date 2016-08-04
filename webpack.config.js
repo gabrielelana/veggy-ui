@@ -28,7 +28,7 @@ module.exports = {
       configFile: 'eslint.config.json'
     },
     plugins: [
-      new webpack.ProvidePlugin({$: "jquery", jQuery: "jquery"}),
+      //new webpack.ProvidePlugin({$: "jquery", jQuery: "jquery"}),
       new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),  
       new webpack.optimize.OccurenceOrderPlugin(),
       //new webpack.HotModuleReplacementPlugin(),
