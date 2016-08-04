@@ -1,21 +1,20 @@
 import dispatcher from '../redux/dispatcher'
+import buildReducer from '../redux/buildReducer'
 
-export default function displayReducers(state, action){
-  if (action.type === 'START_TIMER'){
+export default buildReducer({
+  'START_TIMER': (state, action) => {
     const timerId = setInterval(() => {
       const timer = nextTick(state.timer)
       dispatcher.dispatch({type: 'UPDATE_TIMER', payload: {timer: timer}})
     }, 1000)
     return {timerId: timerId}
-  }
-  if (action.type === 'SQUASH_TIMER') {
+  },
+  'SQUASH_TIMER': (state, action) => {
     clearInterval(state.timerId)
     return {timerId: null}
-  }
-  if (action.type === 'UPDATE_TIMER') {
-    return {timer: action.payload.timer}
-  }
-}
+  }, 
+  'UPDATE_TIMER': (state, action) => ({timer: action.payload.timer})
+})
 
 // TODO: spostare da qui 
 function nextTick(timeStr){
