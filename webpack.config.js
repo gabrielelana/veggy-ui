@@ -11,7 +11,7 @@ module.exports = {
         path.resolve(__dirname, 'src/components/App.jsx'),
         './src/index.html'
       ],
-      vendor: ['react', 'react-dom', 'superagent', 'ramda']
+      vendors: ['react', 'react-dom', 'superagent', 'ramda']
     },
     output: {
         filename: '/js/app.js',
@@ -29,7 +29,7 @@ module.exports = {
     },
     plugins: [
       //new webpack.ProvidePlugin({$: "jquery", jQuery: "jquery"}),
-      new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),  
+      new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.js'),  
       new webpack.optimize.OccurenceOrderPlugin(),
       //new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
