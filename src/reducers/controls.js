@@ -1,15 +1,15 @@
-/*
-  TODO: sto facendo in modo che i reducer ritornino il loro "pezzo" di stato
-  e non il nuovo stato completo.
-  In pratica il merge (tramite Object.assign) lo faccio fare al chiamante.
-  Opinioni?
-*/
+import buildReducer from '../redux/buildReducer'
 
-export default function controls(state, action){
-  if (action.type === 'START_TIMER'){
-    return { startDisabled: true, squashDisabled: false }
-  }
-  if (action.type === 'SQUASH_TIMER') {
-    return { startDisabled: false, squashDisabled: true } 
-  }
-}
+export default buildReducer({
+  'START_TIMER': (state, action) => ({ startDisabled: true, squashDisabled: false }),
+  'SQUASH_TIMER': (state, action) => ({ startDisabled: false, squashDisabled: true })
+})
+
+// var r2 = createReducer((state, action) => {
+//   if (action.type === 'START_TIMER'){
+//     return { startDisabled: true, squashDisabled: false }
+//   }
+//   if (action.type === 'SQUASH_TIMER') {
+//     return { startDisabled: false, squashDisabled: true } 
+//   }
+// })

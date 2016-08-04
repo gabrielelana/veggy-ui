@@ -19,8 +19,9 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
         // TODO: aggiungere una projection sul reducer per 
         // estrapolare la parte di stato che serve al reducer
         //  r(r.project(this.state.childState),action)
-        
-        return Object.assign(this.state.childState, r(this.state.childState, action))  
+        //const projectedState = r.project ? r.project(this.state.childState) : this.state.childState
+          
+        return Object.assign(this.state.childState, r(r.project(this.state.childState), action))  
       }, this.state.childState)
 
 

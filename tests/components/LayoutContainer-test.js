@@ -11,7 +11,7 @@ var nock = require('nock');
 describe('<LayoutContainer />', () => {
   
   it('should call the api', () => {
-    var request = nock('http://localhost:3000')
+    var request = nock('http://localhost:4000')
                     .post('/timer')
                     .reply(201, { fake: 'yo' });
 
@@ -21,7 +21,7 @@ describe('<LayoutContainer />', () => {
   })
 
   it('should call the api and manage the error', () => {
-    var request = nock('http://localhost:3000')
+    var request = nock('http://localhost:4000')
                     .post('/timer')
                     .reply(500, { fake: 'yo' });
 
