@@ -11,7 +11,6 @@ import NavBar from './NavBar'
 const LayoutContainer = React.createClass({
   handleStart(){
     timerActions.startPomodoro()
-    //this.props.dispatcher.dispatch({type: 'START_TIMER'})
   },
   handleSquash(){
     this.props.dispatcher.dispatch({type: 'SQUASH_TIMER'})
@@ -19,7 +18,7 @@ const LayoutContainer = React.createClass({
   render(){ 
     return (
       <div>
-        <NavBar />
+        <NavBar username={this.props.username} />
         <div className="container" style={{marginTop: '20px'}}>
           <Login active={!this.props.isLoggedIn} />
           <div className="columns">

@@ -1,5 +1,6 @@
 const INITIAL_STATE = { 
-  userId: '',
+  userId: 'fake-user',
+  username: 'fake-user',
   isLoggedIn: false,
   startDisabled: false, 
   squashDisabled: true,
