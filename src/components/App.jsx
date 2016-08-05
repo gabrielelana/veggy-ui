@@ -2,21 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {Route, Router, IndexRoute, hashHistory } from 'react-router'
 import Wrapper from '../redux/Wrapper'
-import NavBar from './NavBar'
-import ws from '../serverPush/webSocketDispatcher'
 
 require('../sass/style.scss')
-ws.connect()
 
 export const App = React.createClass({
   render() {
     let children = React.cloneElement(this.props.children, { store: {} })
     return (
       <div>
-        <NavBar />
-        <div className="container" style={{marginTop: '20px'}}>
-          {children}
-        </div>
+        {children}
       </div>
     )
   }

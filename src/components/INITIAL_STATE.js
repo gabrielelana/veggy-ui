@@ -1,4 +1,6 @@
 const INITIAL_STATE = { 
+  userId: '',
+  isLoggedIn: false,
   startDisabled: false, 
   squashDisabled: true,
   timer: '25:00',

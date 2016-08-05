@@ -2,10 +2,11 @@ import dispatcher from '../redux/dispatcher'
 var websocket = null
 var hearBeat = null
 
-function connect() {   
+function connect(username) {   
   websocket = new WebSocket('ws://localhost:4000/ws')
   websocket.onopen = (evt) => { 
     setupHertBeat();
+    sendLoginName(username)
     // TODO: inviare username ws.send('login:username')
   }
   websocket.onclose = (evt) => { disconnect() }
@@ -29,6 +30,10 @@ function disconnect() {
 
 function setupHertBeat(){
   hearBeat = setInterval(() => websocket.send('ping'), 5000)
+}
+
+function sendLoginName(username){
+  websocket.send(`login:${username}`)
 }
 
 export default {

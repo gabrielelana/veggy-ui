@@ -14,7 +14,7 @@ const NavBar = React.createClass({
             <span className="icon">
               <i className="fa fa-user"></i>
             </span>
-            User
+            {this.props.username}
           </a>
         </div>
       </nav>

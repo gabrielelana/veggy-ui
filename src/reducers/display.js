@@ -4,6 +4,7 @@ import pomodoroTicker from '../actions/pomodoroTicker'
 
 export default buildReducer({
   'START_TIMER': (state, action) => {
+    // TODO: questo e' un side-effect (meglio spostarlo da qui)
     const timerId = pomodoroTicker.start(state.timer)
     return {timerId: timerId}
   },
