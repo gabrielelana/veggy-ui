@@ -8,7 +8,7 @@ const timerActions = {
     request
       .post(`${this.host}/timer`)
       .set('Content-Type', 'application/json')
-      .send({command: 'StartPomodoro' /*, duration: 10 * 1000*/})
+      .send({command: 'StartPomodoro', duration: 6 * 10 * 1000})
       .then(res => {
         commandStore.store(res.body.id)
       })

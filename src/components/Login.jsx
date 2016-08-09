@@ -1,6 +1,10 @@
 const React = require('react')
 const actions = require('../actions/loginActions')
 
+
+// TODO: remove
+actions.login('emadb_fake')
+
 // TODO: la login non e' un container quindi non deve avere accesso alle actions.
 // Deve essere il container a chiamare la login.
 

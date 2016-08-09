@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   isLoggedIn: false,
   startDisabled: false, 
   squashDisabled: true,
-  timer: '25:00',
+  timer: '1:00',
   timerId: null,
   message: ''
 }
