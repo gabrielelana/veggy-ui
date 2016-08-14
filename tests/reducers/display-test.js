@@ -3,8 +3,8 @@ var assert = require('chai').assert
 
 describe('Display reducers', () => {
   
-  it('START_TIMER should return the timer id', () => {
-    const state = display({}, {type: 'START_TIMER'})
+  it('PomodoroStarted should return the timer id', () => {
+    const state = display({}, {type: 'PomodoroStarted'})
     assert.isOk(state.timerId)
   })
 
