@@ -7,6 +7,6 @@ describe('<Display />', () => {
   
   it('should display the time passed via props', () => {
     const component = mount(<Display timer="11:04" />)
-    assert.equal('11:04', component.find('h1').text())
+    assert.equal('11:04', component.find('#timer').text())
   })
 })

@@ -16,7 +16,7 @@ describe('<LayoutContainer />', () => {
                     .reply(201, { fake: 'yo' });
 
     const component = mount(<LayoutContainer dispatcher={dispatcher} />)
-    component.find('.is-primary').simulate('click')
+    component.find('#startButton').simulate('click')
     assert.isTrue(request.isDone())
   })
 
@@ -26,7 +26,7 @@ describe('<LayoutContainer />', () => {
                     .reply(500, { fake: 'yo' });
 
     const component = mount(<LayoutContainer dispatcher={dispatcher} />)
-    component.find('.is-primary').simulate('click')
+    component.find('#startButton').simulate('click')
     assert.isTrue(request.isDone())
 
     // TODO:Assert sull'errore visualizzato
@@ -40,7 +40,7 @@ describe('<LayoutContainer />', () => {
     // TODO: IMHO e' un grosso smell. Sto facendo assunzioni sull'implementazione 
     // interna di un componente (private)
     // TODO: USA GLI ID! component.find('#startTimer').simulate('click')
-    component.find('.is-primary').simulate('click')
+    component.find('#startButton').simulate('click')
   })
 
   

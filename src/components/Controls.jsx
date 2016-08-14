@@ -15,10 +15,10 @@ const Controls = React.createClass({
         <div className="box">
           <div className="control is-grouped ">
             <div className="control">
-              <button disabled={this.props.startDisabled} onClick={this.props.onStart} className="button is-primary is-large">Start</button>
+              <button id="startButton" disabled={this.props.startDisabled} onClick={this.props.onStart} className="button is-primary is-large">Start</button>
             </div>
             <div className="control">
-              <button disabled={this.props.squashDisabled} onClick={this.props.onSquash} className="button is-danger is-large">Squash</button>
+              <button id="squashButton" disabled={this.props.squashDisabled} onClick={this.props.onSquash} className="button is-danger is-large">Squash</button>
             </div>
           </div>
         </div>
