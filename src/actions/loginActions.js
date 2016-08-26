@@ -12,6 +12,7 @@ const loginActions = {
       .send({command: 'Login', payload: {username: username}})
       .then(res => {
         // TODO: va bene qui?
+        // Forse meglio dispatchare una nuova action che fara' il suo login
         ws.connect(username)
         commandStore.store(res.body.id)
       })
