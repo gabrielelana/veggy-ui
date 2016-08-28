@@ -12,8 +12,8 @@ function connect(username) {
   websocket.onclose = (evt) => { disconnect() }
   websocket.onmessage = (evt) => { 
     if (evt.data !== 'pong') {
+      console.log('ws-message', evt) 
       const data = JSON.parse(evt.data)
-      console.log('message', data, data.event) 
       dispatcher.dispatch({type: data.event, payload: data})
     }
   }

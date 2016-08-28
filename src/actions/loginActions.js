@@ -7,9 +7,9 @@ const loginActions = {
   host: 'http://localhost:4000',
   login(username) {
     request
-      .post(`${this.host}/login`)
+      .post(`${this.host}/commands`)
       .set('Content-Type', 'application/json')
-      .send({command: 'Login', payload: {username: username}})
+      .send({command: 'Login', username: username})
       .then(res => {
         // TODO: va bene qui?
         // Forse meglio dispatchare una nuova action che fara' il suo login
