@@ -1,4 +1,4 @@
-var nextTick = require('../../src/actions/nextTick')
+var nextTick = require('../../src/components/main/nextTick')
 var assert = require('chai').assert
 
 describe('nextTick', () => {

@@ -1,6 +1,6 @@
 var React = require('react')
 var mount = require('enzyme').mount
-var Display = require('../../src/components/Display')
+var Display = require('../../src/components/main/Display')
 var assert = require('chai').assert
 
 describe('<Display />', () => {
