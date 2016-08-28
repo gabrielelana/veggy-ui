@@ -1,7 +1,7 @@
 import request from 'superagent'
-import dispatcher from '../redux/dispatcher'
-import commandStore from '../serverPush/commandStore'
-import ws from '../serverPush/webSocketDispatcher'
+import dispatcher from '../../redux/dispatcher'
+import commandStore from '../../serverPush/commandStore'
+import ws from '../../serverPush/webSocketDispatcher'
 
 const loginActions = {
   host: 'http://localhost:4000',

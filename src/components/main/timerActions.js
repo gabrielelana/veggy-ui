@@ -1,6 +1,6 @@
 import request from 'superagent'
-import dispatcher from '../redux/dispatcher'
-import commandStore from '../serverPush/commandStore'
+import dispatcher from '../../redux/dispatcher'
+import commandStore from '../../serverPush/commandStore'
 
 const timerActions = {
   host: 'http://localhost:4000',

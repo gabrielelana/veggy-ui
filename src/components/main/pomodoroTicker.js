@@ -1,4 +1,4 @@
-import dispatcher from '../redux/dispatcher'
+import dispatcher from '../../redux/dispatcher'
 import nextTick from './nextTick'
 
 const pomodoroTicker = {

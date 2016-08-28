@@ -1,6 +1,6 @@
 import dispatcher from '../redux/dispatcher'
 import buildReducer from '../redux/buildReducer'
-import pomodoroTicker from '../actions/pomodoroTicker'
+import pomodoroTicker from '../components/main/pomodoroTicker'
 
 export default buildReducer({
   'PomodoroStarted': (state, action) => {

@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Route, Router, IndexRoute, hashHistory } from 'react-router'
-import Wrapper from '../redux/Wrapper'
 
 require('../sass/style.scss')
 
@@ -16,16 +15,13 @@ export const App = React.createClass({
   }
 })
 
-import LayoutContainer from './LayoutContainer'
-import reducers from '../reducers'
-import INITIAL_STATE from './INITIAL_STATE'
 
-const Main = Wrapper(LayoutContainer, reducers, INITIAL_STATE)
 
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Main} />
+      <IndexRoute component={require('./main')} />
+      <Route path="/login" component={require('./login')} />
       <Route path="/index" component={require('./Index')} />
     </Route>
   </Router>
