@@ -29,8 +29,6 @@ const ErrorBar = React.createClass({
       displayStyle.display = 'block'
     }
     const messageClass = getTypeClass(this.props.type)
-    console.log('class', messageClass)
-
     return (
       <div className="column is-half is-offset-one-quarter is-gapless">
         <div className={messageClass} style={displayStyle} >

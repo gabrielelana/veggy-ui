@@ -19,6 +19,14 @@ const timerActions = {
     const userInfo = JSON.parse(localStorage.getItem('veggy'))
     ws.connect(userInfo.username)
     dispatcher.dispatch({type: 'INIT', payload: userInfo})
+    request
+      .get(`${this.host}/timers/${userInfo.timerId}/pomodori/latest`)
+      .then(res => {
+        if (res.body.ticking){
+          dispatcher.dispatch({type: 'RESUME_TIMER', payload: {userInfo, startedAt: res.body.started_at}})
+        }
+      })
+      .catch(err => dispatcher.dispatch({type: 'API_ERROR', payload: err}))
   }
 }
 
