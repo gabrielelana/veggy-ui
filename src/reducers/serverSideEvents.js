@@ -3,13 +3,22 @@ import buildReducer from '../redux/buildReducer'
 export default buildReducer({
   'PomodoroStarted': (state, action) => ({
     startDisabled: true, 
-    squashDisabled: false 
+    squashDisabled: false,
+    pomodoroId: action.payload.pomodoro_id
   }),
   'PomodoroEnded': (state, action) => ({ 
     startDisabled: false, 
-    squashDisabled: true, 
+    squashDisabled: true,
+    pomodoroId: action.payload.pomodoro_id,
     message: 'Good! Your pomodoro is completed', 
     messageType: 'info' 
+  }),
+  'PomodoroSquashed': (state, action) => ({ 
+    startDisabled: false, 
+    squashDisabled: true, 
+    pomodoroId: action.payload.pomodoro_id,
+    message: 'Ouch! Your pomodoro has been interrupted', 
+    messageType: 'warn' 
   }),
   'CommandFailed': (state, action) => ({ 
     message: `There was an error: ${action.payload.why}`, 

@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   clientTimerId: null,
   startDisabled: false, 
   squashDisabled: true,
+  // TODO: remove constant value from here
   timer: '1:00',
   timerId: null,
   message: ''

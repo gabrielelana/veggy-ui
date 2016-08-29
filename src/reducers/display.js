@@ -12,6 +12,7 @@ export default buildReducer({
   'PomodoroEnded': (state, action) => {
     // TODO: questo e' un side-effect (meglio spostarlo da qui)
     pomodoroTicker.stop(state.clientTimerId)
+    // TODO: remove constant value from here
     return {clientTimerId: null, timer: '1:00'}
   },
   'SQUASH_TIMER': (state, action) => {
@@ -23,6 +24,8 @@ export default buildReducer({
   },
   'RESUME_TIMER': (state, action) => {
     const startedAt = moment(action.payload.startedAt)
+    // Wouldn't be better if server send to the client the remaining time?
+    // TODO: remove constant value. 
     const elapsed = 60000 - moment().diff(startedAt)
     const timer = moment(elapsed).format('mm:ss')
 

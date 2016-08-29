@@ -3,6 +3,7 @@ import React from 'react'
 const types = {
   info: 'notification is-success',
   error: 'notification is-danger',
+  warn: 'notification is-warning',
 }
 function getTypeClass(type){
   return types[type]

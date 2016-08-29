@@ -15,7 +15,7 @@ const LayoutContainer = React.createClass({
     timerActions.startPomodoro(this.props.timerId)
   },
   handleSquash(){
-    this.props.dispatcher.dispatch({type: 'SQUASH_TIMER'})
+    timerActions.squash(this.props.timerId, this.props.pomodoroId)
   },
   render(){ 
     return (
