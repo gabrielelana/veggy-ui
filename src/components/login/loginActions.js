@@ -11,10 +11,9 @@ const loginActions = {
       .set('Content-Type', 'application/json')
       .send({command: 'Login', username: username})
       .then(res => {
-        // TODO: va bene qui?
-        // Forse meglio dispatchare una nuova action che fara' il suo login
-        ws.connect(username)
         commandStore.store(res.body.id)
+        dispatcher.dispatch({type: 'WAIT_FOR_LOGIN'})
+        ws.connect(username)
       })
       .catch(err => {
         dispatcher.dispatch({type: 'API_ERROR', payload: err})})

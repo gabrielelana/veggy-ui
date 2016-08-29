@@ -6,9 +6,9 @@ const timerActions = {
   host: 'http://localhost:4000',
   startPomodoro() {
     request
-      .post(`${this.host}/timer`)
+      .post(`${this.host}/commands`)
       .set('Content-Type', 'application/json')
-      .send({command: 'StartPomodoro', duration: 6 * 10 * 1000})
+      .send({command: 'StartPomodoro', duration: 6 * 10 * 1000, timer_id: '57c3f4b88524881c605627d5'})
       .then(res => {
         commandStore.store(res.body.id)
       })

@@ -13,7 +13,12 @@ function connect(username) {
   websocket.onmessage = (evt) => { 
     if (evt.data !== 'pong') {
       console.log('ws-message', evt) 
-      const data = JSON.parse(evt.data)
+      var data = evt.data
+      try{
+        data = JSON.parse(data)
+      } catch(err) {
+        console.log('data is not json', data, err)
+      }
       dispatcher.dispatch({type: data.event, payload: data})
     }
   }
