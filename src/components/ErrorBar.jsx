@@ -1,5 +1,13 @@
 import React from 'react'
 
+const types = {
+  info: 'notification is-success',
+  error: 'notification is-danger',
+}
+function getTypeClass(type){
+  return types[type]
+}
+
 const ErrorBar = React.createClass({
   getInitialState: function() {
     return { message: '' }
@@ -20,10 +28,12 @@ const ErrorBar = React.createClass({
     if (this.state.message){
       displayStyle.display = 'block'
     }
+    const messageClass = getTypeClass(this.props.type)
+    console.log('class', messageClass)
 
     return (
       <div className="column is-half is-offset-one-quarter is-gapless">
-        <div className="notification is-danger" style={displayStyle} >
+        <div className={messageClass} style={displayStyle} >
           {this.props.message}
         </div>
       </div>

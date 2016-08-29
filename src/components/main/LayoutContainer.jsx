@@ -8,8 +8,11 @@ import timerActions from './timerActions'
 import NavBar from '../NavBar'
 
 const LayoutContainer = React.createClass({
+  componentWillMount() {
+    timerActions.wireup()
+  },
   handleStart(){
-    timerActions.startPomodoro()
+    timerActions.startPomodoro(this.props.timerId)
   },
   handleSquash(){
     this.props.dispatcher.dispatch({type: 'SQUASH_TIMER'})
@@ -28,7 +31,7 @@ const LayoutContainer = React.createClass({
             <UserList />
           </div>
           <div className="columns">
-           <ErrorBar message={this.props.message} />
+            <ErrorBar message={this.props.message} type={this.props.messageType} />
           </div>
         </div>
       </div>
