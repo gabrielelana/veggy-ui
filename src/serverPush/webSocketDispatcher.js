@@ -12,7 +12,7 @@ function connect(username) {
   websocket.onclose = (evt) => { disconnect() }
   websocket.onmessage = (evt) => { 
     if (evt.data !== 'pong') {
-      console.log('ws-message', evt) 
+      console.log('ws', evt.data) 
       var data = evt.data
       try{
         data = JSON.parse(data)

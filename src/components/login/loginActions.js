@@ -1,4 +1,5 @@
 import request from 'superagent'
+import {hashHistory} from 'react-router'
 import dispatcher from '../../redux/dispatcher'
 import commandStore from '../../serverPush/commandStore'
 import ws from '../../serverPush/webSocketDispatcher'
@@ -17,6 +18,12 @@ const loginActions = {
       })
       .catch(err => {
         dispatcher.dispatch({type: 'API_ERROR', payload: err})})
+  },
+  redirect(username, timerId, userId){
+    localStorage.setItem('veggy', JSON.stringify({username, timerId, userId}))
+    // TODO: scegliere un metodo di redirect
+    //hashHistory.push({pathname: '/', query: {u: username}})
+    window.location.href = "/";
   }
 }
  

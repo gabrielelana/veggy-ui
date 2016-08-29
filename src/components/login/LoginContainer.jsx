@@ -10,7 +10,7 @@ const LoginContainer = React.createClass({
   },
   componentWillReceiveProps: function(props) {
     if (props.redirect){
-      this.props.router.push({pathname: '/', query: {u: props.username}})
+      actions.redirect(props.username, props.timerId, props.userId)
     }
   },
   render(){
