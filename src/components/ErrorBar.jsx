@@ -10,23 +10,23 @@ function getTypeClass(type){
 }
 
 const ErrorBar = React.createClass({
-  getInitialState: function() {
-    return { message: '' }
+  getInitialState() {
+    return { show: false }
   },
   getDefaultProps() {
-    return { message: '' };
+    return { timeout: 4000 };
   },
   componentWillReceiveProps(props) {
     if (props.message.length > 0){
-      this.setState({message: props.message})
+      this.setState({show: true})
       setTimeout(() => {
-        this.setState({message: ''})
-      }, 4000)
+        this.setState({show: false})
+      }, this.props.timeout)
     }
   },
   render(){ 
     const displayStyle = {display:'none'}
-    if (this.state.message){
+    if (this.state.show){
       displayStyle.display = 'block'
     }
     const messageClass = getTypeClass(this.props.type)

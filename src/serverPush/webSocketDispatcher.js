@@ -7,18 +7,12 @@ function connect(username) {
   websocket.onopen = (evt) => { 
     setupHertBeat();
     sendLoginName(username)
-    // TODO: inviare username ws.send('login:username')
   }
   websocket.onclose = (evt) => { disconnect() }
   websocket.onmessage = (evt) => { 
-    if (evt.data !== 'pong') {
+    const data = JSON.parse(evt.data)
+    if (data.message !== 'pong') {
       console.log('ws', evt.data) 
-      var data = evt.data
-      try{
-        data = JSON.parse(data)
-      } catch(err) {
-        console.log('data is not json', data, err)
-      }
       dispatcher.dispatch({type: data.event, payload: data})
     }
   }
