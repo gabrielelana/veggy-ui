@@ -14,7 +14,7 @@ const ErrorBar = React.createClass({
     return { show: false }
   },
   getDefaultProps() {
-    return { timeout: 4000 };
+    return { timeout: 4000, message: '' };
   },
   componentWillReceiveProps(props) {
     if (props.message.length > 0){

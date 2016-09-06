@@ -16,7 +16,7 @@ export default buildReducer({
     return {clientTimerId: null, timer: '1:00'}
   },
   'PomodoroSquashed': (state, action) => {
-    console.log('squash', state, action)
+    console.log('squash', state.clientTimerId)
     pomodoroTicker.stop(state.clientTimerId)
     return {clientTimerId: null}
   }, 

@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+    devtool: '#inline-source-map',
     entry: {
       app:[
         'webpack-dev-server/client?http://localhost:8080',

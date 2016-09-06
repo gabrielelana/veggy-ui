@@ -14,10 +14,10 @@ const loginActions = {
       .then(res => {
         commandStore.store(res.body.id)
         dispatcher.dispatch({type: 'WAIT_FOR_LOGIN'})
-        ws.connect(username)
       })
       .catch(err => {
         dispatcher.dispatch({type: 'API_ERROR', payload: err})})
+    ws.connect(username)
   },
   redirect(username, timerId, userId){
     localStorage.setItem('veggy', JSON.stringify({username, timerId, userId}))
