@@ -20,7 +20,7 @@ const loginActions = {
     ws.connect(username)
   },
   redirect(username, timerId, userId){
-    localStorage.setItem('veggy', JSON.stringify({username, timerId, userId}))
+    window.localStorage.setItem('veggy', JSON.stringify({username, timerId, userId}))
     // TODO: scegliere un metodo di redirect
     //hashHistory.push({pathname: '/', query: {u: username}})
     window.location.href = "/";

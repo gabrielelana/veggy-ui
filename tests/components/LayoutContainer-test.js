@@ -12,7 +12,7 @@ describe('<LayoutContainer />', () => {
   
   it('should call the api', () => {
     var request = nock('http://localhost:4000')
-                    .post('/timer')
+                    .post('/commands')
                     .reply(201, { fake: 'yo' });
 
     const component = mount(<LayoutContainer dispatcher={dispatcher} />)
@@ -22,7 +22,7 @@ describe('<LayoutContainer />', () => {
 
   it('should call the api and manage the error', () => {
     var request = nock('http://localhost:4000')
-                    .post('/timer')
+                    .post('/commands')
                     .reply(500, { fake: 'yo' });
 
     const component = mount(<LayoutContainer dispatcher={dispatcher} />)
@@ -33,7 +33,7 @@ describe('<LayoutContainer />', () => {
   })
 
 
-  it('should ...', (done) => {
+  it('should done something', (done) => {
     // TODO: qui vengono chiamate le vere API (usare nock per stubbare le chiamate)
     dispatcher.register(action => done())
     const component = mount(<LayoutContainer />)

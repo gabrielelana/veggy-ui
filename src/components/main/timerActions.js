@@ -30,8 +30,8 @@ const timerActions = {
 
   },
   wireup(){
-    if (localStorage.getItem('veggy')) {
-      const userInfo = JSON.parse(localStorage.getItem('veggy'))
+    if (window.localStorage.getItem('veggy')) {
+      const userInfo = JSON.parse(window.localStorage.getItem('veggy'))
       ws.connect(userInfo.username)
       dispatcher.dispatch({type: 'INIT', payload: userInfo})
       request
