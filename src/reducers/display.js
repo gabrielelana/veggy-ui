@@ -4,16 +4,16 @@ import buildReducer from '../redux/buildReducer'
 
 export default buildReducer({
   'POMODORO_STARTED': (state, action) => {
-    return {clientTimerId: action.payload.clientTimerId}
+    return { timerId: action.payload.timerId, pomodoroId: action.payload.pomodoroId, ticking: true}
   },
   'POMODORO_ENDED': (state, action) => {
-    return {clientTimerId: null, timer: '1:00'}
+    return {time: '1:00', ticking: false}
   },
   'POMODORO_SQUASHED': (state, action) => {
-    return {clientTimerId: null}
+    return {ticking: false}
   }, 
   'UPDATE_TIMER': (state, action) => {
-    return {timer: action.payload.timer}
+    return {time: action.payload.time, ticking: true}
   },
   'RESUME_TIMER': (state, action) => {
     return {
@@ -22,7 +22,7 @@ export default buildReducer({
       pomodoroId: action.payload.pomodoroId,
       startDisabled: true, 
       squashDisabled: false,
-      clientTimerId: action.payload.clientTimerId
+      ticking: true
     }
   }
 })

@@ -23,7 +23,7 @@ const LayoutContainer = React.createClass({
         <NavBar username={this.props.username} />
         <div className="container" style={{marginTop: '20px'}}>
           <div className="columns">
-            <Display timer={this.props.timer} />
+            <Display time={this.props.time} />
             <Controls startDisabled={this.props.startDisabled} squashDisabled={this.props.squashDisabled} onStart={this.handleStart} onSquash={this.handleSquash} />
           </div>
           <div className="columns">

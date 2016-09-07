@@ -17,8 +17,9 @@ function connect(username) {
       console.log('ws', evt.data) 
       if (typeof(wsActions[data.event]) === 'function'){
         wsActions[data.event](data)
+      } else {
+        dispatcher.dispatch({type: data.event, payload: data})
       }
-      //dispatcher.dispatch({type: data.event, payload: data})
     }
   }
   websocket.onerror = (evt) => { 

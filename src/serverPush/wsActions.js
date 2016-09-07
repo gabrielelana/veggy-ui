@@ -5,37 +5,26 @@ var clientTimerId = null
 
 const wsActions = {
   PomodoroStarted(data) {
-    clientTimerId = pomodoroTicker.start("1:00")
+    pomodoroTicker.start("1:00")
     dispatcher.dispatch({type: 'POMODORO_STARTED', payload: {
-      clientTimerId: clientTimerId,
       timerId: data.timer_id,
       pomodoroId: data.pomodoro_id
     }})    
   },
   PomodoroEnded(data){
-    pomodoroTicker.stop(clientTimerId)
-    clientTimerId = null
+    pomodoroTicker.stop()
     dispatcher.dispatch({type: 'POMODORO_ENDED', payload: {
-      clientTimerId: null,
       timerId: data.timer_id,
       pomodoroId: data.pomodoro_id
     }})  
   },
   PomodoroSquashed(data){
-    pomodoroTicker.stop(clientTimerId)
-    clientTimerId = null
+    pomodoroTicker.stop()
     dispatcher.dispatch({type: 'POMODORO_SQUASHED', payload: {
-      clientTimerId: null,
       timerId: data.timer_id,
       pomodoroId: data.pomodoro_id
     }})  
-  },
-  LoggedIn(data){
-    dispatcher.dispatch({type: data.event, payload: data})   
-  },
-  TimerCreated(data){
-    dispatcher.dispatch({type: data.event, payload: data})   
-  },
+  }
 }
 
 export default wsActions

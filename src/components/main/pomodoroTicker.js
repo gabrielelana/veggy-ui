@@ -1,17 +1,19 @@
 import dispatcher from '../../redux/dispatcher'
 import nextTick from './nextTick'
 
+var timerId = null
+
 const pomodoroTicker = {
-  start(startingTimer){
-    var currentTimer = startingTimer
-    const timerId = setInterval(() => {
-      currentTimer = nextTick(currentTimer)
-      dispatcher.dispatch({type: 'UPDATE_TIMER', payload: {timer: currentTimer}})
+  start(startingTime){
+    var currentTime = startingTime
+    timerId = setInterval(() => {
+      currentTime = nextTick(currentTime)
+      dispatcher.dispatch({type: 'UPDATE_TIMER', payload: {time: currentTime}})
     }, 1000)
-    return timerId
   },
-  stop(timerId){
+  stop(){
     clearInterval(timerId)
+    timerId = null
   }
 }
 

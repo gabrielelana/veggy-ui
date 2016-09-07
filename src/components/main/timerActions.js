@@ -46,16 +46,16 @@ const timerActions = {
             // Wouldn't be better if server send to the client the remaining time?
             // TODO: remove constant value. 
             const elapsed = 60000 - moment().diff(startedAt)
-            const timer = moment(elapsed).format('mm:ss')
+            const time = moment(elapsed).format('mm:ss')
 
-            const clientTimerId = pomodoroTicker.start(timer)
+            pomodoroTicker.start(time)
             
             dispatcher.dispatch({type: 'RESUME_TIMER', payload: {
               userInfo, 
-              timer: timer,
+              time: time,
               timerId: res.body.timer_id,
               pomodoroId: res.body.pomodoro_id,
-              clientTimerId: clientTimerId
+
             }})
           }
         })

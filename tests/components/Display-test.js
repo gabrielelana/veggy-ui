@@ -6,7 +6,7 @@ var assert = require('chai').assert
 describe('<Display />', () => {
   
   it('should display the time passed via props', () => {
-    const component = mount(<Display timer="11:04" />)
-    assert.equal('11:04', component.find('#timer').text())
+    const component = mount(<Display time="11:04" />)
+    assert.equal('11:04', component.find('#time').text())
   })
 })

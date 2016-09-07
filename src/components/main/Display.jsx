@@ -5,7 +5,7 @@ const Display = React.createClass({
     return (
       <div className="column is-three-quarters">
         <div className="box has-text-centered">
-          <h1 id="timer" className="title is-1">{this.props.timer}</h1>
+          <h1 id="time" className="title is-1">{this.props.time}</h1>
         </div>
       </div>
       )
