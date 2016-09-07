@@ -1,7 +1,7 @@
-var errors = require('../../src/reducers/errors')
+var errors = require('../../src/reducers/messages')
 var assert = require('chai').assert
 
-describe('Errors reducers', () => {
+describe('Messages reducers', () => {
   
   it('API_ERROR should return the timer id', () => {
     const state = errors({}, {type: 'API_ERROR'})

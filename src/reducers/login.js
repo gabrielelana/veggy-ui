@@ -8,7 +8,11 @@ export default buildReducer({
     return {timerId: action.payload.timer_id, redirect: !!state.loggedIn }
   },
   'LoggedIn': (state, action) => {
-    return {loggedIn: true, username: action.payload.username, userId: action.payload.user_id, redirect: !!state.timerId}
+    return {
+      loggedIn: true, 
+      username: action.payload.username, 
+      userId: action.payload.user_id, 
+      redirect: !!state.timerId}
   }
 })
 

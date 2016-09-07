@@ -3,14 +3,14 @@ var assert = require('chai').assert
 
 describe('Controls reducers', () => {
   
-  it('PomodoroStarted should return buttons status', () => {
-    const state = controls({}, {type: 'PomodoroStarted'})
+  it('POMODORO_STARTED should return buttons status', () => {
+    const state = controls({}, {type: 'POMODORO_STARTED'})
     assert.isTrue(state.startDisabled)
     assert.isFalse(state.squashDisabled)
   })
 
-  it('SQUASH_TIMER should return buttons status', () => {
-    const state = controls({}, {type: 'PomodoroSquashed'})
+  it('POMODORO_SQUASHED should return buttons status', () => {
+    const state = controls({}, {type: 'POMODORO_SQUASHED'})
     assert.isFalse(state.startDisabled)
     assert.isTrue(state.squashDisabled)
   })

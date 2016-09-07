@@ -8,6 +8,7 @@ const INITIAL_STATE = {
   // TODO: remove constant value from here
   timer: '1:00',
   timerId: null,
+  pomodoroId: null,
   message: ''
 }
 

@@ -1,15 +1,7 @@
 import buildReducer from '../redux/buildReducer'
 
 export default buildReducer({
-  'PomodoroStarted': (state, action) => ({ startDisabled: true, squashDisabled: false }),
-  'PomodoroSquashed': (state, action) => ({ startDisabled: false, squashDisabled: true })
+  'POMODORO_STARTED': (state, action) => ({ startDisabled: true, squashDisabled: false }),
+  'POMODORO_ENDED': (state, action) => ({ startDisabled: false, squashDisabled: true }),
+  'POMODORO_SQUASHED': (state, action) => ({ startDisabled: false, squashDisabled: true })
 })
-
-// var r2 = createReducer((state, action) => {
-//   if (action.type === 'START_TIMER'){
-//     return { startDisabled: true, squashDisabled: false }
-//   }
-//   if (action.type === 'SQUASH_TIMER') {
-//     return { startDisabled: false, squashDisabled: true } 
-//   }
-// })

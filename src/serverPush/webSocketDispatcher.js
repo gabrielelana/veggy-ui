@@ -1,6 +1,8 @@
 import dispatcher from '../redux/dispatcher'
+import wsActions from './wsActions'
+
 var websocket = null
-var hearBeat = null
+var heartBeat = null
 
 function connect(username) {   
   websocket = new WebSocket('ws://localhost:4000/ws')
@@ -13,7 +15,10 @@ function connect(username) {
     const data = JSON.parse(evt.data)
     if (data.message !== 'pong') {
       console.log('ws', evt.data) 
-      dispatcher.dispatch({type: data.event, payload: data})
+      if (typeof(wsActions[data.event]) === 'function'){
+        wsActions[data.event](data)
+      }
+      //dispatcher.dispatch({type: data.event, payload: data})
     }
   }
   websocket.onerror = (evt) => { 
@@ -23,12 +28,12 @@ function connect(username) {
 }
 
 function disconnect() {
-  clearInterval(hearBeat)
+  clearInterval(heartBeat)
   websocket.close()
 }
 
 function setupHertBeat(){
-  hearBeat = setInterval(() => websocket.send('ping'), 5000)
+  heartBeat = setInterval(() => websocket.send('ping'), 5000)
 }
 
 function sendLoginName(username){

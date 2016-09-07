@@ -3,13 +3,13 @@ var assert = require('chai').assert
 
 describe('Display reducers', () => {
   
-  it('PomodoroStarted should return the timer id', () => {
-    const state = display({}, {type: 'PomodoroStarted'})
+  it('POMODORO_STARTED should return the timer id', () => {
+    const state = display({}, {type: 'POMODORO_STARTED', payload: { clientTimerId: 42}})
     assert.isOk(state.clientTimerId)
   })
 
-  it('PomodoroSquashed should return buttons status', () => {
-    const state = display({}, {type: 'PomodoroSquashed'})
+  it('POMODORO_SQUASHED should return buttons status', () => {
+    const state = display({}, {type: 'POMODORO_SQUASHED'})
     assert.isNull(state.clientTimerId)
   })
 
