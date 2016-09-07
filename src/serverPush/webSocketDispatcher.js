@@ -1,8 +1,8 @@
 import dispatcher from '../redux/dispatcher'
 import wsActions from './wsActions'
 
-var websocket = null
-var heartBeat = null
+let websocket = null
+let heartBeat = null
 
 function connect(username) {   
   websocket = new WebSocket('ws://localhost:4000/ws')

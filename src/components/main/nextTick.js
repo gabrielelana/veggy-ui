@@ -1,6 +1,6 @@
 export default function nextTick(timeStr){
-  var minutes = parseInt(timeStr.split(':')[0], 10)
-  var seconds = parseInt(timeStr.split(':')[1], 10)
+  let minutes = parseInt(timeStr.split(':')[0], 10)
+  let seconds = parseInt(timeStr.split(':')[1], 10)
   if (seconds === 0){
     seconds = 59
     minutes = minutes - 1
