@@ -5,11 +5,12 @@ import Controls from './Controls'
 import TaskList from './TaskList'
 import UserList from './UserList'
 import timerActions from '../actions/timerActions'
+import resumeActions from '../actions/resumeActions'
 import NavBar from '../../NavBar'
 
 const LayoutContainer = React.createClass({
   componentWillMount() {
-    timerActions.wireup()
+    resumeActions.wireup()
   },
   handleStart(){
     timerActions.startPomodoro(this.props.timerId)
