@@ -8,7 +8,7 @@
 - [ ] Aggiungere gestione voidedPomodoro per gestione errori
 - [x] FIX: error bar viene visualizzata ad-cazzum
 - [x] Sul main, se non c'e' nello storage il login fa redirect su login
-- [ ] Separare i reducer nei 2 moduli (login, main)
+- [x] Separare i reducer nei 2 moduli (login, main)
 - [x] Rename ErrorBar
 - [ ] Create oggetto per invio centralizzato dei comandi 
 - [ ] FIX: Warning: setState(...): Can only update a mounted or mounting component. Sul passaggio da login a main.
