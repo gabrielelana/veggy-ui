@@ -4,15 +4,14 @@ export default buildReducer({
   'WAIT_FOR_LOGIN': (state, action) => {
     return {waiting: true}
   },
-  'TimerCreated': (state, action) => {
-    return {timerId: action.payload.timer_id, redirect: !!state.loggedIn }
-  },
   'LoggedIn': (state, action) => {
+    console.log('LOGGEDIN')
     return {
       loggedIn: true, 
+      timerId: action.payload.timer_id,
       username: action.payload.username, 
-      userId: action.payload.user_id, 
-      redirect: !!state.timerId}
+      userId: action.payload.user_id 
+    }
   }
 })
 

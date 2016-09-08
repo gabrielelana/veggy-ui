@@ -1,8 +1,6 @@
 import dispatcher from '../redux/dispatcher'
 import pomodoroTicker from '../components/main/pomodoroTicker'
 
-let clientTimerId = null
-
 const wsActions = {
   PomodoroStarted(data) {
     pomodoroTicker.start("1:00")

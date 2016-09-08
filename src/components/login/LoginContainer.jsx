@@ -9,7 +9,7 @@ const LoginContainer = React.createClass({
     actions.login(this.refs.username.value)
   },
   componentWillReceiveProps: function(props) {
-    if (props.redirect){
+    if (props.loggedIn){
       actions.redirect(props.username, props.timerId, props.userId)
     }
   },

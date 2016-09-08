@@ -10,7 +10,7 @@ export default buildReducer({
     return {time: '1:00', ticking: false}
   },
   'POMODORO_SQUASHED': (state, action) => {
-    return {ticking: false}
+    return {time: '1:00', ticking: false}
   }, 
   'UPDATE_TIMER': (state, action) => {
     return {time: action.payload.time, ticking: true}

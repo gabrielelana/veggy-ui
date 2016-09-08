@@ -1,7 +1,6 @@
 import request from 'superagent'
 import {hashHistory} from 'react-router'
 import dispatcher from '../../redux/dispatcher'
-import commandStore from '../../serverPush/commandStore'
 import ws from '../../serverPush/webSocketDispatcher'
 
 const loginActions = {
@@ -12,11 +11,11 @@ const loginActions = {
       .set('Content-Type', 'application/json')
       .send({command: 'Login', username: username})
       .then(res => {
-        commandStore.store(res.body.id)
         dispatcher.dispatch({type: 'WAIT_FOR_LOGIN'})
       })
       .catch(err => {
-        dispatcher.dispatch({type: 'API_ERROR', payload: err})})
+        dispatcher.dispatch({type: 'API_ERROR', payload: err})
+      })
     ws.connect(username)
   },
   redirect(username, timerId, userId){

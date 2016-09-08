@@ -1,7 +1,6 @@
 import request from 'superagent'
 import {hashHistory} from 'react-router'
 import dispatcher from '../../redux/dispatcher'
-import commandStore from '../../serverPush/commandStore'
 import ws from '../../serverPush/webSocketDispatcher'
 import moment from 'moment'
 import pomodoroTicker from './pomodoroTicker'
@@ -16,9 +15,7 @@ const timerActions = {
       .set('Content-Type', 'application/json')
       // TODO: remove constant value. 
       .send({command: 'StartPomodoro', duration: 6 * 10 * 1000, timer_id: timerId})
-      .then(res => {
-        commandStore.store(res.body.id)
-      })
+      .then(res => {})
       .catch(err => dispatcher.dispatch({type: 'API_ERROR', payload: err}))
   },
   squash(timerId, pomodoroId){
@@ -26,9 +23,7 @@ const timerActions = {
       .post(`${this.host}/commands`)
       .set('Content-Type', 'application/json')  
       .send({command: 'SquashPomodoro', timer_id: timerId, pomodoro_id: pomodoroId})
-      .then(res => {
-        commandStore.store(res.body.id)
-      })
+      .then(res => {})
       .catch(err => dispatcher.dispatch({type: 'API_ERROR', payload: err}))
 
   },
@@ -40,6 +35,7 @@ const timerActions = {
       request
         .get(`${this.host}/timers/${userInfo.timerId}/pomodori/latest`)
         .then(res => {
+          console.log('latest', res.body)
           if (res.body.ticking){
 
             const startedAt = moment(res.body.started_at)
