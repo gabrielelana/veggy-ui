@@ -16,5 +16,9 @@ export default buildReducer({
   'CommandFailed': (state, action) => ({ 
     message: `There was an error: ${action.payload.why}`, 
     messageType: 'error' 
-  })
+  }),
+  'DISMISS_MESSAGE': (state, action) => ({ 
+    message: '', 
+    messageType: 'none' 
+  }),
 })

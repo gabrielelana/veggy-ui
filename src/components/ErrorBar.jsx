@@ -1,4 +1,5 @@
 import React from 'react'
+import dispatcher from '../redux/dispatcher'
 
 const types = {
   info: 'notification is-success',
@@ -20,6 +21,7 @@ const ErrorBar = React.createClass({
     if (props.message.length > 0){
       this.setState({show: true})
       setTimeout(() => {
+        dispatcher.dispatch({type: 'DISMISS_MESSAGE', payload: {}})
         this.setState({show: false})
       }, this.props.timeout)
     }
