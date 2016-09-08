@@ -28,8 +28,8 @@ const LayoutContainer = React.createClass({
             <Controls startDisabled={this.props.startDisabled} squashDisabled={this.props.squashDisabled} onStart={this.handleStart} onSquash={this.handleSquash} />
           </div>
           <div className="columns">
-            <TaskList />
-            <UserList />
+            <TaskList timers={this.props.timers}/>
+            <UserList users={this.props.users}/>
           </div>
           <div className="columns">
             <MessageBar message={this.props.message} type={this.props.messageType} />

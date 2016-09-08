@@ -2,6 +2,9 @@ const React = require('react')
 
 const TaskList = React.createClass({
   render(){
+
+    const rows = this.props.timers.map(t => <tr key={t._id}><td>{t.started_at}</td><td>{t.duration}</td></tr>)
+
     return (
       <div className="column">
         <table className="table">
@@ -12,14 +15,7 @@ const TaskList = React.createClass({
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>12:35</td>
-              <td>Task number 1</td>
-            </tr>
-            <tr>
-              <td>13:20</td>
-              <td>Task number 2</td>
-            </tr>
+           {rows}
           </tbody>
         </table>
       </div>

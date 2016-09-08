@@ -8,7 +8,9 @@ const INITIAL_STATE = {
   time: '1:00',
   timerId: null,
   pomodoroId: null,
-  message: ''
+  message: '',
+  timers: [],
+  users: []
 }
 
 export default INITIAL_STATE

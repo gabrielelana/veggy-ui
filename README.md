@@ -2,8 +2,8 @@
 
 ###TODO
 - [ ] La connessione al websocket andrebbe fatta sulla callback della post al login
-- [ ] Get elenco pomodori fatti 
-- [ ] Get elenco utenti online
+- [x] Get elenco pomodori fatti 
+- [x] Get elenco
 - [ ] StartSharedPomodoro con payload timerIds degli utenti coinvolti
 - [ ] Aggiungere gestione voidedPomodoro per gestione errori
 - [x] FIX: error bar viene visualizzata ad-cazzum
