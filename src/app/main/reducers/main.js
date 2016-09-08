@@ -1,5 +1,4 @@
-import dispatcher from '../redux/dispatcher'
-import buildReducer from '../redux/buildReducer'
+import buildReducer from '../../../redux/buildReducer'
 
 export default buildReducer({
   'INIT': (state, action) => {

@@ -1,5 +1,5 @@
 import dispatcher from '../redux/dispatcher'
-import wsActions from './wsActions'
+import wsActions from './webSocketActions'
 
 let websocket = null
 let heartBeat = null

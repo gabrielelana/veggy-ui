@@ -1,4 +1,4 @@
-import buildReducer from '../redux/buildReducer'
+import buildReducer from '../../../redux/buildReducer'
 
 export default buildReducer({
   'WAIT_FOR_LOGIN': (state, action) => {

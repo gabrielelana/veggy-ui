@@ -1,6 +1,6 @@
 var React = require('react')
 var mount = require('enzyme').mount
-var Controls = require('../../src/components/main/Controls')
+var Controls = require('../../src/app/main/components/Controls')
 var assert = require('chai').assert
 
 describe('<Controls />', () => {

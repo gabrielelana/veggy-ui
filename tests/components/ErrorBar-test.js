@@ -1,6 +1,6 @@
 var React = require('react')
 var mount = require('enzyme').mount
-var MessageBar = require('../../src/components/MessageBar')
+var MessageBar = require('../../src/app/MessageBar')
 var assert = require('chai').assert
 
 describe('<MessageBar />', () => {

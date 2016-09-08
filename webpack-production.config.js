@@ -4,7 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: [path.resolve(__dirname, 'src/components/App.jsx'), './src/index.html'],
+    app: [path.resolve(__dirname, 'src/app/App.jsx'), './src/index.html'],
     vendors: ['react', 'react-dom', 'react-router', 'superagent', 'ramda']
   },
   output: {

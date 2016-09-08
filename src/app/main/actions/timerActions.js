@@ -1,8 +1,8 @@
 import request from 'superagent'
 import {hashHistory} from 'react-router'
-import dispatcher from '../../redux/dispatcher'
-import ws from '../../serverPush/webSocketDispatcher'
 import moment from 'moment'
+import dispatcher from '../../../redux/dispatcher'
+import ws from '../../../serverPush/webSocketConnection'
 import pomodoroTicker from './pomodoroTicker'
 
 

@@ -1,7 +1,7 @@
 import request from 'superagent'
 import {hashHistory} from 'react-router'
-import dispatcher from '../../redux/dispatcher'
-import ws from '../../serverPush/webSocketDispatcher'
+import dispatcher from '../../../redux/dispatcher'
+import ws from '../../../serverPush/webSocketConnection'
 
 const loginActions = {
   host: 'http://localhost:4000',

@@ -2,8 +2,7 @@ const reducers = [
   require('./main'),
   require('./controls'),
   require('./display'),
-  require('./messages'),
-  require('./login')
+  require('./messages')
 ]
 
 export default reducers

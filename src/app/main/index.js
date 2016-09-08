@@ -1,5 +1,5 @@
-import LayoutContainer from './LoginContainer'
-import reducers from '../../reducers'
+import LayoutContainer from './components/LayoutContainer'
+import reducers from './reducers'
 import Wrapper from '../../redux/Wrapper'
 import INITIAL_STATE from './INITIAL_STATE'
 

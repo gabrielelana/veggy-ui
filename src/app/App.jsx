@@ -22,7 +22,7 @@ ReactDOM.render((
     <Route path="/" component={App}>
       <IndexRoute component={require('./main')} />
       <Route path="/login" component={require('./login')} />
-      <Route path="/index" component={require('./Index')} />
+      <Route path="/fake" component={require('./Fake')} />
     </Route>
   </Router>
   ), document.getElementById('app'))

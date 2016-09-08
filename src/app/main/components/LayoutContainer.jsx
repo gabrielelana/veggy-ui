@@ -1,11 +1,11 @@
 import React from 'react'
-import MessageBar from '../MessageBar'
+import MessageBar from '../../MessageBar'
 import Display from './Display'
 import Controls from './Controls'
 import TaskList from './TaskList'
 import UserList from './UserList'
-import timerActions from './timerActions'
-import NavBar from '../NavBar'
+import timerActions from '../actions/timerActions'
+import NavBar from '../../NavBar'
 
 const LayoutContainer = React.createClass({
   componentWillMount() {

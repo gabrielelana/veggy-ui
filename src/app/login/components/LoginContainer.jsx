@@ -1,8 +1,8 @@
 const React = require('react')
 import {withRouter} from 'react-router'
-const actions = require('./loginActions')
-const NavBar = require('../NavBar')
-const MessageBar = require('../MessageBar')
+const actions = require('../actions/loginActions')
+const NavBar = require('../../NavBar')
+const MessageBar = require('../../MessageBar')
 
 const LoginContainer = React.createClass({
   handleLogin(){

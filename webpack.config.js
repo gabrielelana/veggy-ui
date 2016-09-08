@@ -9,7 +9,7 @@ module.exports = {
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/dev-server',
         'font-awesome-sass-loader',
-        path.resolve(__dirname, 'src/components/App.jsx'),
+        path.resolve(__dirname, 'src/app/App.jsx'),
         './src/index.html'
       ],
       vendors: ['react', 'react-dom', 'superagent', 'ramda']

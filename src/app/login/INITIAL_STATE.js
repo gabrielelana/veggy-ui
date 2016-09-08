@@ -4,8 +4,7 @@ const INITIAL_STATE = {
   userId: null,
   waiting: false,
   redirect: false,
-  timerId: null,
-
+  timerId: null
 }
 
 export default INITIAL_STATE

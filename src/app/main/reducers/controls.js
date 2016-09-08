@@ -1,4 +1,4 @@
-import buildReducer from '../redux/buildReducer'
+import buildReducer from '../../../redux/buildReducer'
 
 export default buildReducer({
   'POMODORO_STARTED': (state, action) => ({ startDisabled: true, squashDisabled: false }),

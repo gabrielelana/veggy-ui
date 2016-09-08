@@ -1,4 +1,4 @@
-var controls = require('../../src/reducers/controls')
+var controls = require('../../src/app/main/reducers/controls')
 var assert = require('chai').assert
 
 describe('Controls reducers', () => {

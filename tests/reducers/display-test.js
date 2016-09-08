@@ -1,4 +1,4 @@
-var display = require('../../src/reducers/display')
+var display = require('../../src/app/main/reducers/display')
 var assert = require('chai').assert
 
 describe('Display reducers', () => {

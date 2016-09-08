@@ -1,7 +1,7 @@
 import dispatcher from '../redux/dispatcher'
-import pomodoroTicker from '../components/main/pomodoroTicker'
+import pomodoroTicker from '../app/main/actions/pomodoroTicker'
 
-const wsActions = {
+const webSocketActions = {
   PomodoroStarted(data) {
     pomodoroTicker.start("1:00")
     dispatcher.dispatch({type: 'POMODORO_STARTED', payload: {
@@ -25,4 +25,4 @@ const wsActions = {
   }
 }
 
-export default wsActions
+export default webSocketActions

@@ -10,7 +10,7 @@ function getTypeClass(type){
   return types[type]
 }
 
-const  MessageBar = React.createClass({
+const MessageBar = React.createClass({
   getInitialState() {
     return { show: false }
   },
@@ -42,4 +42,4 @@ const  MessageBar = React.createClass({
   }
 })
 
-export default  MessageBar
+export default MessageBar

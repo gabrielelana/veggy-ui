@@ -1,4 +1,4 @@
-import buildReducer from '../redux/buildReducer'
+import buildReducer from '../../../redux/buildReducer'
 
 export default buildReducer({
   'API_ERROR': (state, action) => ({ 

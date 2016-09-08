@@ -1,4 +1,4 @@
-var errors = require('../../src/reducers/messages')
+var errors = require('../../src/app/main/reducers/messages')
 var assert = require('chai').assert
 
 describe('Messages reducers', () => {
