@@ -1,5 +1,5 @@
 import React from 'react'
-import ErrorBar from '../ErrorBar'
+import MessageBar from '../MessageBar'
 import Display from './Display'
 import Controls from './Controls'
 import TaskList from './TaskList'
@@ -31,7 +31,7 @@ const LayoutContainer = React.createClass({
             <UserList />
           </div>
           <div className="columns">
-            <ErrorBar message={this.props.message} type={this.props.messageType} />
+            <MessageBar message={this.props.message} type={this.props.messageType} />
           </div>
         </div>
       </div>

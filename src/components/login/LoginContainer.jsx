@@ -2,7 +2,7 @@ const React = require('react')
 import {withRouter} from 'react-router'
 const actions = require('./loginActions')
 const NavBar = require('../NavBar')
-const ErrorBar = require('../ErrorBar')
+const MessageBar = require('../MessageBar')
 
 const LoginContainer = React.createClass({
   handleLogin(){
@@ -31,7 +31,7 @@ const LoginContainer = React.createClass({
             </div>
           </div>
           <div className="columns">
-           <ErrorBar message={this.props.message} />
+           <MessageBar message={this.props.message} />
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@
   - Se l'utente e' offline l'ownership del pomodoro e' del client e quando ha finito il pomodoro e si e' riconesso invia al server il log dei pomodori fatti
 - Sul main, se non c'e' nello storage il login fa redirect su login
 - Separare i reducer nei 2 moduli (login, main)
-- Rename ErrorBar
+x Rename ErrorBar
 - Create oggetto per invio centralizzato dei comandi 
 - FIX: Warning: setState(...): Can only update a mounted or mounting component. Sul passaggio da login a main.
 

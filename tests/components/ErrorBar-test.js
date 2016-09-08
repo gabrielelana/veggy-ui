@@ -1,12 +1,12 @@
 var React = require('react')
 var mount = require('enzyme').mount
-var ErrorBar = require('../../src/components/ErrorBar')
+var MessageBar = require('../../src/components/MessageBar')
 var assert = require('chai').assert
 
-describe('<ErrorBar />', () => {
+describe('<MessageBar />', () => {
   
   it('should display the message passed via props', () => {
-    const component = mount(<ErrorBar message="We could be heroes" type="error" />)
+    const component = mount(<MessageBar message="We could be heroes" type="error" />)
     assert.equal('We could be heroes', component.find('.notification.is-danger').text())
   })
 })
