@@ -1,6 +1,9 @@
 const React = require('react')
 
 const UserList = React.createClass({
+  getDefaultProps: function() {
+    return { users: [] }
+  },
   render(){
 
     const users = this.props.users.map(u => {

@@ -1,6 +1,9 @@
 const React = require('react')
 
 const TaskList = React.createClass({
+  getDefaultProps: function() {
+    return { timers: [] }
+  },
   render(){
 
     const rows = this.props.timers.map(t => <tr key={t._id}><td>{t.started_at}</td><td>{t.duration}</td></tr>)
