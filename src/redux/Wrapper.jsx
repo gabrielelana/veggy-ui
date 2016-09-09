@@ -3,7 +3,6 @@ import xs from 'xstream'
 import dispatcher from './dispatcher'
 import ws from '../serverPush/webSocketConnection'
 import wsa from '../serverPush/webSocketActions'
-import R from 'ramda'
 
 function combineReducers(reducers, state, action){
   const newState = reducers.reduce((acc, r) => {
@@ -23,7 +22,7 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
   componentWillMount() {
     
     const actions = dispatcher.getStream() 
-    const stream = xs.merge(ws.stream.map(s => wsa(s)), actions)
+    const stream = xs.merge(ws.stream.map(wsa), actions)
 
     stream
       .map(s => combineReducers(reducers, this.state.childState, s))
