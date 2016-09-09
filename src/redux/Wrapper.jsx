@@ -1,7 +1,8 @@
 import React from 'react'
 import xs from 'xstream'
 import dispatcher from './dispatcher'
-import {producer} from '../serverPush/webSocketActions'
+import ws from '../serverPush/webSocketConnection'
+import wsa from '../serverPush/webSocketActions'
 import R from 'ramda'
 
 function combineReducers(reducers, state, action){
@@ -20,9 +21,9 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
     }
   }
   componentWillMount() {
-    const ws = xs.create(producer)
+    
     const actions = dispatcher.getStream() 
-    const stream = xs.merge(ws, actions)
+    const stream = xs.merge(ws.stream.map(s => wsa(s)), actions)
 
     stream
       .map(s => combineReducers(reducers, this.state.childState, s))

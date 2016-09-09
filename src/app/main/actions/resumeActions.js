@@ -53,7 +53,7 @@ const resumeActions = {
   wireup(){
     if (window.localStorage.getItem('veggy')) {
       const userInfo = JSON.parse(window.localStorage.getItem('veggy'))
-      ws.connect(userInfo.username)
+      ws.sendCommand(`login:${userInfo.username}`)
 
       getUsers()
       getTimers(userInfo)

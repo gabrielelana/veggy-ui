@@ -16,7 +16,7 @@ const loginActions = {
       .catch(err => {
         dispatcher.dispatch({type: 'API_ERROR', payload: err})
       })
-    ws.connect(username)
+    ws.sendCommand(`login:${username}`)
   },
   redirect(username, timerId, userId){
     window.localStorage.setItem('veggy', JSON.stringify({username, timerId, userId}))
