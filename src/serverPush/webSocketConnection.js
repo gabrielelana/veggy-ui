@@ -18,7 +18,7 @@ function connect(username) {
       if (typeof(wsActions[data.event]) === 'function'){
         wsActions[data.event](data)
       } else {
-        dispatcher.dispatch({type: data.event, payload: data})
+        console.log('Unknown event', data.event, data)
       }
     }
   }

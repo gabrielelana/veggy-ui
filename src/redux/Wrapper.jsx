@@ -1,6 +1,16 @@
 import React from 'react'
+import xs from 'xstream'
 import dispatcher from './dispatcher'
+import {producer} from '../serverPush/webSocketActions'
 import R from 'ramda'
+
+function combineReducers(reducers, state, action){
+  const newState = reducers.reduce((acc, r) => {
+    const projection = r.project(state)
+    return Object.assign(state, r(projection, action))  
+  }, state)
+  return newState
+}
 
 const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperClass extends React.Component {
   constructor(props) {
@@ -10,13 +20,22 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
     }
   }
   componentWillMount() {
-    this.subscriptionToken = dispatcher.register(action => {
-      const newState = reducers.reduce((acc, r) => {
-        return Object.assign(this.state.childState, r(r.project(this.state.childState), action))  
-      }, this.state.childState)
+    const ws = xs.create(producer)
+    const actions = dispatcher.getStream() 
+    const stream = xs.merge(ws, actions)
 
-      this.setState({childState: newState})
-    })
+    stream
+      .map(s => combineReducers(reducers, this.state.childState, s))
+      // store states.
+      .map(s => {
+        //history.push(this.state.childState)
+        return s
+      })
+      .addListener({
+        next: s => this.setState({childState: s}),
+        error: (err) => { console.log('err', err)},
+        complete: () => {},
+      })
   }
   componentWillUnmount() {
     //dispatcher.unregister(this.subscriptionToken)

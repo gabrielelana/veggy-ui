@@ -1,20 +1,27 @@
-var subscribers = {}
-var prefix = 'SUB'
-var lastSubscriber = 1
+import xs from 'xstream'
+
+function createDispatcherStream(){
+  return {
+    id: 1,
+    listener: {},
+    start: function (listener) {
+      this.listener = listener
+    },
+    next(action){
+      this.listener.next(action)
+    },
+    stop: function () {}
+  }
+}
+
+const ds = createDispatcherStream();
 
 const dispatcher = {
-  register: subscriber => {
-    var id = prefix + lastSubscriber++
-    subscribers[id] = subscriber
-    return id
-  },
   dispatch: action => {
-    Object.keys(subscribers).forEach(sub => {
-      subscribers[sub](action)
-    })    
+    ds.next(action)
   },
-  unregister: id => {
-    // TODO
+  getStream(){
+    return xs.create(ds)
   }
 }
 

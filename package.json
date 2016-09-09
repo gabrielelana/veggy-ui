@@ -25,7 +25,8 @@
     "react-dom": "^15.2.0",
     "react-router": "^2.5.2",
     "sinon": "^1.17.5",
-    "superagent": "^2.1.0"
+    "superagent": "^2.1.0",
+    "xstream": "6.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",

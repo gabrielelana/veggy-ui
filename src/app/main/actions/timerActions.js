@@ -14,6 +14,7 @@ const timerActions = {
   },
   squash(timerId, pomodoroId){
     sendCommand({command: 'SquashPomodoro', timer_id: timerId, pomodoro_id: pomodoroId})
+      .then(res => {})  
       .catch(err => dispatcher.dispatch({type: 'API_ERROR', payload: err}))
 
   }

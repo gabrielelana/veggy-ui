@@ -12,7 +12,7 @@ module.exports = {
         path.resolve(__dirname, 'src/app/App.jsx'),
         './src/index.html'
       ],
-      vendors: ['react', 'react-dom', 'superagent', 'ramda']
+      vendors: ['react', 'react-dom', 'superagent', 'ramda', 'xstream']
     },
     output: {
         filename: '/js/app.js',
