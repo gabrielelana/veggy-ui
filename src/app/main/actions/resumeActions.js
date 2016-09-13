@@ -44,7 +44,11 @@ function resumeTimer(userInfo){
         }})
       }
     })
-    .catch(err => dispatcher.dispatch({type: 'API_ERROR', payload: err}))
+    .catch(err => {
+      if (err.status !== 404){
+        dispatcher.dispatch({type: 'API_ERROR', payload: err})
+      }
+    })
 }
 
 const resumeActions = {
