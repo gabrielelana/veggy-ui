@@ -1,11 +1,13 @@
+import settings from 'settings'
+import stringifyTime from './actions/stringifyTime'
+
 const INITIAL_STATE = { 
   userId: 'fake-user',
   username: 'fake-user',
   isLoggedIn: false,
   startDisabled: false, 
   squashDisabled: true,
-  // TODO: remove constant value from here
-  time: '1:00',
+  time: stringifyTime(settings.duration),
   timerId: null,
   pomodoroId: null,
   message: '',

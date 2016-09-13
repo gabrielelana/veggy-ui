@@ -1,10 +1,11 @@
 import dispatcher from '../redux/dispatcher'
 import pomodoroTicker from '../app/main/actions/pomodoroTicker'
+import settings from 'settings'
 
 function webSocketActions(data){
   switch(data.event){
   case 'PomodoroStarted':
-    pomodoroTicker.start("1:00")
+    pomodoroTicker.start(settings.duration)
     return {type: 'POMODORO_STARTED', payload: {
       timerId: data.timer_id,
       pomodoroId: data.pomodoro_id

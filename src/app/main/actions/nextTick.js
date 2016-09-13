@@ -1,13 +1,6 @@
-export default function nextTick(timeStr){
-  let minutes = parseInt(timeStr.split(':')[0], 10)
-  let seconds = parseInt(timeStr.split(':')[1], 10)
-  if (seconds === 0){
-    seconds = 59
-    minutes = minutes - 1
-  } else {
-    seconds = seconds - 1
-  }
-  const minutesStr = '00'.substring(0, 2 - minutes.toString().length) + minutes
-  const secondsStr = '00'.substring(0, 2 - seconds.toString().length) + seconds
-  return `${minutesStr}:${secondsStr}`
+import moment from 'moment'
+
+export default function nextTick(timeMs){
+  const duration = moment.duration(timeMs).subtract(1, 'seconds')
+  return duration.asMilliseconds()
 }

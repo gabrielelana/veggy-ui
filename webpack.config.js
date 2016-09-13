@@ -22,7 +22,7 @@ module.exports = {
       extensions: ['', '.js', '.jsx'],
       root: path.resolve(__dirname, 'src'),
       alias:{
-        'env':'../environments/dev'
+        'settings': 'environments/dev'
       }
     },
     eslint: {

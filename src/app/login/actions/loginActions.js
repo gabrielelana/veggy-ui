@@ -1,13 +1,13 @@
 import request from 'superagent'
 import {hashHistory} from 'react-router'
+import settings from 'settings'
 import dispatcher from '../../../redux/dispatcher'
 import ws from '../../../serverPush/webSocketConnection'
 
 const loginActions = {
-  host: 'http://localhost:4000',
   login(username) {
     request
-      .post(`${this.host}/commands`)
+      .post(`${settings.host}/commands`)
       .set('Content-Type', 'application/json')
       .send({command: 'Login', username: username})
       .then(res => {

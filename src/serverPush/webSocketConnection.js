@@ -1,11 +1,12 @@
 import xs from 'xstream'
+import settings from 'settings'
 
 let heartBeat = null
 let connection = null
 
 const wss = xs.create({
   start: listener => {
-    connection = new WebSocket('ws://localhost:4000/ws');
+    connection = new WebSocket(settings.wsHost);
     connection.onopen = (evt) => { 
       heartBeat = setInterval(() => connection.send('ping'), 5000)
     }

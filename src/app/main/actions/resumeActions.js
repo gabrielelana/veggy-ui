@@ -1,12 +1,13 @@
 import request from 'superagent'
 import {hashHistory} from 'react-router'
 import moment from 'moment'
+import settings from 'settings'
 import dispatcher from '../../../redux/dispatcher'
 import ws from '../../../serverPush/webSocketConnection'
 import pomodoroTicker from './pomodoroTicker'
 
 function getUsers(){
-  request.get('http://localhost:4000/projections/latest-pomodori')
+  request.get(`${settings.host}/projections/latest-pomodori`)
     .then(res => {
       dispatcher.dispatch({type: 'USERS_LOADED', payload: res.body})
     })
@@ -15,7 +16,7 @@ function getUsers(){
 
 function getTimers(userInfo){
   const today = moment().format('YYYY-MM-DD')
-  request.get(`http://localhost:4000/projections/pomodori-of-the-day?day=${today}&timer_id=${userInfo.timerId}`)
+  request.get(`${settings.host}/projections/pomodori-of-the-day?day=${today}&timer_id=${userInfo.timerId}`)
     .then(res => {
       dispatcher.dispatch({type: 'TIMERS_LOADED', payload: res.body})
     })
@@ -24,20 +25,18 @@ function getTimers(userInfo){
 
 function resumeTimer(userInfo){
   request
-    .get(`http://localhost:4000/projections/latest-pomodoro?timer_id=${userInfo.timerId}`)
+    .get(`${settings.host}/projections/latest-pomodoro?timer_id=${userInfo.timerId}`)
     .then(res => {
       if (res.body.ticking){
         const startedAt = moment(res.body.started_at)
         // Wouldn't be better if server send to the client the remaining time?
-        // TODO: remove constant value. 
-        const elapsed = 60000 - moment().diff(startedAt)
-        const time = moment(elapsed).format('mm:ss')
-
-        pomodoroTicker.start(time)
+        const elapsed = settings.duration - moment().diff(startedAt)
+        
+        pomodoroTicker.start(elapsed)
         
         dispatcher.dispatch({type: 'RESUME_TIMER', payload: {
           userInfo, 
-          time: time,
+          time: elapsed,
           timerId: res.body.timer_id,
           pomodoroId: res.body.pomodoro_id,
 
