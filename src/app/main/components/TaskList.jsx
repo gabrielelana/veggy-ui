@@ -1,32 +1,27 @@
-const React = require('react')
-const moment = require('moment')
+import React from 'react'
+import moment from 'moment'
 
 const centerTd = {textAlign: 'center'}
 
-const TaskList = React.createClass({
-  getDefaultProps: function() {
-    return { timers: [] }
-  },
-  render(){
-    const rows = this.props.timers.map(t => <TaskRow key={t._id} {...t} />)
-    return (
-      <div className="column">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Started at</th>
-              <th style={centerTd}>Ticking</th>
-              <th style={centerTd}>Completed</th>
-            </tr>
-          </thead>
-          <tbody>
-           {rows}
-          </tbody>
-        </table>
-      </div>
-    )
-  }
-})
+const TaskList = props => {
+  const rows = props.timers.map(t => <TaskRow key={t._id} {...t} />)
+  return (
+    <div className="column">
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Started at</th>
+            <th style={centerTd}>Ticking</th>
+            <th style={centerTd}>Completed</th>
+          </tr>
+        </thead>
+        <tbody>
+         {rows}
+        </tbody>
+      </table>
+    </div>
+  )
+}
 
 function TaskRow(props){
   const ticking = props.ticking? <span className="icon is-small"><i className="fa fa-clock-o"></i></span> : <span></span>
