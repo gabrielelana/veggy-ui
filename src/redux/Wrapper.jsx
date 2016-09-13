@@ -26,11 +26,6 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
 
     stream
       .map(s => combineReducers(reducers, this.state.childState, s))
-      // store states.
-      .map(s => {
-        //history.push(this.state.childState)
-        return s
-      })
       .addListener({
         next: s => this.setState({childState: s}),
         error: (err) => { console.log('err', err)},

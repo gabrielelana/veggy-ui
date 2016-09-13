@@ -1,20 +1,22 @@
 const React = require('react')
+const moment = require('moment')
+
+const centerTd = {textAlign: 'center'}
 
 const TaskList = React.createClass({
   getDefaultProps: function() {
     return { timers: [] }
   },
   render(){
-
-    const rows = this.props.timers.map(t => <tr key={t._id}><td>{t.started_at}</td><td>{t.duration}</td></tr>)
-
+    const rows = this.props.timers.map(t => <TaskRow key={t._id} {...t} />)
     return (
       <div className="column">
         <table className="table">
           <thead>
             <tr>
-              <th>Start</th>
-              <th>Notes</th>
+              <th>Started at</th>
+              <th style={centerTd}>Ticking</th>
+              <th style={centerTd}>Completed</th>
             </tr>
           </thead>
           <tbody>
@@ -25,5 +27,16 @@ const TaskList = React.createClass({
     )
   }
 })
+
+function TaskRow(props){
+  const ticking = props.ticking? <span className="icon is-small"><i className="fa fa-clock-o"></i></span> : <span></span>
+  const completed = props.completed? <span className="icon is-small"><i className="fa fa-check"></i></span> : <span></span>
+  return (
+    <tr>
+      <td>{moment(props.started_at).format('DD-MM-YYYY hh:mm:ss')}</td>
+      <td style={centerTd}>{ticking}</td>
+      <td style={centerTd}>{completed}</td>
+    </tr>)
+}
 
 export default TaskList
