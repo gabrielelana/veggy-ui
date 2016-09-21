@@ -21,7 +21,7 @@ const MessageBar = React.createClass({
     if (props.message.length > 0){
       this.setState({show: true})
       setTimeout(() => {
-        dispatcher.dispatch({type: 'DISMISS_MESSAGE', payload: {}})
+        dispatcher.push({type: 'DISMISS_MESSAGE', payload: {}})
         this.setState({show: false})
       }, this.props.timeout)
     }

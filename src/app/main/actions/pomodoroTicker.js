@@ -8,7 +8,7 @@ const pomodoroTicker = {
     let currentTime = startingTime
     timerId = setInterval(() => {
       currentTime = nextTick(currentTime)
-      dispatcher.dispatch({type: 'UPDATE_TIMER', payload: {time: currentTime}})
+      dispatcher.push({type: 'UPDATE_TIMER', payload: {time: currentTime}})
     }, 1000)
   },
   stop(){

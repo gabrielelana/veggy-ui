@@ -11,10 +11,10 @@ const loginActions = {
       .set('Content-Type', 'application/json')
       .send({command: 'Login', username: username})
       .then(res => {
-        dispatcher.dispatch({type: 'WAIT_FOR_LOGIN'})
+        dispatcher.push({type: 'WAIT_FOR_LOGIN'})
       })
       .catch(err => {
-        dispatcher.dispatch({type: 'API_ERROR', payload: err})
+        dispatcher.push({type: 'API_ERROR', payload: err})
       })
     ws.sendCommand(`login:${username}`)
   },

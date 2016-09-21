@@ -19,7 +19,7 @@ function createDispatcherStream(){
 const ds = createDispatcherStream();
 
 const dispatcher = {
-  dispatch: action => {
+  push: action => {
     ds.next(action)
   },
   getStream(){

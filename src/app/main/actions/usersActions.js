@@ -2,7 +2,7 @@ import dispatcher from '../../../redux/dispatcher'
 
 const timerActions = {
   toggleSelectedUsers(user){
-    dispatcher.dispatch({type: 'SELECTED_USERS_CHANGED', payload: user})
+    dispatcher.push({type: 'SELECTED_USERS_CHANGED', payload: user})
   }
 }
 
