@@ -6,7 +6,9 @@ import TaskList from './TaskList'
 import UserList from './UserList'
 import timerActions from '../actions/timerActions'
 import resumeActions from '../actions/resumeActions'
+import usersActions from '../actions/usersActions'
 import NavBar from '../../NavBar'
+import R from 'ramda'
 
 const LayoutContainer = React.createClass({
   componentWillMount() {
@@ -17,6 +19,15 @@ const LayoutContainer = React.createClass({
   },
   handleSquash(){
     timerActions.squash(this.props.timerId, this.props.pomodoroId)
+  },
+  handleToggleUser(user){
+    usersActions.toggleSelectedUsers(user)
+  },
+  handleStartSharedPomodoro(){
+    const isSelected = u => u.selected
+    const select = u => u.user_id
+    const selectUsers = R.pipe(R.filter(isSelected), R.map(select))
+    timerActions.startSharedPomodoro(this.props.timerId, selectUsers(this.props.users))
   },
   render(){ 
     return (
@@ -29,7 +40,10 @@ const LayoutContainer = React.createClass({
           </div>
           <div className="columns">
             <TaskList timers={this.props.timers}/>
-            <UserList users={this.props.users}/>
+            <UserList 
+              users={this.props.users} 
+              onStartSharedPomodoro={this.handleStartSharedPomodoro}
+              onToggleUser={this.handleToggleUser}/>
           </div>
           <div className="columns">
             <MessageBar message={this.props.message} type={this.props.messageType} />
