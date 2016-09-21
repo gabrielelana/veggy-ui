@@ -23,7 +23,6 @@ const timerActions = {
     sendCommand({command: 'StartSharedPomodoro', timer_id: timerId, duration: settings.duration, shared_with: users})
       .then(res => {})  
       .catch(err => dispatcher.dispatch({type: 'API_ERROR', payload: err}))
-
   }
 }
 
