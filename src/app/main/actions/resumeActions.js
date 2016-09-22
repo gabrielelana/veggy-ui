@@ -8,7 +8,7 @@ import ws from '../../../serverPush/webSocketConnection'
 import pomodoroTicker from './pomodoroTicker'
 
 function getUsers(){
-  request.get(`${settings.host}/projections/latest-pomodori`)
+  request.get(`${settings.host}/projections/team`)
     .then(res => {
       dispatcher.push({type: 'USERS_LOADED', payload: res.body})
     })

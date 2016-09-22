@@ -16,7 +16,9 @@ const wss = xs.create({
     }
     connection.onmessage = (evt) => {
       const data = JSON.parse(evt.data)
-      console.log('evt', data)
+      if (data.message !== 'pong'){
+        console.log('evt', data)
+      }
       listener.next(data)
     }
   },
