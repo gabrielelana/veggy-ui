@@ -11,6 +11,9 @@
 - [x] Trasformare i componenti stateless in funzioni
 - [x] Gestire 404 su chiamata latest-pomodoro
 
+- [ ] Aggiungere pomodoro a lista task non appena avviato
+- [ ] Togliere me stesso dalla lista degli utenti con cui sharo il pomodoro 
+- [ ] Gestione pomodoroVoided 
 - [ ] La connessione al websocket andrebbe fatta sulla callback della post al login
 - [ ] FIX: Warning: setState(...): Can only update a mounted or mounting component. Sul passaggio da login a main.
 - [x] Aggiungere global settings per env
@@ -20,6 +23,10 @@
 - [ ] Gestione pomodori offline
   - Se l'utente e' online l'ownership del pomodoro e' sul server e se l'utente va offline puo' solo aspettare che finisca il pomodoro
   - Se l'utente e' offline l'ownership del pomodoro e' del client e quando ha finito il pomodoro e si e' riconesso invia al server il log dei pomodori fatti
+  - Su avvia pomodoro offline aggiungo a lista e faccio partire
+  - Su lista ho pulsante per inviare il pomodoro al server
+  - Visualizzare su pagina sengale online/offline
+  
 
 
 ##Discuss

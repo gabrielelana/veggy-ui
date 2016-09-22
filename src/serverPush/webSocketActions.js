@@ -22,6 +22,12 @@ function webSocketActions(data){
       timerId: data.timer_id,
       pomodoroId: data.pomodoro_id
     }}
+  case 'PomodoroVoided':
+    pomodoroTicker.stop()
+    return {type: 'POMODORO_SQUASHED', payload: {
+      timerId: data.timer_id,
+      pomodoroId: data.pomodoro_id
+    }}
   case 'LoggedIn':
     return {type: 'LOGGED_IN', payload: {
       loggedIn: true, 

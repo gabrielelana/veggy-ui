@@ -3,7 +3,7 @@ import R from 'ramda'
 
 export default buildReducer({
   'USERS_LOADED': (state, action) => ({ 
-    users: action.payload
+    users: action.payload //R.reject(u => u.user_id === state.userId , action.payload)
   }),
   'SELECTED_USERS_CHANGED': (state, action) => {
     return state.users.map(u => {

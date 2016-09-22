@@ -9,14 +9,14 @@ const wss = xs.create({
     connection = new WebSocket(settings.wsHost);
     connection.onopen = (evt) => { 
       heartBeat = setInterval(() => connection.send('ping'), 5000)
-    }
 
+    }
     connection.onerror = (err) => {
       listener.error(err)
     }
-
     connection.onmessage = (evt) => {
       const data = JSON.parse(evt.data)
+      console.log('evt', data)
       listener.next(data)
     }
   },

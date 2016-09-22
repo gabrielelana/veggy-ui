@@ -26,6 +26,7 @@
     "react-router": "^2.5.2",
     "sinon": "^1.17.5",
     "superagent": "^2.1.0",
+    "uuid": "2.0.3",
     "xstream": "6.2.0"
   },
   "devDependencies": {
