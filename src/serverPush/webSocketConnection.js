@@ -32,7 +32,7 @@ function sendCommand(cmd){
   if(connection.readyState !== 1){
     setTimeout(() => sendCommand(cmd), 1000)
   } else {
-    connection.send(cmd) //`login:${username}`  
+    connection.send(cmd)
   }
   
 }

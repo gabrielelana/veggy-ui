@@ -2,15 +2,12 @@ import request from 'superagent'
 import {hashHistory} from 'react-router'
 import settings from 'settings'
 import dispatcher from '../../../redux/dispatcher'
+import sendCommand from '../../sendCommand'
 import ws from '../../../serverPush/webSocketConnection'
 
 const loginActions = {
   login(username) {
-    // TODO: usare la funzione sendCommand
-    request
-      .post(`${settings.host}/commands`)
-      .set('Content-Type', 'application/json')
-      .send({command: 'Login', username: username})
+    sendCommand({command: 'Login', username: username})
       .then(res => {
         dispatcher.push({type: 'WAIT_FOR_LOGIN'})
       })

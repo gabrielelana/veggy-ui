@@ -30,7 +30,6 @@ function resumeTimer(userInfo){
     .then(res => {
       if (res.body.ticking){
         const startedAt = moment(res.body.started_at)
-        // Wouldn't be better if server send to the client the remaining time?
         const elapsed = settings.duration - moment().diff(startedAt)
         
         pomodoroTicker.start(elapsed)
@@ -52,8 +51,6 @@ function resumeTimer(userInfo){
 }
 
 const resumeActions = {
-  // TODO: remove constant value. (Global settings?) 
-  
   wireup(){
     if (window.localStorage.getItem('veggy')) {
       const userInfo = JSON.parse(window.localStorage.getItem('veggy'))
