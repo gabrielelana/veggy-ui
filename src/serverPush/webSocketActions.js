@@ -8,7 +8,8 @@ function webSocketActions(data){
     pomodoroTicker.start(settings.duration)
     return {type: 'POMODORO_STARTED', payload: {
       timerId: data.timer_id,
-      pomodoroId: data.pomodoro_id
+      pomodoroId: data.pomodoro_id,
+      sharedWith: data.shared_with
     }}
   case 'PomodoroCompleted':
     pomodoroTicker.stop()

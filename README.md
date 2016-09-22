@@ -12,14 +12,15 @@
 - [x] Gestire 404 su chiamata latest-pomodoro
 - [x] Gestione pomodoroVoided
 - [x] Togliere me stesso dalla lista degli utenti con cui sharo il pomodoro 
-
-- [ ] Quando ricevo un messaggio StartSharedPomodoro devo mostrare con chi lo sto facendo
-- [ ] Aggiungere pomodoro a lista task non appena avviato
-- [ ] La connessione al websocket andrebbe fatta sulla callback della post al login
-- [ ] FIX: Warning: setState(...): Can only update a mounted or mounting component. Sul passaggio da login a main.
+- [x] Aggiungere pomodoro a lista task non appena avviato
 - [x] Aggiungere global settings per env
 - [x] StartSharedPomodoro con payload timerIds degli utenti coinvolti
 - [x] Aggiungere gestione voidedPomodoro per gestione errori
+
+- [ ] Quando ricevo un messaggio StartSharedPomodoro devo mostrare con chi lo sto facendo
+
+- [ ] La connessione al websocket andrebbe fatta sulla callback della post al login
+- [ ] FIX: Warning: setState(...): Can only update a mounted or mounting component. Sul passaggio da login a main.
 - [ ] Scrivere test di copertura
 - [ ] Gestione pomodori offline
   - Se l'utente e' online l'ownership del pomodoro e' sul server e se l'utente va offline puo' solo aspettare che finisca il pomodoro

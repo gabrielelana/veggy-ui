@@ -18,8 +18,8 @@ const wss = xs.create({
       const data = JSON.parse(evt.data)
       if (data.message !== 'pong'){
         console.log('evt', data)
+        listener.next(data)
       }
-      listener.next(data)
     }
   },
   stop: () => {

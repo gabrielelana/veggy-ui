@@ -1,17 +1,18 @@
 import buildReducer from '../../../redux/buildReducer'
 import moment from 'moment'
+import R from 'ramda'
 
-// TODO: gestire altri eventi: POMODORO_SQUASHED, POMODORO_COMPLETED, ecc...
-// cosi posso aggiornare live l'elenco dei task
+const findShares = (users, sharedWith) => users.filter(u => sharedWith.indexOf(u.timer_id) > -1).map(u => u.username)
+
 export default buildReducer({
   'TIMERS_LOADED': (state, action) => { 
-    console.log('loaded', state, action)
     return {
       timers: action.payload.map(t => {
         return {
           id: t.pomodoro_id, 
           status: t.status, // started | completed | squashed
-          started_at: t.started_at
+          started_at: t.started_at,
+          with: []//findShares(state.users, action.payload.sharedWith)
         }
       })
     }
@@ -21,7 +22,8 @@ export default buildReducer({
       timers: [...state.timers, {
         id: action.payload.pomodoroId, 
         status: 'started', 
-        started_at: moment()
+        started_at: moment(),
+        with: findShares(state.users, action.payload.sharedWith)
       }]
     }
   },

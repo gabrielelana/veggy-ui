@@ -34,7 +34,7 @@ function getStatus(status){
 function TaskRow(props){
   return (
     <tr>
-      <td>{moment(props.started_at).format('DD-MM-YYYY hh:mm:ss')}</td>
+      <td>{moment(props.started_at).format('DD-MM-YYYY hh:mm:ss')}-{props.with}</td>
       <td style={centerTd}>{getStatus(props.status)}</td>
     </tr>)
 }
