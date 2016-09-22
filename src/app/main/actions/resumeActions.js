@@ -1,7 +1,6 @@
 import request from 'superagent'
 import {hashHistory} from 'react-router'
 import moment from 'moment'
-import uuid from 'uuid'
 import settings from 'settings'
 import sendCommand from '../../sendCommand'
 import dispatcher from '../../../redux/dispatcher'
@@ -52,28 +51,17 @@ function resumeTimer(userInfo){
     })
 }
 
-function login(username, clientId){
-  return sendCommand({command: 'Login', username: username, client_id: clientId})
-}
-
-
 const resumeActions = {
   // TODO: remove constant value. (Global settings?) 
   
   wireup(){
     if (window.localStorage.getItem('veggy')) {
-      const clientId = uuid.v1()
       const userInfo = JSON.parse(window.localStorage.getItem('veggy'))
-      ws.sendCommand(`login:${clientId}`)
-      login(userInfo.username, clientId).then(() => {
-        getUsers()
-        getTimers(userInfo)
-        resumeTimer(userInfo)
-        dispatcher.push({type: 'INIT', payload: userInfo})
-      })
-      .catch(err => {
-        dispatcher.push({type: 'API_ERROR', payload: err})
-      })    
+      ws.sendCommand(`login:${userInfo.username}`)
+      getUsers()
+      getTimers(userInfo)
+      resumeTimer(userInfo)
+      dispatcher.push({type: 'INIT', payload: userInfo})
     } else {
       hashHistory.push('/login')
     }
