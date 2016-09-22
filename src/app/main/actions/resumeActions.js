@@ -8,7 +8,7 @@ import ws from '../../../serverPush/webSocketConnection'
 import pomodoroTicker from './pomodoroTicker'
 
 function getUsers(){
-  request.get(`${settings.host}/projections/team`)
+  request.get(`${settings.host}/projections/latest-pomodori`)
     .then(res => {
       dispatcher.push({type: 'USERS_LOADED', payload: res.body})
     })
@@ -28,7 +28,7 @@ function resumeTimer(userInfo){
   request
     .get(`${settings.host}/projections/latest-pomodoro?timer_id=${userInfo.timerId}`)
     .then(res => {
-      if (res.body.ticking){
+      if (res.body.status === 'started'){
         const startedAt = moment(res.body.started_at)
         const elapsed = settings.duration - moment().diff(startedAt)
         

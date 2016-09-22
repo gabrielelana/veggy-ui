@@ -6,7 +6,7 @@ export default buildReducer({
   'POMODORO_STARTED': (state, action) => {
     return { timerId: action.payload.timerId, pomodoroId: action.payload.pomodoroId, ticking: true}
   },
-  'POMODORO_ENDED': (state, action) => {
+  'POMODORO_COMPLETED': (state, action) => {
     return {time: stringifyTime(settings.duration), ticking: false}
   },
   'POMODORO_SQUASHED': (state, action) => {

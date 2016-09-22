@@ -4,15 +4,14 @@ import moment from 'moment'
 const centerTd = {textAlign: 'center'}
 
 const TaskList = props => {
-  const rows = props.timers.map(t => <TaskRow key={t._id} {...t} />)
+  const rows = props.timers.map(t => <TaskRow key={t.id} {...t} />)
   return (
-    <div className="column">
+    <div className="column is-one-third">
       <table className="table">
         <thead>
           <tr>
             <th>Started at</th>
-            <th style={centerTd}>Ticking</th>
-            <th style={centerTd}>Completed</th>
+            <th style={centerTd}>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -23,14 +22,20 @@ const TaskList = props => {
   )
 }
 
+function getStatus(status){
+  switch (status){
+  case 'started': return <span className="icon is-small"><i className="fa fa-clock-o"></i></span>
+  case 'completed': return <span className="icon is-small"><i className="fa fa-check"></i></span>
+  case 'squashed': return <span className="icon is-small"><i className="fa fa-chain-broken"></i></span>
+  default: return <span></span>
+  }
+}
+
 function TaskRow(props){
-  const ticking = props.ticking? <span className="icon is-small"><i className="fa fa-clock-o"></i></span> : <span></span>
-  const completed = props.completed? <span className="icon is-small"><i className="fa fa-check"></i></span> : <span></span>
   return (
     <tr>
       <td>{moment(props.started_at).format('DD-MM-YYYY hh:mm:ss')}</td>
-      <td style={centerTd}>{ticking}</td>
-      <td style={centerTd}>{completed}</td>
+      <td style={centerTd}>{getStatus(props.status)}</td>
     </tr>)
 }
 

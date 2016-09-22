@@ -22,6 +22,7 @@ const UserList = React.createClass({
           <p className="panel-heading">
             Users
             <a onClick={this.props.onStartSharedPomodoro} className="button is-primary is-pulled-right">Shared Pomodoro</a>
+            <a onClick={this.props.onSquashSharedPomodoro} className="button is-warning is-pulled-right">Shared Squash</a>
           </p>
           {users}
         </nav>

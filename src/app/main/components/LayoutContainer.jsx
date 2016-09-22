@@ -29,6 +29,9 @@ const LayoutContainer = React.createClass({
     const selectUsers = R.pipe(R.filter(isSelected), R.map(select))
     timerActions.startSharedPomodoro(this.props.timerId, selectUsers(this.props.users))
   },
+  handleSquashSharedPomodoro(){
+    timerActions.squashSharedPomodoro(this.props.timerId)
+  },
   render(){ 
     return (
       <div>
@@ -43,6 +46,7 @@ const LayoutContainer = React.createClass({
             <UserList 
               users={this.props.users} 
               onStartSharedPomodoro={this.handleStartSharedPomodoro}
+              onSquashSharedPomodoro={this.handleSquashSharedPomodoro}
               onToggleUser={this.handleToggleUser}/>
           </div>
           <div className="columns">

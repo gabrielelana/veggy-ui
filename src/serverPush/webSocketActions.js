@@ -10,9 +10,9 @@ function webSocketActions(data){
       timerId: data.timer_id,
       pomodoroId: data.pomodoro_id
     }}
-  case 'PomodoroEnded':
+  case 'PomodoroCompleted':
     pomodoroTicker.stop()
-    return {type: 'POMODORO_ENDED', payload: {
+    return {type: 'POMODORO_COMPLETED', payload: {
       timerId: data.timer_id,
       pomodoroId: data.pomodoro_id
     }}  
@@ -24,6 +24,7 @@ function webSocketActions(data){
     }}
   case 'PomodoroVoided':
     pomodoroTicker.stop()
+    // TODO: usare evento voided
     return {type: 'POMODORO_SQUASHED', payload: {
       timerId: data.timer_id,
       pomodoroId: data.pomodoro_id

@@ -11,8 +11,8 @@ describe('Display reducers', () => {
     assert.isTrue(state.ticking)
   })
 
-  it('POMODORO_ENDED should return reset time', () => {
-    const state = display({}, {type: 'POMODORO_ENDED', payload: {}})
+  it('POMODORO_COMPLETED should return reset time', () => {
+    const state = display({}, {type: 'POMODORO_COMPLETED', payload: {}})
     assert.isOk(state.time)
     assert.isFalse(state.ticking)
   })

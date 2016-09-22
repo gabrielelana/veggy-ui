@@ -5,7 +5,7 @@ export default buildReducer({
     message: `There was an error calling the API: ${action.payload}`, 
     messageType: 'error' 
   }),
-  'POMODORO_ENDED': (state, action) => ({ 
+  'POMODORO_COMPLETED': (state, action) => ({ 
     message: 'Good job! Your pomodoro is completed', 
     messageType: 'info' 
   }),
