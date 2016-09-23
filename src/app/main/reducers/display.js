@@ -20,11 +20,9 @@ export default buildReducer({
   },
   'RESUME_TIMER': (state, action) => {
     return {
-      timer: action.payload.timer, 
+      time: stringifyTime(action.payload.time), 
       timerId: action.payload.timerId,
       pomodoroId: action.payload.pomodoroId,
-      startDisabled: true, 
-      squashDisabled: false,
       ticking: true
     }
   }

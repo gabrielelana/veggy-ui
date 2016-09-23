@@ -15,7 +15,7 @@
       "plugins": [
         ["module-resolver", {
           "root": ["./src"],
-          "alias": { "settings": "./src/environments/dev" }
+          "alias": { "settings": "./src/environments/test" }
         }]
       ],
       "presets": []
