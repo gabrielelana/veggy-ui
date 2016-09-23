@@ -22,6 +22,10 @@ const TaskList = props => {
   )
 }
 
+TaskList.defaultProps = {
+  timers: []
+}
+
 function getStatus(status){
   switch (status){
   case 'started': return <span className="icon is-small"><i className="fa fa-clock-o"></i></span>

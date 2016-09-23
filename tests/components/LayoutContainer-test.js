@@ -10,39 +10,37 @@ var nock = require('nock');
 
 describe('<LayoutContainer />', () => {
   
-  // it('should call the api', () => {
-  //   var request = nock('http://localhost:4000')
-  //                   .post('/commands')
-  //                   .reply(201, { fake: 'yo' });
+  it('should call the api', () => {
+    var request = nock('http://localhost:4000')
+                    .post('/commands')
+                    .reply(201, { });
 
-  //   const component = mount(<LayoutContainer dispatcher={dispatcher} />)
-  //   component.find('#startButton').simulate('click')
-  //   assert.isTrue(request.isDone())
-  // })
+    const component = mount(<LayoutContainer dispatcher={dispatcher} />)
+    component.find('#startButton').simulate('click')
+    assert.isTrue(request.isDone())
+  })
 
-  // it('should call the api and manage the error', () => {
-  //   var request = nock('http://localhost:4000')
-  //                   .post('/commands')
-  //                   .reply(500, { fake: 'yo' });
+  it('should call the api and manage the error', () => {
+    var request = nock('http://localhost:4000')
+                    .post('/commands')
+                    .reply(500, { });
 
-  //   const component = mount(<LayoutContainer dispatcher={dispatcher} />)
-  //   component.find('#startButton').simulate('click')
-  //   assert.isTrue(request.isDone())
-
-  //   // TODO:Assert sull'errore visualizzato
-  // })
+    const component = mount(<LayoutContainer dispatcher={dispatcher} />)
+    component.find('#startButton').simulate('click')
+    assert.isTrue(request.isDone())
+  })
 
 
-  // it('should done something', (done) => {
-  //   // TODO: qui vengono chiamate le vere API (usare nock per stubbare le chiamate)
+  it('should done something', (done) => {
+    // TODO: qui vengono chiamate le vere API (usare nock per stubbare le chiamate)
     
-  //   const component = mount(<LayoutContainer />)
-  //   // TODO: IMHO e' un grosso smell. Sto facendo assunzioni sull'implementazione 
-  //   // interna di un componente (private)
-  //   // TODO: USA GLI ID! component.find('#startTimer').simulate('click')
-  //   component.find('#startButton').simulate('click')
-  //   done()
-  // })
+    const component = mount(<LayoutContainer />)
+    // TODO: IMHO e' un grosso smell. Sto facendo assunzioni sull'implementazione 
+    // interna di un componente (private)
+    // TODO: USA GLI ID! component.find('#startTimer').simulate('click')
+    component.find('#startButton').simulate('click')
+    done()
+  })
 
   
 })
