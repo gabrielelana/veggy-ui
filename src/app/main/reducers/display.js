@@ -12,6 +12,9 @@ export default buildReducer({
   'POMODORO_SQUASHED': (state, action) => {
     return {time: stringifyTime(settings.duration), ticking: false}
   }, 
+  'POMODORO_VOIDED': (state, action) => {
+    return {time: stringifyTime(settings.duration), ticking: false}
+  }, 
   'UPDATE_TIMER': (state, action) => {
     return {time: stringifyTime(action.payload.time), ticking: true}
   },

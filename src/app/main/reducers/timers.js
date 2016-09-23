@@ -54,6 +54,20 @@ export default buildReducer({
         return t
       })
     }
+  },
+  'POMODORO_VOIDED': (state, action) => {
+    return {
+      timers: state.timers.map(t => {
+        if (t.id === action.payload.pomodoroId){
+          return {
+            id: t.id, 
+            status: 'squashed', // TODO: aggiungiamo stato 'voided'?
+            started_at: t.started_at
+          }  
+        }
+        return t
+      })
+    }
   }
 })
 
