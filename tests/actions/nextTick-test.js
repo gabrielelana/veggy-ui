@@ -3,18 +3,18 @@ var assert = require('chai').assert
 
 describe('nextTick', () => {
   
-  it('giving 25:00 next tick should be 24.59', () => {
-    const next = nextTick('25:00')
-    assert.equal('24:59', next)
+  it('giving 4 secs next tick should be 3 secs', () => {
+    const next = nextTick(4000)
+    assert.equal(3000, next)
   })
 
-  it('giving 24:10 next tick should be 24.09', () => {
-    const next = nextTick('24:10')
-    assert.equal('24:09', next)
+  it('giving 25 minutes next tick should be 24:59', () => {
+    const next = nextTick(1500000)
+    assert.equal(1499000, next)
   })
 
-  it('giving 10:00 next tick should be 09.59', () => {
-    const next = nextTick('10:00')
-    assert.equal('09:59', next)
+  it('giving 1 sec next tick should be 0', () => {
+    const next = nextTick(1000)
+    assert.equal(0, next)
   })
 })

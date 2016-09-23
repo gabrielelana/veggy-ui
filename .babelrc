@@ -11,8 +11,14 @@
     "production": {
       "presets": []
     },
-    "test" :{
-        "presets": []
+    "test" : {
+      "plugins": [
+        ["module-resolver", {
+          "root": ["./src"],
+          "alias": { "settings": "./src/environments/dev" }
+        }]
+      ],
+      "presets": []
     }
   }
 }
