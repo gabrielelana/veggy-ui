@@ -17,7 +17,7 @@
 - [x] StartSharedPomodoro con payload timerIds degli utenti coinvolti
 - [x] Aggiungere gestione voidedPomodoro per gestione errori
 
-- [ ] Quando ricevo un messaggio StartSharedPomodoro devo mostrare con chi lo sto facendo
+- [ ] Quando ricevo un messaggio StartSharedPomodoro devo mostrare con chi lo sto facendo (attendo API)
 
 - [ ] La connessione al websocket andrebbe fatta sulla callback della post al login
 - [ ] FIX: Warning: setState(...): Can only update a mounted or mounting component. Sul passaggio da login a main.
