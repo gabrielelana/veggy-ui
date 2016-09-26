@@ -13,18 +13,18 @@ const timerActions = {
       .then(res => {})
       .catch(err => dispatcher.push({type: 'API_ERROR', payload: err}))
   },
-  squash(timerId, pomodoroId){
+  squash(timerId, pomodoroId) {
     sendCommand({command: 'SquashPomodoro', timer_id: timerId, pomodoro_id: pomodoroId})
       .then(res => {})  
       .catch(err => dispatcher.push({type: 'API_ERROR', payload: err}))
 
   },
-  startSharedPomodoro(timerId, users){
+  startSharedPomodoro(timerId, users) {
     sendCommand({command: 'StartSharedPomodoro', timer_id: timerId, duration: settings.duration, shared_with: users})
       .then(res => {})  
       .catch(err => dispatcher.push({type: 'API_ERROR', payload: err}))
   },
-  squashSharedPomodoro(timerId){
+  squashSharedPomodoro(timerId) {
     sendCommand({command: 'SquashSharedPomodoro', timer_id: timerId})
       .then(res => {})  
       .catch(err => dispatcher.push({type: 'API_ERROR', payload: err}))
