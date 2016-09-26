@@ -35,3 +35,4 @@ env
 dist/
 .DS_Store
 .vscode
+jsconfig.json
