@@ -23,10 +23,10 @@ describe('Timers reducer', () => {
   })
 
   it('POMODORO_STARTED should add the pomodoro to the list', () => {
-    const initialState = {timers: [], users: [{timer_id: '1', username: 'ema'}, {timer_id: '2', username: 'gabriele'}]}
+    const initialState = {timers: [], users: [{timerId: '1', username: 'ema'}, {timerId: '2', username: 'gabriele'}]}
     const state = timers(initialState, {type: 'POMODORO_STARTED', payload: {pomodoroId: '123', sharedWith: ['2'] }})
     assert.equal(1, state.timers.length)
-    assert.equal('gabriele', state.timers[0].with)
+    assert.equal('gabriele', state.timers[0].sharedWith)
   })
 
 })
