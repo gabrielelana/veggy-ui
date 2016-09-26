@@ -10,11 +10,13 @@ export default buildReducer({
     users: R.compose(mapUser, R.reject(userEq(state.userId)))(action.payload) 
   }),
   'SELECTED_USERS_CHANGED': (state, action) => {
-    return state.users.map(u => {
-      if (u.userId === action.payload){
-        return Object.assign(u, {selected: !u.selected}) 
-      } 
-      return Object.assign(u)
-    })
+    return {
+      users: state.users.map(u => {
+        if (u.userId === action.payload){
+          return Object.assign(u, {selected: !u.selected}) 
+        } 
+        return Object.assign(u)
+      })
+    }
   }
 })
