@@ -16,7 +16,7 @@ const LoginContainer = React.createClass({
   render(){
     return (
       <div>
-        <NavBar username="" />
+        <NavBar />
         <WaitingPanel show={this.props.waiting} />
         <div className="container" style={{marginTop: '20px'}}>
           <div className="columns">

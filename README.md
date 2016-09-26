@@ -22,7 +22,7 @@
   - Se l'utente e' offline l'ownership del pomodoro e' del client e quando ha finito il pomodoro e si e' riconesso invia al server il log dei pomodori fatti
   - Su avvia pomodoro offline aggiungo a lista e faccio partire
   - Su lista ho pulsante per inviare il pomodoro al server
-  - Visualizzare su pagina sengale online/offline
+- [x] Visualizzare su pagina sengale online/offline
 - [ ] La connessione al websocket andrebbe fatta sulla callback della post al login
 - [ ] FIX: Warning: setState(...): Can only update a mounted or mounting component. Sul passaggio da login a main.
 - [ ] Scrivere test di copertura

@@ -29,9 +29,9 @@ TaskList.defaultProps = {
 
 function getStatus(status){
   switch (status){
-  case 'started': return <span className="icon is-small"><i className="fa fa-clock-o"></i></span>
-  case 'completed': return <span className="icon is-small"><i className="fa fa-check"></i></span>
-  case 'squashed': return <span className="icon is-small"><i className="fa fa-chain-broken"></i></span>
+  case 'started': return <span className="icon"><i className="pi-pomodoro-ticking"></i></span>
+  case 'completed': return <span className="icon"><i className="pi-pomodoro-done"></i></span>
+  case 'squashed': return <span className="icon"><i className="pi-pomodoro-squashed"></i></span>
   default: return <span></span>
   }
 }

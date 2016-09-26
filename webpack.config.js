@@ -50,6 +50,7 @@ module.exports = {
         {test: /\.scss$/, loaders: ["style", "css?sourceMap=true&root=../", "sass?sourceMap=true&root=../"]},
         {test: /\.json$/, loader: 'json-loader'},
         {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+        {test: /\.otf?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
         {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
         {test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file" },
         {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
