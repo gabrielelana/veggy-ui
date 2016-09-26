@@ -25,7 +25,7 @@ const LayoutContainer = React.createClass({
   },
   handleStartSharedPomodoro(){
     const isSelected = u => u.selected
-    const select = u => u.timer_id
+    const select = u => (u.timerId)
     const selectUsers = R.pipe(R.filter(isSelected), R.map(select))
     timerActions.startSharedPomodoro(this.props.timerId, selectUsers(this.props.users))
   },

@@ -10,8 +10,8 @@ const UserList = React.createClass({
 
   render(){
     const users = this.props.users.map(u => (
-      <User key={u.user_id} 
-        onSelect={() => this.props.onToggleUser(u.user_id)} 
+      <User key={u.userId} 
+        onSelect={() => this.props.onToggleUser(u.userId)} 
         selected={u.selected} 
         username={u.username} />
       ))

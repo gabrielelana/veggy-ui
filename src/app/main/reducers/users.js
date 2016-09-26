@@ -1,13 +1,17 @@
 import buildReducer from '../../../redux/buildReducer'
 import R from 'ramda'
 
+const userEq = R.curry((id, u) => u.user_id === id)
+const notMe = R.reject(userEq)
+const mapUser = R.map(u => ({userId: u.user_id, username: u.username, timerId: u.timer_id}))
+
 export default buildReducer({
   'USERS_LOADED': (state, action) => ({ 
-    users: R.reject(u => u.user_id === state.userId , action.payload)
+    users: R.compose(mapUser, R.reject(userEq(state.userId)))(action.payload) 
   }),
   'SELECTED_USERS_CHANGED': (state, action) => {
     return state.users.map(u => {
-      if (u.user_id === action.payload){
+      if (u.userId === action.payload){
         return Object.assign(u, {selected: !u.selected}) 
       } 
       return Object.assign(u)
