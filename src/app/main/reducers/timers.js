@@ -34,7 +34,7 @@ export default buildReducer({
           return {
             id: t.id, 
             status: 'completed',
-            startedAt: t.started_at,
+            startedAt: t.startedAt,
             sharedWith: t.sharedWith
           }  
         }
