@@ -11,6 +11,7 @@ const TaskList = props => {
         <thead>
           <tr>
             <th>Started at</th>
+            <th>Shared</th>
             <th style={centerTd}>Status</th>
           </tr>
         </thead>
@@ -36,9 +37,11 @@ function getStatus(status){
 }
 
 function TaskRow(props){
+  var sharedWith = props.sharedWith.map(w => <span className="tag is-info" key={w} >{`${w}`}</span>)
   return (
     <tr>
-      <td>{moment(props.startedAt).format('DD-MM-YYYY hh:mm:ss')}-{props.with}</td>
+      <td>{moment(props.startedAt).format('DD-MM-YYYY hh:mm:ss')}</td>
+      <td>{sharedWith}</td>
       <td style={centerTd}>{getStatus(props.status)}</td>
     </tr>)
 }

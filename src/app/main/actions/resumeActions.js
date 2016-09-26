@@ -8,7 +8,7 @@ import ws from '../../../serverPush/webSocketConnection'
 import pomodoroTicker from './pomodoroTicker'
 
 function getUsers(){
-  request.get(`${settings.host}/projections/latest-pomodori`)
+  return request.get(`${settings.host}/projections/latest-pomodori`)
     .then(res => {
       dispatcher.push({type: 'USERS_LOADED', payload: res.body})
     })
@@ -55,8 +55,7 @@ const resumeActions = {
     if (window.localStorage.getItem('veggy')) {
       const userInfo = JSON.parse(window.localStorage.getItem('veggy'))
       ws.sendCommand(`login:${userInfo.username}`)
-      getUsers()
-      getTimers(userInfo)
+      getUsers().then(getTimers(userInfo))
       resumeTimer(userInfo)
       dispatcher.push({type: 'INIT', payload: userInfo})
     } else {
