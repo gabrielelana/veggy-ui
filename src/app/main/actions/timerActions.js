@@ -18,7 +18,7 @@ const timerActions = {
       cmd.command = 'StartSharedPomodoro'
       cmd.shared_with = selectedUsers
     } 
-
+    console.log('CMD', cmd)
     sendCommand(cmd)
       .then(res => {})
       .catch(err => dispatcher.push({type: 'API_ERROR', payload: err}))    

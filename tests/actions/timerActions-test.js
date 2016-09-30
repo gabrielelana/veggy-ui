@@ -11,7 +11,7 @@ describe('timerActions', () => {
                       timer_id: '123'
                     }).reply(201, { });   
 
-    timerActions.startPomodoro('123')
+    timerActions.startPomodoro('123', [])
     assert.isTrue(request.isDone())
   })
 
@@ -27,7 +27,7 @@ describe('timerActions', () => {
     assert.isTrue(request.isDone())
   })
 
-  it('startSharedPomodoro should send a command', () => {
+  it('startPomodoro with users should send a StartSharedPomodoro command', () => {
     const request = nock('http://localhost:4000')
                     .post('/commands', {
                       command: 'StartSharedPomodoro',
@@ -36,7 +36,7 @@ describe('timerActions', () => {
                       shared_with: ['456', '789']
                     }).reply(201, { });   
 
-    timerActions.startSharedPomodoro('123', ['456', '789'])
+    timerActions.startPomodoro('123', [{timerId:'456', selected: true}, {timerId:'789', selected: true}])
     assert.isTrue(request.isDone())
   })
 

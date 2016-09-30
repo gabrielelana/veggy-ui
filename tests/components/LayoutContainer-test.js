@@ -15,7 +15,7 @@ describe('<LayoutContainer />', () => {
                     .post('/commands')
                     .reply(201, { });
 
-    const component = mount(<LayoutContainer dispatcher={dispatcher} />)
+    const component = mount(<LayoutContainer dispatcher={dispatcher} users={[]} />)
     component.find('#startButton').simulate('click')
     assert.isTrue(request.isDone())
   })
@@ -25,16 +25,16 @@ describe('<LayoutContainer />', () => {
                     .post('/commands')
                     .reply(500, { });
 
-    const component = mount(<LayoutContainer dispatcher={dispatcher} />)
+    const component = mount(<LayoutContainer dispatcher={dispatcher} users={[]}/>)
     component.find('#startButton').simulate('click')
     assert.isTrue(request.isDone())
   })
 
 
-  it('should done something', (done) => {
+  it('should do something', (done) => {
     // TODO: qui vengono chiamate le vere API (usare nock per stubbare le chiamate)
     
-    const component = mount(<LayoutContainer />)
+    const component = mount(<LayoutContainer users={[]} />)
     // TODO: IMHO e' un grosso smell. Sto facendo assunzioni sull'implementazione 
     // interna di un componente (private)
     // TODO: USA GLI ID! component.find('#startTimer').simulate('click')
