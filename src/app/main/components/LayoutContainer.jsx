@@ -18,13 +18,10 @@ const LayoutContainer = React.createClass({
     timerActions.startPomodoro(this.props.timerId, this.props.users)
   },
   handleSquash(){
-    timerActions.squash(this.props.timerId, this.props.pomodoroId)
+    timerActions.squash(this.props.timerId, this.props.pomodoroId, this.props.isShared)
   },
   handleToggleUser(user){
     usersActions.toggleSelectedUsers(user)
-  },
-  handleSquashSharedPomodoro(){
-    timerActions.squashSharedPomodoro(this.props.timerId)
   },
   render(){ 
     return (
@@ -32,14 +29,13 @@ const LayoutContainer = React.createClass({
         <NavBar username={this.props.username} />
         <div className="container" style={{marginTop: '20px'}}>
           <div className="columns">
-            <Display time={this.props.time} />
+            <Display time={this.props.time} isShared={this.props.isShared} />
             <Controls startDisabled={this.props.startDisabled} squashDisabled={this.props.squashDisabled} onStart={this.handleStart} onSquash={this.handleSquash} />
           </div>
           <div className="columns">
             <TaskList timers={this.props.timers}/>
             <UserList 
               users={this.props.users} 
-              onSquashSharedPomodoro={this.handleSquashSharedPomodoro}
               onToggleUser={this.handleToggleUser}/>
           </div>
           <div className="columns">

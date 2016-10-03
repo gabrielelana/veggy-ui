@@ -14,7 +14,6 @@ const UserList = props => {
       <nav className="panel" style={{backgroundColor: '#FFFFFF'}}>
         <p className="panel-heading">
           Users
-          <a onClick={props.onSquashSharedPomodoro} className="button is-warning is-pulled-right">Shared Squash</a>
         </p>
         {users}
       </nav>

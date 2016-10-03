@@ -39,15 +39,4 @@ describe('timerActions', () => {
     timerActions.startPomodoro('123', [{timerId:'456', selected: true}, {timerId:'789', selected: true}])
     assert.isTrue(request.isDone())
   })
-
-  it('squashSharedPomodoro should send a command', () => {
-    const request = nock('http://localhost:4000')
-                    .post('/commands', {
-                      command: 'SquashSharedPomodoro',
-                      timer_id: '123'
-                    }).reply(201, { });   
-
-    timerActions.squashSharedPomodoro('123')
-    assert.isTrue(request.isDone())
-  })
 })

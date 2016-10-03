@@ -4,7 +4,7 @@ import stringifyTime from '../actions/stringifyTime'
 
 export default buildReducer({
   'POMODORO_STARTED': (state, action) => {
-    return { timerId: action.payload.timerId, pomodoroId: action.payload.pomodoroId, ticking: true}
+    return { timerId: action.payload.timerId, pomodoroId: action.payload.pomodoroId, ticking: true, isShared: (action.payload.sharedWith && action.payload.sharedWith.length > 0)}
   },
   'POMODORO_COMPLETED': (state, action) => {
     return {time: stringifyTime(settings.duration), ticking: false}

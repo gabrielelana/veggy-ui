@@ -11,6 +11,12 @@ describe('Display reducers', () => {
     assert.isTrue(state.ticking)
   })
 
+  it('POMODORO_STARTED shared with others, isShared should be true', () => {
+    const actionPayload = { timerId: '123', pomodoroId: '456', sharedWith: ['foo']}
+    const state = display({}, {type: 'POMODORO_STARTED', payload: actionPayload})
+    assert.isTrue(state.isShared)
+  })
+
   it('POMODORO_COMPLETED should reset time', () => {
     const state = display({}, {type: 'POMODORO_COMPLETED', payload: {}})
     assert.equal('25:00', state.time)

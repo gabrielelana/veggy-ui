@@ -29,7 +29,7 @@ describe('Timers reducer', () => {
     assert.equal('gabriele', state.timers[0].sharedWith)
   })
 
-   it('POMODORO_COMPLETED should change the status of the pomodoro', () => {
+  it('POMODORO_COMPLETED should change the status of the pomodoro', () => {
     const initialState = {timers: [{id: '1', startedAt: '2010-04-11 22:20'}], users: [{timerId: '1', username: 'ema'}, {timerId: '2', username: 'gabriele'}]}
     const state = timers(initialState, {type: 'POMODORO_COMPLETED', payload: {pomodoroId: '1' }})
     assert.equal(1, state.timers.length)
