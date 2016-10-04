@@ -1,4 +1,3 @@
-// Versione semplificata
 const createReducer = (reducer, projector = s => s) => {
   reducer.project = projector
   return reducer

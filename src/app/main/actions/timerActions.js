@@ -1,10 +1,5 @@
-import request from 'superagent'
 import R from 'ramda'
-import {hashHistory} from 'react-router'
-import moment from 'moment'
 import dispatcher from '../../../redux/dispatcher'
-import ws from '../../../serverPush/webSocketConnection'
-import pomodoroTicker from './pomodoroTicker'
 import sendCommand from '../../sendCommand'
 import settings from 'settings'
 

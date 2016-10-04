@@ -32,9 +32,6 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
         complete: () => {},
       })
   }
-  componentWillUnmount() {
-    //dispatcher.unregister(this.subscriptionToken)
-  }
   render() {
     return <Container {...this.state.childState} {...this.props} dispatcher={dispatcher} />
   }

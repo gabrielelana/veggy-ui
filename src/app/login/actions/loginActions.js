@@ -1,6 +1,4 @@
-import request from 'superagent'
 import {hashHistory} from 'react-router'
-import settings from 'settings'
 import dispatcher from '../../../redux/dispatcher'
 import sendCommand from '../../sendCommand'
 import ws from '../../../serverPush/webSocketConnection'

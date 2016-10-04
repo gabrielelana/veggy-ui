@@ -1,5 +1,4 @@
 import React from 'react'
-import R from 'ramda'
 
 const UserList = props => {
   const users = props.users.map(u => (

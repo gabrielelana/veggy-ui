@@ -1,7 +1,5 @@
 import xs from 'xstream'
 
-// TODO: find a better implementation
-
 function createDispatcherStream(){
   return {
     id: 1,
