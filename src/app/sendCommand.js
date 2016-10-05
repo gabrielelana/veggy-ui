@@ -12,12 +12,10 @@ addEventListener("online", (e) => {
     .forEach((cmd, i) => {
       const squashCommand = R.find(c => c.command === 'SquashPomodoro' && c.pomodoro_id === cmd.pomodoro_id)(offlineCommands)
       if (squashCommand){
-        console.log('Squashed', cmd.pomodoro_id, squashCommand)
-        sendCommand({command: 'TrackSquashedPomodoro', timer_id: squashCommand.timer_id, started_at: cmd.started_at})
+        sendCommand({command: 'TrackPomodoroSquashed', timer_id: squashCommand.timer_id, started_at: cmd.started_at, squashed_at: squashCommand.squashed_at}).then(res => {})  
       } else {
-        console.log('Completed', cmd)
         const completed_at = moment(cmd.started_at).add(settings.duration, 'ms')
-        sendCommand({command: 'TrackCompletedPomodoro', timer_id: squashCommand.timer_id, started_at: cmd.started_at, completed_at: completed_at})
+        sendCommand({command: 'TrackPomodoroCompleted', timer_id: cmd.timer_id, started_at: cmd.started_at, completed_at: completed_at}).then(res => {})  
       }
     })
   offlineCommands.length = 0
@@ -25,10 +23,10 @@ addEventListener("online", (e) => {
 
 export default function sendCommand(payload) {
   if (navigator.onLine) {
-    return (request
+    return request
         .post(`${settings.host}/commands`)
         .set('Content-Type', 'application/json')
-        .send(payload))
+        .send(payload)
   }     
   return manageOffLineCommands(payload)
 }
