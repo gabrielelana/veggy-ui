@@ -22,7 +22,7 @@ export default buildReducer({
       timers: [...state.timers, {
         id: action.payload.pomodoroId, 
         status: 'started', 
-        startedAt: moment().format(),
+        startedAt: new Date(),
         sharedWith: findShares(state.users, action.payload.sharedWith)
       }]
     }
@@ -46,10 +46,11 @@ export default buildReducer({
     return {
       timers: state.timers.map(t => {
         if (t.id === action.payload.pomodoroId){
+          console.log('squash', t, action.payload)
           return {
             id: t.id, 
             status: 'squashed',
-            startedAt: t.started_at,
+            startedAt: t.startedAt,
             sharedWith: t.sharedWith
           }  
         }
@@ -64,7 +65,7 @@ export default buildReducer({
           return {
             id: t.id, 
             status: 'squashed', // TODO: aggiungiamo stato 'voided'?
-            startedAt: t.started_at
+            startedAt: t.startedAt
           }  
         }
         return t
