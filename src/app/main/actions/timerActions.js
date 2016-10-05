@@ -14,7 +14,7 @@ const timerActions = {
       cmd.shared_with = selectedUsers
     } 
     sendCommand(cmd)
-      .then(res => {})
+      .then(() => {})
       .catch(err => dispatcher.push({type: 'API_ERROR', payload: err}))
   },
   squash(timerId, pomodoroId, isShared) {
@@ -23,7 +23,7 @@ const timerActions = {
       cmd.command = 'SquashSharedPomodoro'
     }
     sendCommand(cmd)
-      .then(res => {})  
+      .then(() => {})  
       .catch(err => dispatcher.push({type: 'API_ERROR', payload: err}))
   }
 }

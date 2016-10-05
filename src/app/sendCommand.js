@@ -6,10 +6,10 @@ import {startOffLinePomodoro, squashOffLinePomodoro} from './offLineActions'
 
 const offlineCommands = []
 
-addEventListener("online", (e) => {
+addEventListener("online", () => {
   offlineCommands
     .filter(cmd => cmd.command === 'StartPomodoro')
-    .forEach((cmd, i) => {
+    .forEach(cmd => {
       const squashCommand = R.find(c => c.command === 'SquashPomodoro' && c.pomodoro_id === cmd.pomodoro_id)(offlineCommands)
       if (squashCommand){
         console.log('Squashed', cmd.pomodoro_id, squashCommand)

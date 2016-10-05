@@ -26,7 +26,7 @@
 - [ ] La connessione al websocket andrebbe fatta sulla callback della post al login
 - [ ] FIX: Warning: setState(...): Can only update a mounted or mounting component. Sul passaggio da login a main.
 - [ ] Scrivere test di copertura
-- [ ] Rimuovere pulsanti [start|stop]shared pomodoro 
+- [x] Rimuovere pulsanti [start|stop]shared pomodoro 
   
 
 

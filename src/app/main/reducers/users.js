@@ -2,7 +2,6 @@ import buildReducer from '../../../redux/buildReducer'
 import R from 'ramda'
 
 const userEq = R.curry((id, u) => u.user_id === id)
-const notMe = R.reject(userEq)
 const mapUser = R.map(u => ({userId: u.user_id, username: u.username, timerId: u.timer_id}))
 
 export default buildReducer({

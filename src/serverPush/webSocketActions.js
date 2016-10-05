@@ -1,4 +1,3 @@
-import dispatcher from '../redux/dispatcher'
 import pomodoroTicker from '../app/main/actions/pomodoroTicker'
 import settings from 'settings'
 

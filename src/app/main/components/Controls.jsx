@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Controls = props => (
   <div className="column">
     <div className="box">

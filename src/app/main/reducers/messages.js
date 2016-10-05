@@ -5,15 +5,15 @@ export default buildReducer({
     message: `There was an error calling the API: ${action.payload}`, 
     messageType: 'error' 
   }),
-  'POMODORO_COMPLETED': (state, action) => ({ 
+  'POMODORO_COMPLETED': () => ({ 
     message: 'Good job! Your pomodoro is completed', 
     messageType: 'info' 
   }),
-  'POMODORO_SQUASHED': (state, action) => ({ 
+  'POMODORO_SQUASHED': () => ({ 
     message: 'Ouch! Your pomodoro has been interrupted', 
     messageType: 'warn' 
   }),
-  'POMODORO_VOIDED': (state, action) => ({ 
+  'POMODORO_VOIDED': () => ({ 
     message: 'There was some problem with your pomorodo. Probably some other user squashed it.', 
     messageType: 'warn' 
   }),
@@ -21,7 +21,7 @@ export default buildReducer({
     message: `There was an error: ${action.payload.why}`, 
     messageType: 'error' 
   }),
-  'DISMISS_MESSAGE': (state, action) => ({ 
+  'DISMISS_MESSAGE': () => ({ 
     message: '', 
     messageType: 'none' 
   }),

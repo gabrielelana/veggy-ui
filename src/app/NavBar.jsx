@@ -6,8 +6,8 @@ const NavBar = React.createClass({
     return {connectionStatusClass: 'fa fa-link'}
   },
   componentDidMount() {
-    window.addEventListener("offline", e => { this.setState({connectionStatusClass: 'fa fa-chain-broken'}) });
-    window.addEventListener("online", e => { this.setState({connectionStatusClass: 'fa fa-link'})});
+    window.addEventListener("offline", () => { this.setState({connectionStatusClass: 'fa fa-chain-broken'}) });
+    window.addEventListener("online", () => { this.setState({connectionStatusClass: 'fa fa-link'})});
   },
   render(){
     return (

@@ -6,13 +6,13 @@ export default buildReducer({
   'POMODORO_STARTED': (state, action) => {
     return { timerId: action.payload.timerId, pomodoroId: action.payload.pomodoroId, ticking: true, isShared: (action.payload.sharedWith && action.payload.sharedWith.length > 0)}
   },
-  'POMODORO_COMPLETED': (state, action) => {
+  'POMODORO_COMPLETED': () => {
     return {time: stringifyTime(settings.duration), ticking: false}
   },
-  'POMODORO_SQUASHED': (state, action) => {
+  'POMODORO_SQUASHED': () => {
     return {time: stringifyTime(settings.duration), ticking: false}
   }, 
-  'POMODORO_VOIDED': (state, action) => {
+  'POMODORO_VOIDED': () => {
     return {time: stringifyTime(settings.duration), ticking: false}
   }, 
   'UPDATE_TIMER': (state, action) => {

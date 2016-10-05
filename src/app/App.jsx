@@ -6,7 +6,7 @@ require('../sass/style.scss')
 
 export const App = React.createClass({
   render() {
-    let children = React.cloneElement(this.props.children, { store: {} })
+    const children = React.cloneElement(this.props.children, { store: {} })
     return (
       <div>
         {children}
@@ -14,8 +14,6 @@ export const App = React.createClass({
     )
   }
 })
-
-
 
 ReactDOM.render((
   <Router history={hashHistory}>

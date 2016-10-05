@@ -1,7 +1,7 @@
 import buildReducer from '../../../redux/buildReducer'
 
 export default buildReducer({
-  'WAIT_FOR_LOGIN': (state, action) => {
+  'WAIT_FOR_LOGIN': () => {
     return { waiting: true }
   },
   'LOGGED_IN': (state, action) => {
