@@ -62,7 +62,7 @@ export default buildReducer({
         if (t.id === action.payload.pomodoroId){
           return {
             id: t.id, 
-            status: 'squashed', // TODO: aggiungiamo stato 'voided'?
+            status: 'voided',
             startedAt: t.startedAt
           }  
         }

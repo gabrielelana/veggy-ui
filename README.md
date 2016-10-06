@@ -23,7 +23,8 @@
   - Su avvia pomodoro offline aggiungo a lista e faccio partire
   - Su lista ho pulsante per inviare il pomodoro al server
 - [x] Visualizzare su pagina sengale online/offline
-- [ ] Verificare uso corretto delle promise
+- [x] Verificare uso corretto delle promise
+- [ ] Creare file index.ejs per deploy
 - [ ] La connessione al websocket andrebbe fatta sulla callback della post al login
 - [ ] FIX: Warning: setState(...): Can only update a mounted or mounting component. Sul passaggio da login a main.
 - [ ] Scrivere test di copertura
