@@ -31,7 +31,6 @@ function getStatus(status){
   case 'started': return <span className="icon"><i className="pi-pomodoro-ticking"></i></span>
   case 'completed': return <span className="icon"><i className="pi-pomodoro-done"></i></span>
   case 'squashed': return <span className="icon"><i className="pi-pomodoro-squashed"></i></span>
-  case 'voided': return <span className="icon"><i className="fa fa-exclamation-triangle"></i></span>
   default: return <span></span>
   }
 }
