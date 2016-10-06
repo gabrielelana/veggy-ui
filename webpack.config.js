@@ -12,7 +12,7 @@ module.exports = {
         'font-awesome-sass-loader',
         path.resolve(__dirname, 'src/app/App.jsx')
       ],
-      vendors: ['react', 'react-dom', 'react-router', 'superagent', 'ramda', 'xstream', 'moment']
+      vendors: require('./vendor-lib')
     },
    
     output: {

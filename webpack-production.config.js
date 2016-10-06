@@ -6,7 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     app: [path.resolve(__dirname, 'src/app/App.jsx')],
-    vendors: ['react', 'react-dom', 'react-router', 'superagent', 'ramda', 'xstream', 'moment']
+    vendors: require('./vendor-lib')
   },
   output: {
       filename: '/js/app.js',
