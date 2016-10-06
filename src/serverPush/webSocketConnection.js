@@ -7,7 +7,7 @@ let connection = null
 const wss = xs.create({
   start: listener => {
     connection = new WebSocket(settings.wsHost)
-    connection.onopen = (evt) => { 
+    connection.onopen = () => { 
       heartBeat = setInterval(() => connection.send('ping'), 5000)
     }
     connection.onerror = (err) => {

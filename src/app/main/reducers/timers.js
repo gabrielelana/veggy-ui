@@ -1,6 +1,5 @@
 import buildReducer from '../../../redux/buildReducer'
 import moment from 'moment'
-import R from 'ramda'
 
 const findShares = (users, sharedWith) => users.filter(u => sharedWith.indexOf(u.timerId) > -1).map(u => u.username)
 

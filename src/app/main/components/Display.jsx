@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Display = props => (
   <div className="column is-three-quarters">
     <div className="box has-text-centered">

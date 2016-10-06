@@ -15,8 +15,6 @@ export const App = React.createClass({
   }
 })
 
-
-
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>

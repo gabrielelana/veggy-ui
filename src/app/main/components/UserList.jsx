@@ -1,5 +1,3 @@
-import React from 'react'
-
 const UserList = props => {
   const users = props.users.map(u => (
       <User key={u.userId} 
