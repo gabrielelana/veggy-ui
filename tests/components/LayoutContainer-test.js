@@ -10,37 +10,25 @@ var nock = require('nock');
 
 describe('<LayoutContainer />', () => {
   
-  it('should call the api', () => {
-    var request = nock('http://localhost:4000')
-                    .post('/commands')
-                    .reply(201, { });
+  it('On StartPomodoro click should send a command', () => {
+    var request = nock('http://localhost:4000').post('/commands').reply(201, { });
 
-    const component = mount(<LayoutContainer dispatcher={dispatcher} users={[]} />)
+    const component = mount(<LayoutContainer users={[]} />)
     component.find('#startButton').simulate('click')
     assert.isTrue(request.isDone())
   })
 
-  it('should call the api and manage the error', () => {
+  it('On StartPomodoro click should send a command and manage the error', done => {
     var request = nock('http://localhost:4000')
                     .post('/commands')
                     .reply(500, { });
 
-    const component = mount(<LayoutContainer dispatcher={dispatcher} users={[]}/>)
+    const component = mount(<LayoutContainer users={[]}/>)
     component.find('#startButton').simulate('click')
+    setTimeout(() => { 
+      assert.equal(component.find('.is-danger').length, 1)
+      done()
+    }, 10)
     assert.isTrue(request.isDone())
   })
-
-
-  it('should do something', (done) => {
-    // TODO: qui vengono chiamate le vere API (usare nock per stubbare le chiamate)
-    
-    const component = mount(<LayoutContainer users={[]} />)
-    // TODO: IMHO e' un grosso smell. Sto facendo assunzioni sull'implementazione 
-    // interna di un componente (private)
-    // TODO: USA GLI ID! component.find('#startTimer').simulate('click')
-    component.find('#startButton').simulate('click')
-    done()
-  })
-
-  
 })

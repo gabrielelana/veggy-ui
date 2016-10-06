@@ -44,7 +44,6 @@ export default buildReducer({
     return {
       timers: state.timers.map(t => {
         if (t.id === action.payload.pomodoroId){
-          console.log('squash', t, action.payload)
           return {
             id: t.id, 
             status: 'squashed',

@@ -33,7 +33,7 @@ const MessageBar = React.createClass({
     }
     const messageClass = getTypeClass(this.props.type)
     return (
-      <div className="column is-half is-offset-one-quarter is-gapless">
+      <div id="messageBox" className="column is-half is-offset-one-quarter is-gapless">
         <div className={messageClass} style={displayStyle} >
           {this.props.message}
         </div>
