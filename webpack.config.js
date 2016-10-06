@@ -1,6 +1,7 @@
-var path = require('path');
-var webpack = require('webpack');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var path = require('path')
+var webpack = require('webpack')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     devtool: '#inline-source-map',
@@ -9,8 +10,7 @@ module.exports = {
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/dev-server',
         'font-awesome-sass-loader',
-        path.resolve(__dirname, 'src/app/App.jsx'),
-        './src/index.html'
+        path.resolve(__dirname, 'src/app/App.jsx')
       ],
       vendors: ['react', 'react-dom', 'react-router', 'superagent', 'ramda', 'xstream', 'moment']
     },
@@ -30,11 +30,15 @@ module.exports = {
       configFile: 'eslint.config.json'
     },
     plugins: [
-      //new webpack.ProvidePlugin({$: "jquery", jQuery: "jquery"}),
       new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.js'),  
       new webpack.optimize.OccurenceOrderPlugin(),
-      //new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
+      new HtmlWebpackPlugin({
+        filename: 'index.html', 
+        css: '',
+        template: path.resolve(__dirname, 'src/index.ejs'),
+        inject: false
+      })
     ],
     module: {
       preLoaders: [

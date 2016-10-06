@@ -47,7 +47,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "font-awesome-sass-loader": "^1.0.1",
-    "html-webpack-plugin": "^2.22.0",
+    "html-webpack-plugin": "2.22.0",
     "jsdom": "^9.4.1",
     "mocha": "^2.5.3",
     "nock": "^8.0.0",

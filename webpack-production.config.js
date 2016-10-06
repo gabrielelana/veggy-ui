@@ -1,10 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    app: [path.resolve(__dirname, 'src/app/App.jsx'), './src/index.html'],
+    app: [path.resolve(__dirname, 'src/app/App.jsx')],
     vendors: ['react', 'react-dom', 'react-router', 'superagent', 'ramda', 'xstream', 'moment']
   },
   output: {
@@ -15,6 +16,12 @@ module.exports = {
     new ExtractTextPlugin('app.css', {allChunks: true}),
     new webpack.optimize.UglifyJsPlugin({minimize: true}),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.js'), 
+    new HtmlWebpackPlugin({
+      filename: 'index.html', 
+      css: 'app.css',
+      template: path.resolve(__dirname, 'src/index.ejs'),
+      inject: false
+    })
   ],
   resolve: {
     extensions: ['', '.js', '.jsx'],
