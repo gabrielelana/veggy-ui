@@ -5,13 +5,9 @@ import ws from '../../../serverPush/webSocketConnection'
 
 const loginActions = {
   login(username) {
-    sendCommand({command: 'Login', username: username})
-      .then(() => {
-        dispatcher.push({type: 'WAIT_FOR_LOGIN'})
-      })
-      .catch(err => {
-        dispatcher.push({type: 'API_ERROR', payload: err})
-      })
+    sendCommand({command: 'Login', username: username}, () => {
+      dispatcher.push({type: 'WAIT_FOR_LOGIN'})
+    })
     ws.sendCommand(`login:${username}`)
   },
   redirect(username, timerId, userId){

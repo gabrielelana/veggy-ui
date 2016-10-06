@@ -1,17 +1,6 @@
 import R from 'ramda'
-import dispatcher from '../../../redux/dispatcher'
 import sendCommand from '../../sendCommand'
 import settings from 'settings'
-
-/*
-var promise = new Promise(function (resolve, reject) { ... });
-
-if (typeof cb === 'function') {
-    promise.then(cb);
-} else {
-    return promise;
-}
-*/ 
 
 const timerActions = {
   startPomodoro(timerId, users) {
@@ -24,8 +13,6 @@ const timerActions = {
       cmd.shared_with = selectedUsers
     } 
     sendCommand(cmd)
-      .then(() => {})
-      .catch(err => dispatcher.push({type: 'API_ERROR', payload: err}))
   },
   squash(timerId, pomodoroId, isShared) {
     var cmd = {command: 'SquashPomodoro', timer_id: timerId, pomodoro_id: pomodoroId}
@@ -33,8 +20,6 @@ const timerActions = {
       cmd.command = 'SquashSharedPomodoro'
     }
     sendCommand(cmd)
-      .then(() => {})  
-      .catch(err => dispatcher.push({type: 'API_ERROR', payload: err}))
   }
 }
 
