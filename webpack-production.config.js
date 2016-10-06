@@ -16,6 +16,8 @@ module.exports = {
     new ExtractTextPlugin('app.css', {allChunks: true}),
     new webpack.optimize.UglifyJsPlugin({minimize: true}),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.js'), 
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html', 
       css: 'app.css',

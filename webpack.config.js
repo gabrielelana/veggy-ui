@@ -31,7 +31,6 @@ module.exports = {
     },
     plugins: [
       new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.js'),  
-      new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.NoErrorsPlugin(),
       new HtmlWebpackPlugin({
         filename: 'index.html', 
