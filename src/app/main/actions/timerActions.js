@@ -3,6 +3,16 @@ import dispatcher from '../../../redux/dispatcher'
 import sendCommand from '../../sendCommand'
 import settings from 'settings'
 
+/*
+var promise = new Promise(function (resolve, reject) { ... });
+
+if (typeof cb === 'function') {
+    promise.then(cb);
+} else {
+    return promise;
+}
+*/ 
+
 const timerActions = {
   startPomodoro(timerId, users) {
     const isSelected = u => u.selected
