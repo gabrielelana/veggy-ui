@@ -14,6 +14,7 @@ module.exports = {
       ],
       vendors: ['react', 'react-dom', 'react-router', 'superagent', 'ramda', 'xstream', 'moment']
     },
+   
     output: {
         filename: '/js/app.js',
         path: path.resolve(__dirname, 'dist'),
