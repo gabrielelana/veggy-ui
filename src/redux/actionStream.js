@@ -1,7 +1,7 @@
 import xs from 'xstream'
 
 // TODO: investigate in a better implementation
-function createActionStream(){
+function createProducer(){
   return {
     id: 1,
     listener: {},
@@ -15,13 +15,13 @@ function createActionStream(){
   }
 }
 
-const ds = createActionStream();
+const ds = createProducer();
 
 const stream = {
   push: action => {
     ds.next(action)
   },
-  getStream(){
+  createStream(){
     return xs.create(ds)
   }
 }

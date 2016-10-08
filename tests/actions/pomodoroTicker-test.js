@@ -6,7 +6,7 @@ import {assert} from 'chai'
 describe('pomodoroTicker', () => {
   
   it('start should start sending messages to the stream', (done) => {
-    const stream = actionStream.getStream()
+    const stream = actionStream.createStream()
     var isDone = false
     const listener = stream.addListener({
         next: s => {

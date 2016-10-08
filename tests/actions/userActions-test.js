@@ -4,7 +4,7 @@ import {assert} from 'chai'
 
 describe('usersActions', () => {
   it('toggleSelectedUsers should push an event on the stream', done => {
-   const stream = actionStream.getStream()
+   const stream = actionStream.createStream()
     var isDone = false
     const listener = stream.addListener({
         next: s => {

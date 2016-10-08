@@ -20,20 +20,24 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
     }
   }
   componentWillMount() {
-    
-    const actions = actionStream.getStream() 
-    const stream = xs.merge(ws.stream.map(wsa), actions)
+    const actions = actionStream.createStream() 
+    this.stream = xs.merge(ws.stream.map(wsa), actions)
+    this.listener = {
+      next: s => this.setState({childState: s}),
+      error: (err) => { console.log('err', err)},
+      complete: () => {},
+    }
 
-    stream
+    this.stream
       .map(s => combineReducers(reducers, this.state.childState, s))
-      .addListener({
-        next: s => this.setState({childState: s}),
-        error: (err) => { console.log('err', err)},
-        complete: () => {},
-      })
+      .addListener(this.listener)
   }
+  componentWillUnmount() {
+    this.stream.removeListener(this.listener)
+  }
+  
   render() {
-    return <Container {...this.state.childState} {...this.props} actionStream={actionStream} />
+    return <Container {...this.state.childState} {...this.props} />
   }
 }
 
