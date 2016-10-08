@@ -1,6 +1,6 @@
 import React from 'react'
 import xs from 'xstream'
-import dispatcher from './dispatcher'
+import actionStream from './actionStream'
 import ws from '../serverPush/webSocketConnection'
 import wsa from '../serverPush/webSocketActions'
 
@@ -21,7 +21,7 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
   }
   componentWillMount() {
     
-    const actions = dispatcher.getStream() 
+    const actions = actionStream.getStream() 
     const stream = xs.merge(ws.stream.map(wsa), actions)
 
     stream
@@ -33,7 +33,7 @@ const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperCl
       })
   }
   render() {
-    return <Container {...this.state.childState} {...this.props} dispatcher={dispatcher} />
+    return <Container {...this.state.childState} {...this.props} actionStream={actionStream} />
   }
 }
 

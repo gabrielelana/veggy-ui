@@ -1,12 +1,12 @@
 //import {hashHistory} from 'react-router'
-import dispatcher from '../../../redux/dispatcher'
+import actionStream from '../../../redux/actionStream'
 import sendCommand from '../../sendCommand'
 import ws from '../../../serverPush/webSocketConnection'
 
 const loginActions = {
   login(username) {
     sendCommand({command: 'Login', username: username}, () => {
-      dispatcher.push({type: 'WAIT_FOR_LOGIN'})
+      actionStream.push({type: 'WAIT_FOR_LOGIN'})
     })
     ws.sendCommand(`login:${username}`)
   },

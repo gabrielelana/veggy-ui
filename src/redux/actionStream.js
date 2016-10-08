@@ -1,6 +1,7 @@
 import xs from 'xstream'
 
-function createDispatcherStream(){
+// TODO: investigate in a better implementation
+function createActionStream(){
   return {
     id: 1,
     listener: {},
@@ -14,9 +15,9 @@ function createDispatcherStream(){
   }
 }
 
-const ds = createDispatcherStream();
+const ds = createActionStream();
 
-const dispatcher = {
+const stream = {
   push: action => {
     ds.next(action)
   },
@@ -25,4 +26,4 @@ const dispatcher = {
   }
 }
 
-export default dispatcher
+export default stream

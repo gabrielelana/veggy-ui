@@ -1,8 +1,8 @@
-import dispatcher from '../../../redux/dispatcher'
+import actionStream from '../../../redux/actionStream'
 
 const timerActions = {
   toggleSelectedUsers(user){
-    dispatcher.push({type: 'SELECTED_USERS_CHANGED', payload: user})
+    actionStream.push({type: 'SELECTED_USERS_CHANGED', payload: user})
   }
 }
 

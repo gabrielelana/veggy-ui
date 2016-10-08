@@ -1,4 +1,4 @@
-import dispatcher from '../../../redux/dispatcher'
+import actionStream from '../../../redux/actionStream'
 import nextTick from './nextTick'
 
 let timerId = null
@@ -8,7 +8,7 @@ const pomodoroTicker = {
     let currentTime = startingTime
     timerId = setInterval(() => {
       currentTime = nextTick(currentTime)
-      dispatcher.push({type: 'UPDATE_TIMER', payload: {time: currentTime}})
+      actionStream.push({type: 'UPDATE_TIMER', payload: {time: currentTime}})
     }, 1000)
   },
   stop(){

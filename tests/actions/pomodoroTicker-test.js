@@ -1,12 +1,12 @@
 import pomodoroTicker from '../../src/app/main/actions/pomodoroTicker'
-import dispatcher from '../../src/redux/dispatcher'
+import actionStream from '../../src/redux/actionStream'
 import {assert} from 'chai'
 
 
 describe('pomodoroTicker', () => {
   
   it('start should start sending messages to the stream', (done) => {
-    const stream = dispatcher.getStream()
+    const stream = actionStream.getStream()
     var isDone = false
     const listener = stream.addListener({
         next: s => {
