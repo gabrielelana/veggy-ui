@@ -34,6 +34,37 @@
 
 ##Discuss
 - Quando si collega un nuovo utente va inviato un evento
-- Introdurre stream?
+
+
+##Steps
+1) Scheletro infrastrtuttura. 
+  - packages
+  - webpack (solo dev)
+  - eslint
+  - Router
+  - React hello world (da scrivere)
+  - Sass
+  - Babel
+  - fonts
+  - tests
+
+2) Giro standard (Senza flux) di start pomodoro
+  - Esercizio: implementare squash
+
+3) Redux: via lo stato dal componente. Giro start/squash.
+  - Dummy vs smart
+  - Via lo stato
+  - Componenti funzione
+  - Wrapper
+  - Stream
+  - Reducers
+  - ....
+4) Elenco pomodori e utenti
+  - Esercizio: elenco utenti e selezione utenti
+
+5) Shared pomodori
+
+6) Offline pomodori
+
 
 
