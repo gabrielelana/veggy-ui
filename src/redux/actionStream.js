@@ -1,6 +1,5 @@
 import xs from 'xstream'
 
-// TODO: investigate in a better implementation
 function createProducer(){
   return {
     id: 1,

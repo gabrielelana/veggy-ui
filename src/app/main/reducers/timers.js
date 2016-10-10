@@ -8,7 +8,7 @@ export default buildReducer({
       timers: action.payload.map(t => {
         return {
           id: t.pomodoro_id, 
-          status: t.status, // started | completed | squashed
+          status: t.status, 
           startedAt: t.started_at,
           sharedWith: findShares(state.users||[], t.shared_with)
         }
@@ -29,12 +29,7 @@ export default buildReducer({
     return {
       timers: state.timers.map(t => {
         if (t.id === action.payload.pomodoroId){
-          return {
-            id: t.id, 
-            status: 'completed',
-            startedAt: t.startedAt,
-            sharedWith: t.sharedWith
-          }  
+          return Object.assign(t, {status: 'completed'})
         }
         return t
       })
@@ -44,12 +39,7 @@ export default buildReducer({
     return {
       timers: state.timers.map(t => {
         if (t.id === action.payload.pomodoroId){
-          return {
-            id: t.id, 
-            status: 'squashed',
-            startedAt: t.startedAt,
-            sharedWith: t.sharedWith
-          }  
+          return Object.assign(t, {status:'squashed'})
         }
         return t
       })
@@ -59,11 +49,7 @@ export default buildReducer({
     return {
       timers: state.timers.map(t => {
         if (t.id === action.payload.pomodoroId){
-          return {
-            id: t.id, 
-            status: 'voided',
-            startedAt: t.startedAt
-          }  
+          return Object.assign(t, {status:'voided'})
         }
         return t
       })

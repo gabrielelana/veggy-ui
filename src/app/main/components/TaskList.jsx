@@ -2,8 +2,8 @@ import moment from 'moment'
 
 const centerTd = {textAlign: 'center'}
 
-const TaskList = props => {
-  const rows = props.timers.map(t => <TaskRow key={t.id} {...t} />)
+const TaskList = ({timers}) => {
+  const rows = timers.map(t => <TaskRow key={t.id} {...t} />)
   return (
     <div className="column is-one-third">
       <table className="table">

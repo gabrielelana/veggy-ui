@@ -1,9 +1,9 @@
-const createReducer = (reducer, projector = s => s) => {
-  reducer.project = projector
+const createReducer = (reducer, projectorFn = s => s) => {
+  reducer.project = projectorFn
   return reducer
 }
 
-const buildReducer = function(mapOrFn, projector = s => s){
+const buildReducer = function(mapOrFn, projectorFn = s => s){
   if (typeof(mapOrFn) === 'function'){
     return createReducer(mapOrFn)
   } 
@@ -13,7 +13,7 @@ const buildReducer = function(mapOrFn, projector = s => s){
     } 
     return state
   }
-  reducer.project = projector
+  reducer.project = projectorFn
   return reducer
 }
 

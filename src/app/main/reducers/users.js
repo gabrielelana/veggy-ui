@@ -14,7 +14,7 @@ export default buildReducer({
         if (u.userId === action.payload){
           return Object.assign(u, {selected: !u.selected}) 
         } 
-        return Object.assign(u)
+        return u
       })
     }
   }

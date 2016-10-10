@@ -12,33 +12,31 @@ function combineReducers(reducers, state, action){
   return newState
 }
 
-const Wrapper = (Container, reducers = [], initialState = {}) => class WrapperClass extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      childState: initialState
-    }
-  }
-  componentWillMount() {
-    const actions = actionStream.createStream() 
-    this.stream = xs.merge(ws.stream.map(wsa), actions)
-    this.listener = {
-      next: s => this.setState({childState: s}),
-      error: (err) => { console.log('err', err)},
-      complete: () => {},
-    }
+function Wrapper(InnerComponent, reducers = [], initialState = {}) {
+  return React.createClass({
+    getInitialState(){
+      return {childState: initialState}
+    },
+    componentWillMount() {
+      const actions = actionStream.createStream() 
+      this.stream = xs.merge(ws.createStream().map(wsa), actions)
+      this.listener = {
+        next: s => this.setState({childState: s}),
+        error: (err) => { console.log('err', err)},
+        complete: () => {},
+      }
 
-    this.stream
-      .map(s => combineReducers(reducers, this.state.childState, s))
-      .addListener(this.listener)
-  }
-  componentWillUnmount() {
-    this.stream.removeListener(this.listener)
-  }
-  
-  render() {
-    return <Container {...this.state.childState} {...this.props} />
-  }
+      this.stream
+        .map(s => combineReducers(reducers, this.state.childState, s))
+        .addListener(this.listener)
+    },
+    componentWillUnmount() {
+      this.stream.removeListener(this.listener)
+    },
+    render() {
+      return <InnerComponent {...this.state.childState} {...this.props} />
+    }
+  })
 }
 
 export default Wrapper
