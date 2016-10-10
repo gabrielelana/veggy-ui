@@ -24,10 +24,10 @@
   - Su lista ho pulsante per inviare il pomodoro al server
 - [x] Visualizzare su pagina sengale online/offline
 - [x] Verificare uso corretto delle promise
-- [ ] Creare file index.ejs per deploy
+- [x] Creare file index.ejs per deploy
 - [ ] La connessione al websocket andrebbe fatta sulla callback della post al login
 - [ ] FIX: Warning: setState(...): Can only update a mounted or mounting component. Sul passaggio da login a main.
-- [ ] Scrivere test di copertura
+- [x] Scrivere test di copertura
 - [x] Rimuovere pulsanti [start|stop]shared pomodoro 
   
 
@@ -59,12 +59,14 @@
   - Stream
   - Reducers
   - ....
-4) Elenco pomodori e utenti
+4) Login
+
+5) Elenco pomodori e utenti
   - Esercizio: elenco utenti e selezione utenti
 
-5) Shared pomodori
+6) Shared pomodori
 
-6) Offline pomodori
+7) Offline pomodori
 
 
 
