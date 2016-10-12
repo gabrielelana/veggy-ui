@@ -1,11 +1,12 @@
 import xs from 'xstream'
+import wsa from './webSocketActions'
 import settings from 'settings'
 
 let heartBeat = null
 let connection = null
 
 function createStream(){
-  return xs.create({
+  const stream = xs.create({
     start: listener => {
       connection = new WebSocket(settings.wsHost)
       connection.onopen = () => { 
@@ -26,6 +27,7 @@ function createStream(){
       connection.close()
     },
   })
+  return stream.map(wsa)
 }
 
 function sendCommand(cmd){
