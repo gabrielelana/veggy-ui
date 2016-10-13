@@ -1,72 +1,83 @@
-#Code Jam - Veggy UI
+Code Jam - Veggy UI
+===
 
-###TODO
-- [x] Get elenco pomodori fatti 
-- [x] Get elenco
-- [x] FIX: error bar viene visualizzata ad-cazzum
-- [x] Sul main, se non c'e' nello storage il login fa redirect su login
-- [x] Separare i reducer nei 2 moduli (login, main)
-- [x] Rename ErrorBar
-- [x] Create oggetto per invio centralizzato dei comandi 
-- [x] Trasformare i componenti stateless in funzioni
-- [x] Gestire 404 su chiamata latest-pomodoro
-- [x] Gestione pomodoroVoided
-- [x] Togliere me stesso dalla lista degli utenti con cui sharo il pomodoro 
-- [x] Aggiungere pomodoro a lista task non appena avviato
-- [x] Aggiungere global settings per env
-- [x] StartSharedPomodoro con payload timerIds degli utenti coinvolti
-- [x] Aggiungere gestione voidedPomodoro per gestione errori
-- [x] Quando ricevo un messaggio StartSharedPomodoro devo mostrare con chi lo sto facendo (attendo API)
-- [x] Gestione pomodori offline
-  - Se l'utente e' online l'ownership del pomodoro e' sul server e se l'utente va offline puo' solo aspettare che finisca il pomodoro
-  - Se l'utente e' offline l'ownership del pomodoro e' del client e quando ha finito il pomodoro e si e' riconesso invia al server il log dei pomodori fatti
-  - Su avvia pomodoro offline aggiungo a lista e faccio partire
-  - Su lista ho pulsante per inviare il pomodoro al server
-- [x] Visualizzare su pagina sengale online/offline
-- [x] Verificare uso corretto delle promise
-- [x] Creare file index.ejs per deploy
-- [ ] La connessione al websocket andrebbe fatta sulla callback della post al login
-- [ ] FIX: Warning: setState(...): Can only update a mounted or mounting component. Sul passaggio da login a main.
-- [x] Scrivere test di copertura
-- [x] Rimuovere pulsanti [start|stop]shared pomodoro 
-  
+**Schedule**
+--
 
+*DAY-1*
 
-##Discuss
-- Quando si collega un nuovo utente va inviato un evento
+- INTRODUCTION [GL] [2P] [9:00-10:00]
+- WALKING-SKELETON SERVER [GL] [2P] [10:00-11:00]
+- BREAK ~20'
+- START-SQUASH-POMODORO SERVER [GL] [4P] [11:00-13:00]
+- LUNCH ~60'
+- WALKING-SKELETON CLIENT [EDB] [2P] [14:00-15:00]
+    - `start-here`
+    - Show build environment
+    - React Hello test
+    - `work-on-ping`
+    - React Ping test
+    - React implementation of Ping + listening on WS (works with the server)
+    - at the end we have a complete React environment ready to be used
+    - `ping`
+- START-POMODORO CLIENT [EDB] [4P+BREAK] [15:00-17:00]
+    - `work-on-start-pomodoro`
+    - first implementation with full state management inside the component
+    - `start-pomodoro`
+    - refactoring to extract the component state (start but maybe jump to the end)
+    - `start-pomodoro-flux`
+- SQUASH-POMODORO CLIENT [EDB] [2P] [17:00-18:00]
+    - `start-pomodoro-flux`
+    - exercise
+    - `squash-pomodoro`
 
+*DAY-2*
 
-##Steps
-1) Scheletro infrastrtuttura. 
-  - packages
-  - webpack (solo dev)
-  - eslint
-  - Router
-  - React hello world (da scrivere)
-  - Sass
-  - Babel
-  - fonts
-  - tests
+- Q&A [1P] [9:00-9:30]
+- LOGIN SERVER [2P] [GL] [9:30-10:30]
+- LOGIN CLIENT [1P] [EDB] [10:30-11:00]
+    - `work-on-login`
+    - introduction of React router
+    - implement Login command
+    - store user informations
+    - redirect to main page
+    - `login`
+- BREAK ~20'
+- PROJECTION SERVER [GL] [2P] [11:00-12:00]
+- UI AND RESUCE CLIENT [EDB] [2P] [12:00-13:00]
+    - resume pomodoro from projection
+    - `resume`
+    - pomodoro list
+    - user list (exercise?)
+    - `projections`
+- LUNCH [13:00-14:00]
+- SHARED-POMODORI SERVER [GL] [2P] [14:00-15:00]
+- SHARE-POMODORI CLIENT [EDB] [2P] [15:00-16:00]
+    - `work-on-shared`
+    - `shared`
+- BREAK ~20'
+- TRACK-POMODORO-COMPLETED SERVER [GL] [2P] [16:00-17:00]
+- TRACK-POMODORO-COMPLETED/OFFLINE CLIENT [EDB] [2P] [17:00-18:00]
+    - `work-on-track`
+    - `track`
+- DEPLOY
+    - `master`
 
-2) Giro standard (Senza flux) di start pomodoro
-  - Esercizio: implementare squash
-
-3) Redux: via lo stato dal componente. Giro start/squash.
-  - Dummy vs smart
-  - Via lo stato
-  - Componenti funzione
-  - Wrapper
-  - Stream
-  - Reducers
-  - ....
-4) Login
-
-5) Elenco pomodori e utenti
-  - Esercizio: elenco utenti e selezione utenti
-
-6) Shared pomodori
-
-7) Offline pomodori
-
-
-
+**Branch order**
+- `start-here`
+- `work-on-ping`
+- `ping`
+- `work-on-start-pomodoro`
+- `start-pomodoro`
+- `start-pomodoro-flux`
+- `start-pomodoro-flux`
+- `squash-pomodoro`
+- `work-on-login`
+- `login`
+- `resume`
+- `projections`
+- `work-on-shared`
+- `shared`
+- `work-on-track`
+- `track`
+- `master`
