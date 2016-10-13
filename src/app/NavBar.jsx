@@ -1,6 +1,14 @@
 import React from 'react'
 
 const NavBar = React.createClass({
+
+  getInitialState(){
+    return {connectionStatusClass: 'fa fa-link'}
+  },
+  componentDidMount() {
+    window.addEventListener("offline", () => { this.setState({connectionStatusClass: 'fa fa-chain-broken'}) });
+    window.addEventListener("online", () => { this.setState({connectionStatusClass: 'fa fa-link'})});
+  },
   render(){
     return (
       <nav className="nav">
@@ -10,6 +18,11 @@ const NavBar = React.createClass({
           </a>
         </div>
         <div className="nav-right nav-menu">
+          <a className="nav-item" href="#">
+            <span className="icon">
+              <i className={this.state.connectionStatusClass} />
+            </span>
+          </a>  
           <a className="nav-item" href="#">
             <span className="icon">
               <i className="fa fa-user"></i>
