@@ -14,6 +14,14 @@ export default buildReducer({
   }, 
   'UPDATE_TIMER': (state, action) => {
     return {time: stringifyTime(action.payload.time), ticking: true}
+  },
+  'RESUME_TIMER': (state, action) => {
+    return {
+      time: stringifyTime(action.payload.time), 
+      timerId: action.payload.timerId,
+      pomodoroId: action.payload.pomodoroId,
+      ticking: true
+    }
   }
 })
 
