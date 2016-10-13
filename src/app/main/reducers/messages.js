@@ -13,6 +13,10 @@ export default buildReducer({
     message: 'Ouch! Your pomodoro has been interrupted', 
     messageType: 'warn' 
   }),
+  'POMODORO_VOIDED': () => ({ 
+    message: 'There was some problem with your pomorodo. Probably some other user squashed it.', 
+    messageType: 'warn' 
+  }),
   'CommandFailed': (state, action) => ({ 
     message: `There was an error: ${action.payload.why}`, 
     messageType: 'error' 
