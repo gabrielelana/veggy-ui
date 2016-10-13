@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
-import Hello from './Hello'
+import LayoutContainer from './main/components/LayoutContainer'
 
 require('../sass/style.scss')
 
-ReactDOM.render(<Hello />, document.getElementById('app'))
+ReactDOM.render(<LayoutContainer />, document.getElementById('app'))
