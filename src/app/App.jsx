@@ -1,6 +1,18 @@
+import React from 'react'
 import ReactDOM from 'react-dom'
-import LayoutContainer from './main/components/LayoutContainer'
+import Main from './main'
 
 require('../sass/style.scss')
 
-ReactDOM.render(<LayoutContainer />, document.getElementById('app'))
+export const App = React.createClass({
+  render() {
+    const children = React.cloneElement(this.props.children, { store: {} })
+    return (
+      <div>
+        {children}
+      </div>
+    )
+  }
+})
+
+ReactDOM.render(<Main /> , document.getElementById('app'))
