@@ -1,5 +1,6 @@
 require('babel-register')();
 var storage = require('./storage')
+var websocket = require('./websocket')
 var jsdom = require('jsdom').jsdom;
 
 var exposedProperties = ['window', 'navigator', 'document'];
@@ -10,6 +11,7 @@ global.document = jsdom('<!doctype html><html><body><div id="app"></div></body><
 })
 global.window = document.defaultView;
 storage(global.window)
+websocket(global.window)
 Object.keys(document.defaultView).forEach((property) => {
   if (typeof global[property] === 'undefined') {
     exposedProperties.push(property);
