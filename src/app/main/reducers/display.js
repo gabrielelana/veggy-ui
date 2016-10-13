@@ -4,13 +4,16 @@ import stringifyTime from '../actions/stringifyTime'
 
 export default buildReducer({
   'POMODORO_STARTED': (state, action) => {
-    return { timerId: action.payload.timerId, pomodoroId: action.payload.pomodoroId, ticking: true, isShared: (action.payload.sharedWith && action.payload.sharedWith.length > 0)}
+    return { pomodoroId: action.payload.pomodoroId, ticking: true }
   },
   'POMODORO_COMPLETED': () => {
-    return {time: stringifyTime(settings.duration), ticking: false}
+    return { time: stringifyTime(settings.duration), ticking: false }
   },
   'UPDATE_TIMER': (state, action) => {
-    return {time: stringifyTime(action.payload.time), ticking: true}
-  }
+    return { time: stringifyTime(action.payload.time), ticking: true }
+  },
+  'POMODORO_SQUASHED': () => {
+    return { time: stringifyTime(settings.duration), ticking: false }
+  }, 
 })
 

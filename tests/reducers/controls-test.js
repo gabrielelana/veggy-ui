@@ -8,4 +8,16 @@ describe('Controls reducers', () => {
     assert.isTrue(state.startDisabled)
     assert.isFalse(state.squashDisabled)
   })
+
+  it('POMODORO_SQUASHED should return buttons status', () => {
+    const state = controls({}, {type: 'POMODORO_SQUASHED'})
+    assert.isFalse(state.startDisabled)
+    assert.isTrue(state.squashDisabled)
+  })
+
+  it('POMODORO_COMPLETED should return buttons status', () => {
+    const state = controls({}, {type: 'POMODORO_COMPLETED'})
+    assert.isFalse(state.startDisabled)
+    assert.isTrue(state.squashDisabled)
+  })
 })

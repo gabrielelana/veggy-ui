@@ -22,6 +22,15 @@ function webSocketActions(data){
         pomodoroId: data.pomodoro_id
       }
     }  
+  case 'PomodoroSquashed':
+    pomodoroTicker.stop()
+    return { 
+      type: 'POMODORO_SQUASHED', 
+      payload: {
+        timerId: data.timer_id,
+        pomodoroId: data.pomodoro_id
+      }
+    }
   default: 
     return data
   }

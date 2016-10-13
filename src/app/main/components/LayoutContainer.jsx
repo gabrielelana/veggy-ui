@@ -9,6 +9,9 @@ const LayoutContainer = React.createClass({
   handleStart(){
     timerActions.startPomodoro()
   },
+  handleSquash(){
+    timerActions.squash(this.props.pomodoroId)
+  },
   render(){ 
     return (
       <div>
@@ -16,7 +19,7 @@ const LayoutContainer = React.createClass({
         <div className="container" style={{marginTop: '20px'}}>
           <div className="columns">
             <Display time={this.props.time} />
-            <Controls startDisabled={this.props.startDisabled} onStart={this.handleStart} />
+            <Controls startDisabled={this.props.startDisabled} squashDisabled={this.props.squashDisabled} onStart={this.handleStart} onSquash={this.handleSquash} />
           </div>
           <div className="columns">
             <MessageBar message={this.props.message} type={this.props.messageType} />

@@ -13,7 +13,7 @@ describe('<LayoutContainer />', () => {
   it('On StartPomodoro click should send a command', () => {
     var request = nock('http://localhost:4000').post('/commands').reply(201, { });
 
-    const component = mount(<LayoutContainer />)
+    const component = mount(<LayoutContainer users={[]} />)
     component.find('#startButton').simulate('click')
     assert.isTrue(request.isDone())
   })
@@ -23,7 +23,7 @@ describe('<LayoutContainer />', () => {
                     .post('/commands')
                     .reply(500, { });
 
-    const component = mount(<LayoutContainer />)
+    const component = mount(<LayoutContainer users={[]}/>)
     component.find('#startButton').simulate('click')
     setTimeout(() => { 
       assert.equal(component.find('.is-danger').length, 1)

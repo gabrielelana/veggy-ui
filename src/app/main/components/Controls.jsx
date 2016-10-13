@@ -5,6 +5,9 @@ const Controls = props => (
         <div className="control">
           <button id="startButton" disabled={props.startDisabled} onClick={props.onStart} className="button is-primary is-large">Start</button>
         </div>
+        <div className="control">
+          <button id="squashButton" disabled={props.squashDisabled} onClick={props.onSquash} className="button is-danger is-large">Squash</button>
+        </div>
       </div>
     </div>
   </div>
@@ -13,7 +16,9 @@ const Controls = props => (
 
 Controls.defaultProps = {
   startDisabled: false,
-  onStart: () => {}
+  squashDisabled: true,
+  onStart: () => {},
+  onSquash: () => {}
 }
 
 export default Controls

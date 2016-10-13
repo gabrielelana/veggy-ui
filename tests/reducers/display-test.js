@@ -4,21 +4,20 @@ const assert = require('chai').assert
 describe('Display reducers', () => {
   
   it('POMODORO_STARTED should return the timerId and pomodoroId', () => {
-    const actionPayload = { timerId: '123', pomodoroId: '456'}
+    const actionPayload = { pomodoroId: '456'}
     const state = display({}, {type: 'POMODORO_STARTED', payload: actionPayload})
-    assert.equal(state.timerId, '123')
     assert.equal(state.pomodoroId, '456')
     assert.isTrue(state.ticking)
   })
 
-  it('POMODORO_STARTED shared with others, isShared should be true', () => {
-    const actionPayload = { timerId: '123', pomodoroId: '456', sharedWith: ['foo']}
-    const state = display({}, {type: 'POMODORO_STARTED', payload: actionPayload})
-    assert.isTrue(state.isShared)
-  })
-
   it('POMODORO_COMPLETED should reset time', () => {
     const state = display({}, {type: 'POMODORO_COMPLETED', payload: {}})
+    assert.equal('25:00', state.time)
+    assert.isFalse(state.ticking)
+  })
+
+  it('POMODORO_SQUASHED should reset time', () => {
+    const state = display({}, {type: 'POMODORO_SQUASHED'})
     assert.equal('25:00', state.time)
     assert.isFalse(state.ticking)
   })
