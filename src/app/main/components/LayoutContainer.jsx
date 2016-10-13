@@ -3,19 +3,23 @@ import MessageBar from '../../MessageBar'
 import Display from './Display'
 import Controls from './Controls'
 import timerActions from '../actions/timerActions'
+import resumeActions from '../actions/resumeActions'
 import NavBar from '../../NavBar'
 
 const LayoutContainer = React.createClass({
+  componentWillMount() {
+    resumeActions.wireup()
+  },
   handleStart(){
-    timerActions.startPomodoro()
+    timerActions.startPomodoro(this.props.timerId, this.props.users)
   },
   handleSquash(){
-    timerActions.squash(this.props.pomodoroId)
+    timerActions.squash(this.props.timerId, this.props.pomodoroId, this.props.isShared)
   },
   render(){ 
     return (
       <div>
-        <NavBar username="username" />
+        <NavBar username={this.props.username} />
         <div className="container" style={{marginTop: '20px'}}>
           <div className="columns">
             <Display time={this.props.time} />

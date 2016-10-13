@@ -31,6 +31,25 @@ function webSocketActions(data){
         pomodoroId: data.pomodoro_id
       }
     }
+  case 'PomodoroVoided':
+    pomodoroTicker.stop()
+    return { 
+      type: 'POMODORO_VOIDED', 
+      payload: {
+        timerId: data.timer_id,
+        pomodoroId: data.pomodoro_id
+      }
+    }
+  case 'LoggedIn':
+    return { 
+      type: 'LOGGED_IN', 
+      payload: {
+        loggedIn: true, 
+        timerId: data.timer_id,
+        username: data.username, 
+        userId: data.user_id 
+      }
+    }
   default: 
     return data
   }

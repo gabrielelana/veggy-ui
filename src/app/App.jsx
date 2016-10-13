@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Main from './main'
+import {Route, Router, IndexRoute, hashHistory } from 'react-router'
 
 require('../sass/style.scss')
 
@@ -15,4 +15,11 @@ export const App = React.createClass({
   }
 })
 
-ReactDOM.render(<Main /> , document.getElementById('app'))
+ReactDOM.render((
+  <Router history={hashHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={require('./main')} />
+      <Route path="/login" component={require('./login')} />
+    </Route>
+  </Router>
+  ), document.getElementById('app'))
