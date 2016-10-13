@@ -3,11 +3,13 @@ import request from 'superagent'
 import Display from './Display'
 import Controls from './Controls'
 import stringifyTime from './stringifyTime'
-const duration = 25 * 60 * 1000
+
+const duration = 30 * 1000
+let timerId = null
 
 const LayoutContainer = React.createClass({
   getInitialState(){
-    return {time: '25:00', startDisabled: false}
+    return {time: stringifyTime(duration), startDisabled: false}
   },
   componentDidMount() {
     const ws = new WebSocket('ws://localhost:4000/ws')
@@ -18,11 +20,15 @@ const LayoutContainer = React.createClass({
       const data = JSON.parse(evt.data)
       if (data.event === 'PomodoroStarted') {
         this.ms = duration
-        setInterval(() => {
+        timerId = setInterval(() => {
           this.ms = this.ms - 1000
           this.setState({ time: stringifyTime(this.ms), duration: duration })
         }, 1000)
         this.setState({ startDisabled: true })
+      }
+      if (data.event === 'PomodoroCompleted') {
+        clearInterval(timerId)
+        this.setState({time: stringifyTime(duration), startDisabled: false})
       }
     }
   },
