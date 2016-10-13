@@ -7,7 +7,6 @@ Code Jam - Veggy UI
 - Print Schedule
 
 
-
 **Schedule**
 --
 
@@ -76,7 +75,6 @@ Code Jam - Veggy UI
 - `ping`
 - `work-on-start-pomodoro`
 - `start-pomodoro`
-- `start-pomodoro-flux`
 - `start-pomodoro-flux`
 - `squash-pomodoro`
 - `work-on-login`
