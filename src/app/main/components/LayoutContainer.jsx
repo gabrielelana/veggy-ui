@@ -4,7 +4,7 @@ import Display from './Display'
 import Controls from './Controls'
 import stringifyTime from './stringifyTime'
 
-const duration = 30 * 1000
+const duration = 60 * 1000  // 60 * 1000 * 25 
 let timerId = null
 
 const LayoutContainer = React.createClass({
