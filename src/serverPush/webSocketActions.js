@@ -9,8 +9,7 @@ function webSocketActions(data){
       type: 'POMODORO_STARTED', 
       payload: {
         timerId: data.timer_id,
-        pomodoroId: data.pomodoro_id,
-        sharedWith: data.shared_with
+        pomodoroId: data.pomodoro_id
       }
     }
   case 'PomodoroCompleted':
