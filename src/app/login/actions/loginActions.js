@@ -1,4 +1,3 @@
-import {hashHistory} from 'react-router'
 import actionStream from '../../../redux/actionStream'
 import sendCommand from '../../sendCommand'
 import ws from '../../../serverPush/webSocketStream'
@@ -12,7 +11,7 @@ const loginActions = {
   },
   redirect(username, timerId, userId){
     window.localStorage.setItem('veggy', JSON.stringify({username, timerId, userId}))
-    hashHistory.push({pathname: '/'})
+    window.location.href = '/'
   }
 }
  

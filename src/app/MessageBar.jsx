@@ -21,7 +21,6 @@ const MessageBar = React.createClass({
     if (props.message.length > 0){
       this.setState({show: true})
       setTimeout(() => {
-        console.log('DISMISSSS')
         actionStream.push({type: 'DISMISS_MESSAGE', payload: {}})
         this.setState({show: false})
       }, this.props.timeout)
