@@ -8,7 +8,6 @@ function webSocketActions(data){
     return { 
       type: 'POMODORO_STARTED', 
       payload: {
-        timerId: data.timer_id,
         pomodoroId: data.pomodoro_id
       }
     }
@@ -17,7 +16,6 @@ function webSocketActions(data){
     return { 
       type: 'POMODORO_COMPLETED', 
       payload: {
-        timerId: data.timer_id,
         pomodoroId: data.pomodoro_id
       }
     }  

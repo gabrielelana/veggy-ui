@@ -7,11 +7,10 @@ describe('timerActions', () => {
     const request = nock('http://localhost:4000')
                     .post('/commands', {
                       command: 'StartPomodoro', 
-                      duration: /\d+/, 
-                      timer_id: '123'
+                      duration: /\d+/
                     }).reply(201, { });   
 
-    timerActions.startPomodoro('123', [])
+    timerActions.startPomodoro()
     assert.isTrue(request.isDone())
   })
 })
