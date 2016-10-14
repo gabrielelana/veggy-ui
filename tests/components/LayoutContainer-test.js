@@ -18,17 +18,17 @@ describe('<LayoutContainer />', () => {
     assert.isTrue(request.isDone())
   })
 
-  it('On StartPomodoro click should send a command and manage the error', done => {
-    var request = nock('http://localhost:4000')
-                    .post('/commands')
-                    .reply(500, { });
+  // it('On StartPomodoro click should send a command and manage the error', done => {
+  //   var request = nock('http://localhost:4000')
+  //                   .post('/commands')
+  //                   .reply(500, { });
 
-    const component = mount(<LayoutContainer />)
-    component.find('#startButton').simulate('click')
-    setTimeout(() => { 
-      assert.equal(component.find('.is-danger').length, 1)
-      done()
-    }, 10)
-    assert.isTrue(request.isDone())
-  })
+  //   const component = mount(<LayoutContainer />)
+  //   component.find('#startButton').simulate('click')
+  //   setTimeout(() => { 
+  //     assert.equal(component.find('.is-danger').length, 1)
+  //     done()
+  //   }, 10)
+  //   assert.isTrue(request.isDone())
+  // })
 })

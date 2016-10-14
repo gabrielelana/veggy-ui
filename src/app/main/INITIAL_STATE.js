@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   timerId: null,
   pomodoroId: null,
   message: '',
+  messageType: '',
 }
 
 export default INITIAL_STATE
