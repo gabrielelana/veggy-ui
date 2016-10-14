@@ -2,11 +2,11 @@ import sendCommand from '../../sendCommand'
 import settings from 'settings'
 
 const timerActions = {
-  startPomodoro(timerId) {
-    sendCommand({command: 'StartPomodoro', duration: settings.duration, timer_id: timerId})
+  startPomodoro() {
+    sendCommand({command: 'StartPomodoro', duration: settings.duration})
   },
-  squash(timerId, pomodoroId) {
-    sendCommand({command: 'SquashPomodoro', timer_id: timerId, pomodoro_id: pomodoroId})
+  squash(pomodoroId) {
+    sendCommand({command: 'SquashPomodoro', pomodoro_id: pomodoroId})
   }
 }
 

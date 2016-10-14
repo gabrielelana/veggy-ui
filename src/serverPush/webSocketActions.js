@@ -8,9 +8,7 @@ function webSocketActions(data){
     return { 
       type: 'POMODORO_STARTED', 
       payload: {
-        timerId: data.timer_id,
-        pomodoroId: data.pomodoro_id,
-        sharedWith: data.shared_with
+        pomodoroId: data.pomodoro_id
       }
     }
   case 'PomodoroCompleted':
@@ -18,7 +16,6 @@ function webSocketActions(data){
     return { 
       type: 'POMODORO_COMPLETED', 
       payload: {
-        timerId: data.timer_id,
         pomodoroId: data.pomodoro_id
       }
     }  
@@ -27,7 +24,6 @@ function webSocketActions(data){
     return { 
       type: 'POMODORO_SQUASHED', 
       payload: {
-        timerId: data.timer_id,
         pomodoroId: data.pomodoro_id
       }
     }

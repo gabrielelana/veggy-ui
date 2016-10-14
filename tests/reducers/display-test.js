@@ -3,7 +3,7 @@ const assert = require('chai').assert
 
 describe('Display reducers', () => {
   
-  it('POMODORO_STARTED should return the timerId and pomodoroId', () => {
+  it('POMODORO_STARTED should return pomodoroId', () => {
     const actionPayload = { pomodoroId: '456'}
     const state = display({}, {type: 'POMODORO_STARTED', payload: actionPayload})
     assert.equal(state.pomodoroId, '456')
