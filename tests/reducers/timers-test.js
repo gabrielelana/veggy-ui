@@ -43,10 +43,9 @@ describe('Timers reducer', () => {
     assert.equal('squashed', state.timers[0].status)
   })
 
-  it('POMODORO_VOIDED should change the status of the pomodoro', () => {
+  it('POMODORO_VOIDED should reject the pomodoro', () => {
     const initialState = {timers: [{id: '1', startedAt: '2010-04-11 22:20'}], users: [{timerId: '1', username: 'ema'}, {timerId: '2', username: 'gabriele'}]}
     const state = timers(initialState, {type: 'POMODORO_VOIDED', payload: {pomodoroId: '1' }})
-    assert.equal(1, state.timers.length)
-    assert.equal('voided', state.timers[0].status)
+    assert.equal(0, state.timers.length)
   })
 })
