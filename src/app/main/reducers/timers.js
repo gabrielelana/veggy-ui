@@ -47,12 +47,7 @@ export default buildReducer({
   },
   'POMODORO_VOIDED': (state, action) => {
     return {
-      timers: state.timers.map(t => {
-        if (t.id === action.payload.pomodoroId){
-          return Object.assign(t, {status:'voided'})
-        }
-        return t
-      })
+      timers: state.timers.filter(t => t.id !== action.payload.pomodoroId)
     }
   }
 })
