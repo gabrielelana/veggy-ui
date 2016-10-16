@@ -1,12 +1,6 @@
 Code Jam - Veggy UI
 ===
 
-**TODO**
---
-- Print code snippets
-- Print Schedule
-
-
 **Schedule**
 --
 
