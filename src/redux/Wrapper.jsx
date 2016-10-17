@@ -5,8 +5,8 @@ import ws from '../serverPush/webSocketStream'
 
 function combineReducers(reducers, state, action){
   const newState = reducers.reduce((acc, r) => {
-    const projection = r.project(state)
-    return Object.assign(state, r(projection, action))  
+    const projection = r.project(acc)
+    return Object.assign({}, acc, r(projection, action))  
   }, state)
   return newState
 }
