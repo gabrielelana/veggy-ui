@@ -8,7 +8,6 @@ import actionStream from '../redux/actionStream'
 const offlineCommands = []
 
 export default function sendCommand(payload, cb) {
-  console.log('online', navigator.onLine && !isTicking())
   if (navigator.onLine && !isTicking()) {
     request
       .post(`${settings.host}/commands`)
