@@ -3,6 +3,7 @@ const reducers = [
   require('./controls'),
   require('./display'),
   require('./messages'),
+  require('./timers')
 ]
 
 export default reducers

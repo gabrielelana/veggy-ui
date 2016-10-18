@@ -32,12 +32,22 @@ function resumeTimer(userInfo){
     })
 }
 
+function getTasks(timerId){
+  const today = moment().format('YYYY-MM-DD')
+  request
+    .get(`${settings.host}/projections/pomodori-of-the-day?day=${today}&timer_id=${timerId}`)
+    .then(res => {
+      actionStream.push({type:'TIMERS_LOADED', payload: res.body})
+    })
+}
+
 const resumeActions = {
   wireup(){
     if (window.localStorage.getItem('veggy')) {
       const userInfo = JSON.parse(window.localStorage.getItem('veggy'))
       ws.sendCommand(`login:${userInfo.username}`)
       resumeTimer(userInfo)
+      getTasks(userInfo.timerId)
       actionStream.push({type: 'INIT', payload: userInfo})
     } else {
       hashHistory.push('/login')

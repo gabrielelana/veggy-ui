@@ -5,6 +5,7 @@ import Controls from './Controls'
 import timerActions from '../actions/timerActions'
 import resumeActions from '../actions/resumeActions'
 import NavBar from '../../NavBar'
+import TaskList from './TaskList'
 
 const LayoutContainer = React.createClass({
   componentWillMount() {
@@ -24,6 +25,9 @@ const LayoutContainer = React.createClass({
           <div className="columns">
             <Display time={this.props.time} />
             <Controls startDisabled={this.props.startDisabled} squashDisabled={this.props.squashDisabled} onStart={this.handleStart} onSquash={this.handleSquash} />
+          </div>
+          <div className="columns">
+            <TaskList timers={this.props.timers} />
           </div>
           <div className="columns">
             <MessageBar message={this.props.message} type={this.props.messageType} />
