@@ -37,7 +37,7 @@ const LoginContainer = React.createClass({
           </div>
         </div>
       </div>
-      )
+    )
   }
 })
 

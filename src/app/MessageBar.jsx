@@ -38,7 +38,7 @@ const MessageBar = React.createClass({
           {this.props.message}
         </div>
       </div>
-      )
+    )
   }
 })
 

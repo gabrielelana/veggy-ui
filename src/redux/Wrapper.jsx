@@ -1,6 +1,6 @@
 import React from 'react'
 import xs from 'xstream'
-import actionStream from './actionStream'
+import actions from './actionStream'
 import ws from '../serverPush/webSocketStream'
 
 function combineReducers(reducers, state, action){
@@ -14,27 +14,25 @@ function combineReducers(reducers, state, action){
 function Wrapper(InnerComponent, reducers = [], initialState = {}) {
   return React.createClass({
     getInitialState(){
-      return {childState: initialState}
+      return {innerState: initialState}
     },
     componentWillMount() {
-      const actions = actionStream.createStream()
+      const actionStream = actions.createStream()
       const wsStream = ws.createStream() 
-      this.stream = xs.merge(wsStream, actions)
+      this.stream = xs.merge(wsStream, actionStream)
       this.listener = {
-        next: s => this.setState({childState: s}),
-        error: (err) => { console.log('err', err)},
-        complete: () => {},
+        next: s => this.setState({innerState: s})
       }
 
       this.stream
-        .map(s => combineReducers(reducers, this.state.childState, s))
+        .map(action => combineReducers(reducers, this.state.innerState, action))
         .addListener(this.listener)
     },
     componentWillUnmount() {
       this.stream.removeListener(this.listener)
     },
     render() {
-      return <InnerComponent {...this.state.childState} {...this.props} />
+      return <InnerComponent {...this.state.innerState} {...this.props} />
     }
   })
 }

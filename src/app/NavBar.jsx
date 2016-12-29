@@ -31,7 +31,7 @@ const NavBar = React.createClass({
           </a>
         </div>
       </nav>
-      )
+    )
   }
 })
 

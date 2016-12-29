@@ -7,5 +7,6 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={require('./main')} />
     <Route path="/login" component={require('./login')} />
+    <Route path="/foo" component={require('./play')} />
   </Router>
   ), document.getElementById('app'))
