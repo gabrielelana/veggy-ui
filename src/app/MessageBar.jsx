@@ -27,7 +27,7 @@ const MessageBar = React.createClass({
     }
   },
   render(){ 
-    const displayStyle = {display:'none'}
+    const displayStyle = { display:'none' }
     if (this.state.show){
       displayStyle.display = 'block'
     }

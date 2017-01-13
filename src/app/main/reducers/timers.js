@@ -29,7 +29,7 @@ export default buildReducer({
     return {
       timers: state.timers.map(t => {
         if (t.id === action.payload.pomodoroId){
-          return Object.assign(t, {status: 'completed'})
+          return Object.assign({}, t, {status: 'completed'})
         }
         return t
       })
@@ -39,7 +39,7 @@ export default buildReducer({
     return {
       timers: state.timers.map(t => {
         if (t.id === action.payload.pomodoroId){
-          return Object.assign(t, {status:'squashed'})
+          return Object.assign({}, t, {status:'squashed'})
         }
         return t
       })

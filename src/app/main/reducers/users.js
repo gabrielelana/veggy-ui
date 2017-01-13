@@ -12,7 +12,7 @@ export default buildReducer({
     return {
       users: state.users.map(u => {
         if (u.userId === action.payload){
-          return Object.assign(u, {selected: !u.selected}) 
+          return Object.assign({}, u, {selected: !u.selected}) 
         } 
         return u
       })
