@@ -1,4 +1,4 @@
-import pomodoroTicker from '../app/main/actions/pomodoroTicker'
+import pomodoroTicker from './pomodoroTicker'
 import settings from 'settings'
 
 function webSocketActions(data){

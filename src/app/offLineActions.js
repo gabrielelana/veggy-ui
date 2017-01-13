@@ -1,4 +1,4 @@
-import webSocketActions from '../serverPush/webSocketActions'
+import webSocketActions from './main/actions/webSocketActions'
 import actionStream from '../redux/actionStream'
 import settings from 'settings'
 

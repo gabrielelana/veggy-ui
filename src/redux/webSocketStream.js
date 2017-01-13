@@ -1,5 +1,5 @@
 import xs from 'xstream'
-import wsa from './webSocketActions'
+import wsa from '../app/main/actions/webSocketActions'
 import settings from 'settings'
 
 let heartBeat = null

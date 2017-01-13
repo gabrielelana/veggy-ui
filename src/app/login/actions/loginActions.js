@@ -1,7 +1,7 @@
 //import {hashHistory} from 'react-router'
 import actionStream from '../../../redux/actionStream'
 import sendCommand from '../../sendCommand'
-import ws from '../../../serverPush/webSocketStream'
+import ws from '../../../redux/webSocketStream'
 
 const loginActions = {
   login(username) {

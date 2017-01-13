@@ -3,7 +3,7 @@ import {hashHistory} from 'react-router'
 import moment from 'moment'
 import settings from 'settings'
 import actionStream from '../../../redux/actionStream'
-import ws from '../../../serverPush/webSocketStream'
+import ws from '../../../redux/webSocketStream'
 import pomodoroTicker from './pomodoroTicker'
 
 function getUsers(){

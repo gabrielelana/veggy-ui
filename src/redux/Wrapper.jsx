@@ -1,7 +1,7 @@
 import React from 'react'
 import xs from 'xstream'
 import actions from './actionStream'
-import ws from '../serverPush/webSocketStream'
+import ws from './webSocketStream'
 
 function combineReducers(reducers, state, action){
   const newState = reducers.reduce((acc, r) => {
