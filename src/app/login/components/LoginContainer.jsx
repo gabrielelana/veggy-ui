@@ -6,15 +6,15 @@ import MessageBar from '../../MessageBar'
 import WaitingWidget from './WaitingWidget'
 
 
-const LoginContainer = React.createClass({
+class LoginContainer extends React.Component {
   handleLogin(){
     actions.login(this.refs.username.value)
-  },
+  }
   componentWillReceiveProps(props) {
     if (props.loggedIn){
       actions.redirect(props.username, props.timerId, props.userId)
     }
-  },
+  }
   render(){
     return (
       <div>
@@ -39,7 +39,7 @@ const LoginContainer = React.createClass({
       </div>
     )
   }
-})
+}
 
 
 

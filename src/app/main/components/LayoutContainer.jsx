@@ -9,20 +9,19 @@ import resumeActions from '../actions/resumeActions'
 import usersActions from '../actions/usersActions'
 import NavBar from '../../NavBar'
 
-
-const LayoutContainer = React.createClass({
+class LayoutContainer extends React.Component {
   componentWillMount() {
     resumeActions.wireup()
-  },
+  }
   handleStart(){
     timerActions.startPomodoro(this.props.timerId, this.props.users)
-  },
+  }
   handleSquash(){
     timerActions.squash(this.props.timerId, this.props.pomodoroId, this.props.isShared)
-  },
+  }
   handleToggleUser(user){
     usersActions.toggleSelectedUsers(user)
-  },
+  }
   render(){ 
     return (
       <div>
@@ -45,6 +44,6 @@ const LayoutContainer = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default LayoutContainer

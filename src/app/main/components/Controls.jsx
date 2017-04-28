@@ -1,6 +1,5 @@
 const Controls = ({startDisabled, squashDisabled, onStart, onSquash}) => (
   <div className="column">
-    <Modal />
     <div className="box">
       <div className="control is-grouped ">
         <div className="control">
@@ -15,7 +14,7 @@ const Controls = ({startDisabled, squashDisabled, onStart, onSquash}) => (
   </div>
 )
 
-
+/*
 const Modal = () => (
   <div className="modal is-active">
       <div className="modal-background"></div>
@@ -25,7 +24,7 @@ const Modal = () => (
           <button className="delete"></button>
         </header>
         <section className="modal-card-body">
-          Ciao
+          Ciao!!
         </section>
         <footer className="modal-card-foot">
           <a className="button is-primary">Save changes</a>
@@ -33,7 +32,7 @@ const Modal = () => (
         </footer>
       </div>
     </div>
-)
+)*/
 
 
 

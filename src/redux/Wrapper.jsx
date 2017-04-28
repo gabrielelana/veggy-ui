@@ -11,11 +11,13 @@ function combineReducers(reducers, state, action){
   return newState
 }
 
-function Wrapper(InnerComponent, reducers = [], initialState = {}) {
-  return React.createClass({
-    getInitialState(){
-      return {innerState: initialState}
-    },
+function WithState(InnerComponent, reducers = [], initialState = {}) {
+  return class withState extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = { innerState: initialState }
+    }
+
     componentWillMount() {
       const actionStream = actions.createStream()
       const wsStream = ws.createStream() 
@@ -27,14 +29,20 @@ function Wrapper(InnerComponent, reducers = [], initialState = {}) {
       this.stream
         .map(action => combineReducers(reducers, this.state.innerState, action))
         .addListener(this.listener)
-    },
+
+      // this.regId = dispatcher.register(action => {
+      //   const nextState = combineReducers(reducers, this.state.innerState, action)
+      //   this.setState({innerState: nextState})
+      // })
+    }
     componentWillUnmount() {
       this.stream.removeListener(this.listener)
-    },
+      // dispatcher.unregister(this.regId)
+    }
     render() {
       return <InnerComponent {...this.state.innerState} {...this.props} />
     }
-  })
+  }
 }
 
-export default Wrapper
+export default WithState

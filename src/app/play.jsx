@@ -18,7 +18,7 @@ const sink = {
   }
 }
 
-const Play = React.createClass({
+class Play extends React.Component {
   componentDidMount() {
     const what = 'calcutta'
     const s1 = xs
@@ -34,11 +34,10 @@ const Play = React.createClass({
     //   next: evt => console.log('>', evt)
     // })
     sink.run()
-  },
-  
+  }
   render(){
     return <div> Play </div>
   }
-})
+}
 
 export default Play

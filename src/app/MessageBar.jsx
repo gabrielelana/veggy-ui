@@ -10,13 +10,11 @@ function getTypeClass(type){
   return types[type]
 }
 
-const MessageBar = React.createClass({
-  getInitialState() {
-    return { show: false }
-  },
-  getDefaultProps() {
-    return { timeout: 4000, message: '' };
-  },
+class MessageBar extends React.Component {
+  constructor() {
+    super()
+    this.state = { show: false }
+  }
   componentWillReceiveProps(props) {
     if (props.message.length > 0){
       this.setState({show: true})
@@ -25,7 +23,7 @@ const MessageBar = React.createClass({
         this.setState({show: false})
       }, this.props.timeout)
     }
-  },
+  }
   render(){ 
     const displayStyle = { display:'none' }
     if (this.state.show){
@@ -40,6 +38,11 @@ const MessageBar = React.createClass({
       </div>
     )
   }
-})
+}
+
+MessageBar.defaultProps = {
+  timeout: 4000, 
+  message: ''
+}
 
 export default MessageBar
