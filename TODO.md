@@ -1,7 +1,7 @@
 ## Todo for V2 edition
 
 - [x] Update packages to latest versions
-- [ ] Update webpack (https://webpack.js.org/guides/migrating/)
+- [x] Update webpack (https://webpack.js.org/guides/migrating/)
 - [ ] Change history type (from hash to something better)
 - ~~[ ] More reactive with Rx.js (remove xstream)~~
 - [ ] Remove xstream. It's useless
