@@ -1,10 +1,13 @@
 import ReactDOM from 'react-dom'
-import {Route, Router } from 'react-router'
-import { createBrowserHistory } from 'history'
+// import {Route, Router } from 'react-router'
+// import { createBrowserHistory } from 'history'
+import Main from './main'
+//require('../sass/style.scss')
 
-require('../sass/style.scss')
 
-ReactDOM.render((
+ReactDOM.render(<Main />, document.getElementById('app'))
+
+/*ReactDOM.render((
   <Router history={createBrowserHistory()}>
     <div>
       <Route path="/" component={require('./main')} />
@@ -12,4 +15,4 @@ ReactDOM.render((
       <Route path="/foo" component={require('./play')} />
     </div>
   </Router>
-  ), document.getElementById('app'))
+  ), document.getElementById('app'))*/
