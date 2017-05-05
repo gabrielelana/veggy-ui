@@ -1,9 +1,9 @@
 ## Todo for V2 edition
-
+- [ ] Login on startup (as popup)
+- [ ] Add description to pomodoro
+- [ ] Generalize modal 
 - [x] Update packages to latest versions
 - [x] Update webpack (https://webpack.js.org/guides/migrating/)
-- [ ] Change history type (from hash to something better)
-- ~~[ ] More reactive with Rx.js (remove xstream)~~
 - [ ] Remove xstream. It's useless
 - [ ] Better use of INITIAL_STATE
 - [ ] Prepare some charts&diagrams to explain the global architecture

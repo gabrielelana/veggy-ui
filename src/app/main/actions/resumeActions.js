@@ -1,5 +1,4 @@
 import request from 'superagent'
-import {hashHistory} from 'react-router'
 import moment from 'moment'
 import settings from 'settings'
 import actionStream from '../../../redux/actionStream'
@@ -58,7 +57,7 @@ const resumeActions = {
       resumeTimer(userInfo)
       actionStream.push({type: 'INIT', payload: userInfo})
     } else {
-      hashHistory.push('/login')
+      actionStream.push({type: 'NEED_LOGIN', payload: {}})
     }
   }
 }

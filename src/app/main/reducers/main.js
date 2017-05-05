@@ -8,6 +8,9 @@ export default buildReducer({
       isLoggedIn: true,
       timerId: action.payload.timerId
     }
+  },
+  'NEED_LOGIN': () => {
+    return {needLogin: true}
   }
 })
 

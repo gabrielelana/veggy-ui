@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom'
-// import {Route, Router } from 'react-router'
-// import { createBrowserHistory } from 'history'
+//import {Route, Router } from 'react-router'
+//import { createBrowserHistory } from 'history'
 import Main from './main'
-//require('../sass/style.scss')
+require('../sass/style.scss')
 
 
 ReactDOM.render(<Main />, document.getElementById('app'))

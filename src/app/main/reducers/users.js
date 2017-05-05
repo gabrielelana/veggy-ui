@@ -17,5 +17,12 @@ export default buildReducer({
         return u
       })
     }
-  }
+  },
+  'LOGGED_IN': (state, action) => {
+    window.localStorage.setItem('veggy', JSON.stringify({username: action.payload.username, timerId: action.payload.timerId, userId: action.payload.userId}))
+    return {needLogin: false, username: action.payload.username}
+  },
+  'WAIT_FOR_LOGIN': () => {
+    return { waitingForLogin: true }
+  },
 })
