@@ -1,5 +1,5 @@
 ## Todo for V2 edition
-- [ ] Login on startup (as popup)
+- [x] Login on startup (as popup)
 - [ ] Add description to pomodoro
 - [ ] Generalize modal 
 - [x] Update packages to latest versions
