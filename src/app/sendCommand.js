@@ -3,7 +3,7 @@ import settings from 'settings'
 import R from 'ramda'
 import moment from 'moment'
 import {startOffLinePomodoro, squashOffLinePomodoro, isTicking} from './offLineActions'
-import actionStream from '../redux/actionStream'
+import dispatcher from '../redux/dispatcher'
 
 const offlineCommands = []
 
@@ -15,7 +15,7 @@ export default function sendCommand(payload, cb) {
       .send(payload)
       .end((err, res) => {
         if (err){
-          actionStream.push({type: 'API_ERROR', payload: err})
+          dispatcher.dispatch({type: 'API_ERROR', payload: err})
         } 
         if (typeof(cb) === 'function'){
           cb(err, res)

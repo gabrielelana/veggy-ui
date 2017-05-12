@@ -1,4 +1,20 @@
-const Dispatcher = require('flux').Dispatcher;
-const dispatcher = new Dispatcher();
+const subscribers = new Map()
+
+const dispatcher = {
+  register(subscriber) {
+    const sid = `s_${subscribers.size + 1}`
+    subscribers.set(sid, subscriber)
+    return sid
+  },
+  unregister(sid) {
+    subscribers.delete(sid)
+  },
+  dispatch(action) {
+    subscribers.forEach(s => s(action))
+  }
+}
+
+
+
 
 module.exports = dispatcher;

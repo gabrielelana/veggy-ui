@@ -4,7 +4,7 @@
 - [x] Generalize modal 
 - [x] Update packages to latest versions
 - [x] Update webpack (https://webpack.js.org/guides/migrating/)
-- [ ] Remove xstream. It's useless
+- [x] Remove xstream. It's useless
 - [ ] Better use of INITIAL_STATE
 - [ ] Prepare some charts&diagrams to explain the global architecture
 - [ ] More tests

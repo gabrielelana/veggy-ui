@@ -1,5 +1,5 @@
 import React from 'react'
-import actionStream from '../redux/actionStream'
+import dispatcher from '../redux/dispatcher'
 
 const types = {
   info: 'notification is-success',
@@ -19,7 +19,7 @@ class MessageBar extends React.Component {
     if (props.message.length > 0){
       this.setState({show: true})
       setTimeout(() => {
-        actionStream.push({type: 'DISMISS_MESSAGE', payload: {}})
+        dispatcher.dispatch({type: 'DISMISS_MESSAGE', payload: {}})
         this.setState({show: false})
       }, this.props.timeout)
     }

@@ -21,8 +21,7 @@
     "ramda": "0.23.0",
     "react": "15.5.4",
     "react-dom": "15.5.4",
-    "superagent": "3.5.2",
-    "xstream": "10.7.0"
+    "superagent": "3.5.2"
   },
   "devDependencies": {
     "babel-core": "6.24.1",

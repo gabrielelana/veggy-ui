@@ -4,6 +4,5 @@ module.exports = [
   'prop-types', 
   'superagent', 
   'ramda', 
-  'xstream', 
   'moment', 
   'bulma']
