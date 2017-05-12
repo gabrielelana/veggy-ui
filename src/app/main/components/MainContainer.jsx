@@ -9,37 +9,52 @@ import resumeActions from '../actions/resumeActions'
 import usersActions from '../actions/usersActions'
 import NavBar from '../../NavBar'
 import LoginModal from './LoginModal'
+import actionStream from '../../../redux/actionStream'
 
 class MainContainer extends React.Component {
   constructor(props){
     super(props)
     this.handleLogin = this.handleLogin.bind(this)
+    this.handleCancelStart = this.handleCancelStart.bind(this)
+    this.handleStart = this.handleStart.bind(this)
+    this.handleStartRequest = this.handleStartRequest.bind(this)
+    this.handleSquash = this.handleSquash.bind(this)
   }
   componentWillMount() {
     resumeActions.wireup()
   }
-  handleStart(){
-    timerActions.startPomodoro(this.props.timerId, this.props.users)
+  handleStart(description) {
+    timerActions.startPomodoro(this.props.timerId, this.props.users, description)
   }
-  handleSquash(){
+  handleStartRequest(){
+    actionStream.push({type: 'START_REQUESTED', payload: {}})
+  }
+  handleSquash() {
     timerActions.squash(this.props.timerId, this.props.pomodoroId, this.props.isShared)
   }
-  handleToggleUser(user){
+  handleToggleUser(user) {
     usersActions.toggleSelectedUsers(user)
   }
-  handleLogin(username){
+  handleLogin(username) {
     usersActions.login(username)
   }
+  handleCancelStart() {
+    actionStream.push({type: 'START_CANCELED', payload: {}})
+  }
   render(){ 
-
     return (
       <div>
+        <DescriptionModal isActive={this.props.needDescription} onStart={this.handleStart} onCancel={this.handleCancelStart} />
         <LoginModal isActive={this.props.needLogin} onLogin={this.handleLogin} waiting={this.props.waitingForLogin}/>
         <NavBar username={this.props.username} />
         <div className="container" style={{marginTop: '20px'}}>
           <div className="columns">
             <Display time={this.props.time} isShared={this.props.isShared} />
-            <Controls startDisabled={this.props.startDisabled} squashDisabled={this.props.squashDisabled} onStart={this.handleStart} onSquash={this.handleSquash} />
+            <Controls 
+              startDisabled={this.props.startDisabled} 
+              squashDisabled={this.props.squashDisabled} 
+              onStart={this.handleStartRequest} 
+              onSquash={this.handleSquash} />
           </div>
           <div className="columns">
             <TaskList timers={this.props.timers}/>
@@ -57,4 +72,29 @@ class MainContainer extends React.Component {
 }
 
 export default MainContainer
+
+import Modal from './Modal'
+
+class DescriptionModal extends React.Component {
+  constructor(props) { 
+    super(props)
+    this.handleOkClick = this.handleOkClick.bind(this)
+  }
+  handleOkClick() {
+    const description = this.refs.description.value
+    this.props.onStart(description)
+  }
+  render(){
+    return (
+      <Modal isActive={this.props.isActive} okBtnLabel="Start" cancelBtnLabel="Cancel" onOkClick={this.handleOkClick} onCancelClick={this.props.onCancel}>
+        <div className="field">
+          <label className="label">Pomodoro description</label>
+          <p className="control">
+            <textarea ref="description" className="textarea" placeholder="What are you doing?"></textarea>
+          </p>
+        </div>
+      </Modal>
+    )
+  }
+}
 

@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-    devtool: 'cheap-eval-source-map',  
+    devtool: 'source-map',  
     entry: {
       app: path.resolve(__dirname, 'src/app/App.jsx'),
       vendor: require('./vendor-lib')

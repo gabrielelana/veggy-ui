@@ -9,8 +9,9 @@ export default buildReducer({
       timerId: action.payload.timerId
     }
   },
-  'NEED_LOGIN': () => {
-    return {needLogin: true}
-  }
+  'NEED_LOGIN': () => { return {needLogin: true}},
+  'START_REQUESTED': () => { return { needDescription: true}},
+  'START_CANCELED': () => { return { needDescription: false }},
+  'POMODORO_STARTED': () => { return { needDescription: false }},
 })
 

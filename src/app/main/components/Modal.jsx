@@ -4,7 +4,7 @@ class Modal extends React.Component {
   render() {
     let cancelButton = null
     if (this.props.onCancelClick) {
-      cancelButton = <a class="button">{this.props.cancelLabel}</a>
+      cancelButton = <a className="button" onClick={this.props.onCancelClick}>{this.props.cancelBtnLabel}</a>
     }
     return (
       <div className={`modal ${this.props.isActive?'is-active':''}`}>

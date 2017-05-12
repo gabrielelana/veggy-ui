@@ -10,7 +10,8 @@ export default buildReducer({
           id: t.pomodoro_id, 
           status: t.status, 
           startedAt: t.started_at,
-          sharedWith: findShares(state.users||[], t.shared_with)
+          sharedWith: findShares(state.users||[], t.shared_with),
+          description: t.description
         }
       })
     }

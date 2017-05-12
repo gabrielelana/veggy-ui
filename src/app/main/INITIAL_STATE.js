@@ -13,7 +13,9 @@ const INITIAL_STATE = {
   pomodoroId: null,
   message: '',
   timers: [],
-  users: []
+  users: [],
+  needLogin: false,
+  needDescription: false
 }
 
 export default INITIAL_STATE
