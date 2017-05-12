@@ -6,5 +6,4 @@ module.exports = [
   'ramda', 
   'xstream', 
   'moment', 
-  'history',
   'bulma']
