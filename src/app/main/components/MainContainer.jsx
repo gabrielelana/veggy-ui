@@ -9,6 +9,7 @@ import resumeActions from '../actions/resumeActions'
 import usersActions from '../actions/usersActions'
 import NavBar from '../../NavBar'
 import LoginModal from './LoginModal'
+import DescriptionModal from './DescriptionModal'
 import actionStream from '../../../redux/actionStream'
 
 class MainContainer extends React.Component {
@@ -72,29 +73,3 @@ class MainContainer extends React.Component {
 }
 
 export default MainContainer
-
-import Modal from './Modal'
-
-class DescriptionModal extends React.Component {
-  constructor(props) { 
-    super(props)
-    this.handleOkClick = this.handleOkClick.bind(this)
-  }
-  handleOkClick() {
-    const description = this.refs.description.value
-    this.props.onStart(description)
-  }
-  render(){
-    return (
-      <Modal isActive={this.props.isActive} okBtnLabel="Start" cancelBtnLabel="Cancel" onOkClick={this.handleOkClick} onCancelClick={this.props.onCancel}>
-        <div className="field">
-          <label className="label">Pomodoro description</label>
-          <p className="control">
-            <textarea ref="description" className="textarea" placeholder="What are you doing?"></textarea>
-          </p>
-        </div>
-      </Modal>
-    )
-  }
-}
-

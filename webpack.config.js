@@ -42,14 +42,9 @@ module.exports = {
         {test: /\.html$/, use: [{loader: 'file-loader?name=[name].[ext]'}]},
         {test: /\.css$/, use: [{loader: 'style-loader!css?sourceMap'}]},
         {test: /\.jsx?$/, use: [{loader: 'babel-loader'}]},
-        {test: /\.s[ac]ss$/, use: ["style-loader", "css-loader?sourceMap=true&root=../", "sass-loader?sourceMap=true&root=../"]},
-        {test: /\.otf?$/, use: [{loader: "url-loader?limit=10000&mimetype=application/octet-stream" }]},
-        {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, use: [{loader: "url-loader?limit=10000&mimetype=application/octet-stream" }]},
-        {test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader?name=fonts/[name].[ext]'}
-        // {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: [{loader: "url?limit=10000&mimetype=application/font-woff" }]},
-        // {test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: [{loader: "file" }]},
-        // {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: [{loader: "url?limit=10000&mimetype=image/svg+xml" }]},
-        // {test: /\.(png|jpg|jpeg|gif|woff)$/, use: [{loader: "url?limit=10000" }]}
+        {test: /\.s[ac]ss$/, use: ['style-loader', 'css-loader?sourceMap=true&root=../', 'sass-loader?sourceMap=true&root=../']},
+        {test: /\.otf?$/, use: [{loader: 'url-loader?limit=10000&mimetype=application/octet-stream' }]},
+        {test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, use: [{loader: 'file-loader', options: {name: 'fonts/[name].[ext]'}}]},
       ]
     }
 };
