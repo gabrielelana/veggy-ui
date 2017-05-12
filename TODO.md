@@ -5,6 +5,8 @@
 - [x] Update packages to latest versions
 - [x] Update webpack (https://webpack.js.org/guides/migrating/)
 - [x] Remove xstream. It's useless
+- [ ] Uniform action naming style with server
+- [ ] Add default props to variuos 'general purpose' components
 - [ ] Better use of INITIAL_STATE
 - [ ] Prepare some charts&diagrams to explain the global architecture
 - [ ] More tests
