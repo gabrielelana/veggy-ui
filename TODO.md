@@ -1,7 +1,7 @@
 ## Todo for V2 edition
 - [x] Login on startup (as popup)
-- [ ] Add description to pomodoro
-- [ ] Generalize modal 
+- [x] Add description to pomodoro
+- [x] Generalize modal 
 - [x] Update packages to latest versions
 - [x] Update webpack (https://webpack.js.org/guides/migrating/)
 - [ ] Remove xstream. It's useless
