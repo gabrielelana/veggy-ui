@@ -18,4 +18,4 @@
 - [ ] Refactoring `TimerActions` (lines 7,8,9 portare fuori dal metodo)
 - [ ] Ripassare i reducer per vedere quali prop dello stato servono e quali no (es. `isLoggedIn`)
 - [x] Check uso `Object.assign` il primo parametro deve essere `{}`
-- [ ] Spostare contenuto cartella `serverPush` in redux
+- [x] Spostare contenuto cartella `serverPush` in redux
