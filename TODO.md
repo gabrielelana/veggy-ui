@@ -19,3 +19,8 @@
 - [ ] Ripassare i reducer per vedere quali prop dello stato servono e quali no (es. `isLoggedIn`)
 - [x] Check uso `Object.assign` il primo parametro deve essere `{}`
 - [x] Spostare contenuto cartella `serverPush` in redux
+
+## Questions for Gabriele
+- /latest-pomodori should return the descriptions 
+- Can we change the events naming style? (something like `POMODORO_STARTED`)
+
