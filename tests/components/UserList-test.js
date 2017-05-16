@@ -1,7 +1,6 @@
 const React = require('react')
 const mount = require('enzyme').mount
 const UserList = require('../../src/app/main/components/UserList')
-const assert = require('chai').assert
 
 describe('<UserList />', () => {
   
@@ -17,6 +16,6 @@ describe('<UserList />', () => {
     }]
     const component = mount(<UserList users={users} />)
     const rows = component.find('a.panel-block')
-    assert.equal(2, rows.length)
+    expect(2).toEqual(rows.length)
   })
 })

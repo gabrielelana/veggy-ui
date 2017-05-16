@@ -5,7 +5,6 @@ var mount = require('enzyme').mount
 var LayoutContainer = require('../../src/app/main/components/LayoutContainer')
 var Controls = require('../../src/app/main/components/Controls')
 var sinon = require('sinon')
-var assert = require('chai').assert
 var nock = require('nock');
 
 describe('<LayoutContainer />', () => {
@@ -15,7 +14,7 @@ describe('<LayoutContainer />', () => {
 
     const component = mount(<LayoutContainer users={[]} />)
     component.find('#startButton').simulate('click')
-    assert.isTrue(request.isDone())
+    expect(request.isDone()).toBe(true)
   })
 
   it('On StartPomodoro click should send a command and manage the error', done => {
@@ -26,9 +25,9 @@ describe('<LayoutContainer />', () => {
     const component = mount(<LayoutContainer users={[]}/>)
     component.find('#startButton').simulate('click')
     setTimeout(() => { 
-      assert.equal(component.find('.is-danger').length, 1)
+      expect(component.find('.is-danger').length).toEqual(1)
       done()
     }, 10)
-    assert.isTrue(request.isDone())
+    expect(request.isDone()).toBe(true)
   })
 })

@@ -1,9 +1,7 @@
 import usersActions from '../../src/app/main/actions/usersActions'
-import actionStream from '../../src/redux/actionStream'
-import {assert} from 'chai'
 
 describe('usersActions', () => {
-  it('toggleSelectedUsers should push an event on the stream', done => {
+  test('toggleSelectedUsers should push an event on the stream', () => {
   //  const stream = actionStream.createStream()
   //   var isDone = false
   //   const listener = stream.addListener({

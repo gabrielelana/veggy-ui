@@ -1,9 +1,8 @@
 import timerActions from '../../src/app/main/actions/timerActions'
-import {assert} from 'chai'
 import nock from 'nock'
 
 describe('timerActions', () => {
-  it('startPomodoro should send a command', () => {
+  test('startPomodoro should send a command', () => {
     const request = nock('http://localhost:4000')
                     .post('/commands', {
                       command: 'StartPomodoro', 
@@ -12,10 +11,10 @@ describe('timerActions', () => {
                     }).reply(201, { });   
 
     timerActions.startPomodoro('123', [])
-    assert.isTrue(request.isDone())
+    expect(request.isDone()).toBe(true)
   })
 
-  it('squashPomodoro should send a command', () => {
+  test('squashPomodoro should send a command', () => {
     const request = nock('http://localhost:4000')
                     .post('/commands', {
                       command: 'SquashPomodoro', 
@@ -24,10 +23,10 @@ describe('timerActions', () => {
                     }).reply(201, { });   
 
     timerActions.squash('123', '456')
-    assert.isTrue(request.isDone())
+    expect(request.isDone()).toBe(true)
   })
 
-  it('startPomodoro with users should send a StartSharedPomodoro command', () => {
+  test('startPomodoro with users should send a StartSharedPomodoro command', () => {
     const request = nock('http://localhost:4000')
                     .post('/commands', {
                       command: 'StartSharedPomodoro',
@@ -37,6 +36,6 @@ describe('timerActions', () => {
                     }).reply(201, { });   
 
     timerActions.startPomodoro('123', [{timerId:'456', selected: true}, {timerId:'789', selected: true}])
-    assert.isTrue(request.isDone())
+    expect(request.isDone()).toBe(true)
   })
 })

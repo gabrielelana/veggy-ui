@@ -1,6 +1,5 @@
 var R = require('ramda')
 var users = require('../../src/app/main/reducers/users')
-var assert = require('chai').assert
 
 
 describe('Users reducer', () => {
@@ -12,8 +11,8 @@ describe('Users reducer', () => {
       {user_id: '3', name: 'ste'},
       {user_id: '4', name: 'mel'},
     ]})
-    assert.equal(3, state.users.length)
-    assert.isUndefined(state.users.find(u => u.userId === '1'))
+    expect(3).toEqual(state.users.length)
+    expect(state.users.find(u => u.userId === '1')).not.toBeDefined()
   })
 
   it('SELECTED_USERS_CHANGED should change selected attribute', () => {
@@ -26,7 +25,7 @@ describe('Users reducer', () => {
       ]}
     const state = users(initialState, {type: 'SELECTED_USERS_CHANGED', payload: '2'})
     const user2 = state.users.find(u => u.userId === '2')
-    assert.isTrue(user2.selected)
+    expect(user2.selected).toBe(true)
   })
 
 })
