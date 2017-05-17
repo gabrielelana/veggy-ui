@@ -16,11 +16,7 @@ exports[`<TaskList /> should display the tasks 1`] = `
           Shared
         </th>
         <th
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
+          className="centered"
         >
           Status
         </th>
@@ -33,11 +29,7 @@ exports[`<TaskList /> should display the tasks 1`] = `
         </td>
         <td />
         <td
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
+          className="centered"
         >
           <span
             className="icon"
@@ -54,13 +46,15 @@ exports[`<TaskList /> should display the tasks 1`] = `
         </td>
         <td />
         <td
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
+          className="centered"
         >
-          <span />
+          <span
+            className="icon"
+          >
+            <i
+              className={undefined}
+            />
+          </span>
         </td>
       </tr>
     </tbody>
