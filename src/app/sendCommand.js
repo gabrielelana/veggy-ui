@@ -44,7 +44,7 @@ function manageOffLineCommands(payload) {
 
 window.addEventListener("online", sendIfNotTicking)
 
-function sendIfNotTicking(){
+function sendIfNotTicking() {
   if (isTicking()) {
     setTimeout(sendIfNotTicking, 5000)
   } else {
@@ -52,7 +52,7 @@ function sendIfNotTicking(){
   } 
 }
 
-function sendOfflineCommands(){
+function sendOfflineCommands() {
   offlineCommands
     .filter(cmd => cmd.command === 'StartPomodoro')
     .forEach(cmd => {

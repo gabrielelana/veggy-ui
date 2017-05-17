@@ -59,9 +59,7 @@ class MainContainer extends React.Component {
           </div>
           <div className="columns">
             <TaskList timers={this.props.timers}/>
-            <UserList 
-              users={this.props.users} 
-              onToggleUser={this.handleToggleUser}/>
+            <UserList users={this.props.users} onToggleUser={this.handleToggleUser}/>
           </div>
           <div className="columns">
             <MessageBar message={this.props.message} type={this.props.messageType} />

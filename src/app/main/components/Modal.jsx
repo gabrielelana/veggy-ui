@@ -1,30 +1,40 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 
-class Modal extends React.Component {
-  render() {
-    let cancelButton = null
-    if (this.props.onCancelClick) {
-      cancelButton = <a className="button" onClick={this.props.onCancelClick}>{this.props.cancelBtnLabel}</a>
-    }
-    return (
-      <div className={`modal ${this.props.isActive?'is-active':''}`}>
-        <div className="modal-background"></div>
-        <div className="modal-card">
-          <header className="modal-card-head">
-            <p className="modal-card-title">{this.props.title}</p>
-          </header>
-          <section className="modal-card-body">
-            {this.props.children}
-          </section>
-          <footer className="modal-card-foot">
-            <a className="button is-success" onClick={this.props.onOkClick}>{this.props.okBtnLabel}</a>
-            {cancelButton}
-            <WaitingWidget show={this.props.waiting} />
-          </footer>
-        </div>
-      </div>
-    )
+function Modal(props) {
+  let cancelButton = null
+  if (props.onCancelClick) {
+    cancelButton = <a className="button" onClick={props.onCancelClick}>{props.cancelBtnLabel}</a>
   }
+  return (
+    <div className={`modal ${props.isActive?'is-active':''}`}>
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <p className="modal-card-title">{props.title}</p>
+        </header>
+        <section className="modal-card-body">
+          {props.children}
+        </section>
+        <footer className="modal-card-foot">
+          <a className="button is-success" onClick={props.onOkClick}>{props.okBtnLabel}</a>
+          {cancelButton}
+          <WaitingWidget show={props.waiting} />
+        </footer>
+      </div>
+    </div>
+  )
+}
+
+Modal.defaultProps = {
+  cancelBtnLabel: 'Cancel',
+  okBtnLabel: 'Ok',
+  title: '',
+  isActive: false,
+  waiting: false
+}
+
+Modal.propTypes = {
+  onOkClick: PropTypes.func.isRequired
 }
 
 function WaitingWidget({show}) {
