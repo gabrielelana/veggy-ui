@@ -8,7 +8,6 @@ describe('Display reducers', () => {
     const state = display({}, {type: Action.PomodoroStarted, payload: actionPayload})
     expect(state.timer_id).toBe('123')
     expect(state.pomodoro_id).toBe('456')
-    expect(state.ticking).toBeTruthy()
   })
 
   test('PomodoroStarted shared wtesth others, is_shared should be true', () => {
@@ -20,25 +19,21 @@ describe('Display reducers', () => {
   test('PomodoroCompleted should reset time', () => {
     const state = display({}, {type: Action.PomodoroCompleted, payload: {}})
     expect('25:00').toBe(state.time)
-    expect(state.ticking).toBeFalsy()
   })
 
   test('PomodoroSquashed should reset time', () => {
     const state = display({}, {type: Action.PomodoroSquashed})
     expect('25:00').toBe(state.time)
-    expect(state.ticking).toBeFalsy()
   })
 
   test('PomodoroVoided should reset time', () => {
     const state = display({}, {type: Action.PomodoroVoided})
     expect('25:00').toBe(state.time)
-    expect(state.ticking).toBeFalsy()
   })
 
   test('UpdateTimer should update the time', () => {
     const state = display({}, {type: Action.UpdateTimer, payload: {time: 930000}})
     expect('15:30').toBe(state.time)
-    expect(state.ticking).toBeTruthy()
   })
 
   test('ResumeTimer should return new timer status', () => {
@@ -46,7 +41,6 @@ describe('Display reducers', () => {
     expect('10:04').toBe(state.time)
     expect('123').toBe(state.timer_id)
     expect('456').toBe(state.pomodoro_id)
-    expect(state.ticking).toBeTruthy()
   })
 
 })

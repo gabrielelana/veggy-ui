@@ -1,7 +1,8 @@
+import R from 'ramda'
 import buildReducer from '../../../redux/buildReducer'
 import * as Action from '../action'
 
-const findShares = (users, shared_with) => users.filter(u => shared_with.indexOf(u.timer_id) > -1).map(u => u.username)
+const findShares = (users, shared_with) => R.compose(R.map(u => u.username), R.filter(u => R.contains(u.timer_id, shared_with)))(users)
 
 export default buildReducer({
   [Action.TimersLoaded]: (state, action) => { 

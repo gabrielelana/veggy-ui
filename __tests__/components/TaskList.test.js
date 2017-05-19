@@ -14,7 +14,6 @@ describe('<TaskList />', () => {
       id: 2,
       startedAt: '2010-04-11 22:20',
       shared_with: [],
-      status: 'ticking'
     }]
     const component = renderer.create(<TaskList timers={timers} />)
     expect(component.toJSON()).toMatchSnapshot()

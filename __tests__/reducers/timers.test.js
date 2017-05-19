@@ -4,7 +4,6 @@ import * as Action from '../../src/app/main/action'
 const payload = [
   {
     pomodoro_id: '1',
-    status: 'ticking',
     started_at: '2010-04-11 22:10',
     with: ['users/ema']
   },{
