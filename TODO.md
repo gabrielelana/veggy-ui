@@ -11,8 +11,8 @@
 - [ ] After login does not load data
 - [x] Togliere `webSocketActions`. Di fatto e' una mappa inutile.
 - [x] Refactoring `webSocketActions`: convertire a map e vedere se spostare le chiamate al timer
-- [ ] Ripassare i reducer per vedere quali prop dello stato servono e quali no (es. `isLoggedIn`)
-- [ ] Refactoring `ResumeActions` troppa roba e poco funzionale
+- [x] Ripassare i reducer per vedere quali prop dello stato servono e quali no (es. `isLoggedIn`)
+- [x] Refactoring `ResumeActions` troppa roba e poco funzionale
 - [x] Refactoring `MessageBar`, `NavBar` e altri in functions
 - [ ] Better use of INITIAL_STATE
 - [x] Refactoring `TimerActions` (lines 7,8,9 portare fuori dal metodo)

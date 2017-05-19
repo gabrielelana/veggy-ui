@@ -6,6 +6,12 @@ import ws from '../../../redux/webSocketStream'
 import pomodoroTicker from './pomodoroTicker'
 import * as Action from '../action'
 
+function getElapsed(time) {
+  const startedAt = moment(time)
+  const elapsed = settings.duration - moment().diff(startedAt)
+  return elapsed
+}
+
 function getUsers(){
   return request.get(`${settings.host}/projections/latest-pomodori`)
     .then(res => {
@@ -16,7 +22,7 @@ function getUsers(){
 
 function getTimers(userInfo){
   const today = moment().format('YYYY-MM-DD')
-  request.get(`${settings.host}/projections/pomodori-of-the-day?day=${today}&timer_id=${userInfo.timer_id}`)
+  return request.get(`${settings.host}/projections/pomodori-of-the-day?day=${today}&timer_id=${userInfo.timer_id}`)
     .then(res => {
       dispatcher.dispatch({type: Action.TimersLoaded, payload: res.body})
     })
@@ -24,22 +30,13 @@ function getTimers(userInfo){
 }
 
 function resumeTimer(userInfo){
-  request
+  return request
     .get(`${settings.host}/projections/latest-pomodoro?timer_id=${userInfo.timer_id}`)
     .then(res => {
       if (res.body.status === 'started'){
-        const startedAt = moment(res.body.started_at)
-        const elapsed = settings.duration - moment().diff(startedAt)
-        
+        const elapsed = getElapsed(res.body.started_at)
         pomodoroTicker.start(elapsed)
-        
-        dispatcher.dispatch({type: Action.ResumeTimer, payload: {
-          userInfo, 
-          time: elapsed,
-          timer_id: res.body.timer_id,
-          pomodoro_id: res.body.pomodoro_id,
-
-        }})
+        dispatcher.dispatch({type: Action.ResumeTimer, payload: { time: elapsed, timer_id: res.body.timer_id, pomodoro_id: res.body.pomodoro_id }})
       }
     })
     .catch(err => {
@@ -52,11 +49,9 @@ function resumeTimer(userInfo){
 const resumeActions = {
   wireup(){
     if (window.localStorage.getItem('veggy')) {
-      const userInfo = JSON.parse(window.localStorage.getItem('veggy'))
-      ws.sendCommand(`login:${userInfo.username}`)
-      getUsers().then(getTimers(userInfo))
-      resumeTimer(userInfo)
-      dispatcher.dispatch({type: Action.Init, payload: userInfo})
+      const user = JSON.parse(window.localStorage.getItem('veggy'))
+      ws.sendCommand(`login:${user.username}`)
+      Promise.all([ getUsers(), getTimers(user), resumeTimer(user)]).then(() => dispatcher.dispatch({type: Action.Init, payload: user}))      
     } else {
       dispatcher.dispatch({type: Action.NeedLogin, payload: {}})
     }
