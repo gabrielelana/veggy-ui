@@ -4,18 +4,17 @@ import stringifyTime from './actions/stringifyTime'
 const INITIAL_STATE = { 
   user_id: 'fake-user',
   username: 'fake-user',
-  isLoggedIn: false,
-  isShared: false,
-  startDisabled: false, 
-  squashDisabled: true,
+  is_shared: false,
+  start_disabled: false, 
+  squash_disabled: true,
   time: stringifyTime(settings.duration),
   timer_id: null,
   pomodoro_id: null,
   message: '',
   timers: [],
   users: [],
-  needLogin: false,
-  needDescription: false
+  need_login: false,
+  need_description: false
 }
 
 export default INITIAL_STATE

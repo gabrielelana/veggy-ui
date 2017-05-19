@@ -8,7 +8,6 @@ describe('Main reducer', () => {
     expect('users/ema').toEqual(state.user_id)
     expect('ema').toEqual(state.username)
     expect('123').toEqual(state.timer_id)
-    expect(state.isLoggedIn).toBe(true)
   })
 
 })

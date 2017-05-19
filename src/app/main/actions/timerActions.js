@@ -15,9 +15,9 @@ const timerActions = {
     } 
     sendCommand(cmd)
   },
-  squash(timer_id, pomodoro_id, isShared) {
+  squash(timer_id, pomodoro_id, is_shared) {
     var cmd = { command: 'SquashPomodoro', timer_id: timer_id, pomodoro_id: pomodoro_id }
-    if (isShared) {
+    if (is_shared) {
       cmd.command = 'SquashSharedPomodoro'
     }
     sendCommand(cmd)

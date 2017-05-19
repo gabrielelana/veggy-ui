@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import dispatcher from '../redux/dispatcher'
 import {DismissMessage} from './globalActionNames'
 
@@ -42,8 +43,11 @@ class MessageBar extends React.Component {
 }
 
 MessageBar.defaultProps = {
-  timeout: 4000, 
-  message: ''
+  timeout: 4000
+}
+
+MessageBar.propTypes = {
+  message: PropTypes.string.isRequired
 }
 
 export default MessageBar

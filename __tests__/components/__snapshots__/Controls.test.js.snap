@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Controls /> default value of prop startDisabled should be false 1`] = `
+exports[`<Controls /> default value of prop start_disabled should be false 1`] = `
 <div
   className="column"
 >
