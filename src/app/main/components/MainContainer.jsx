@@ -28,7 +28,7 @@ class MainContainer extends React.Component {
     timerActions.startPomodoro(this.props.timerId, this.props.users, description)
   }
   handleStartRequest(){
-    dispatcher.dispatch({type: 'START_REQUESTED', payload: {}})
+    dispatcher.dispatch({type: 'StartRequested', payload: {}})
   }
   handleSquash() {
     timerActions.squash(this.props.timerId, this.props.pomodoroId, this.props.isShared)
@@ -40,7 +40,7 @@ class MainContainer extends React.Component {
     usersActions.login(username)
   }
   handleCancelStart() {
-    dispatcher.dispatch({type: 'START_CANCELED', payload: {}})
+    dispatcher.dispatch({type: 'StartCanceled', payload: {}})
   }
   render(){ 
     return (

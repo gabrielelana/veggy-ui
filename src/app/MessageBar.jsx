@@ -19,7 +19,7 @@ class MessageBar extends React.Component {
     if (props.message.length > 0){
       this.setState({show: true})
       setTimeout(() => {
-        dispatcher.dispatch({type: 'DISMISS_MESSAGE', payload: {}})
+        dispatcher.dispatch({type: 'DismissMessage', payload: {}})
         this.setState({show: false})
       }, this.props.timeout)
     }

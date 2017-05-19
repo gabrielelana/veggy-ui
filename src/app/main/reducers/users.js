@@ -5,10 +5,10 @@ const userEq = R.curry((id, u) => u.user_id === id)
 const mapUser = R.map(u => ({userId: u.user_id, username: u.username, timerId: u.timer_id}))
 
 export default buildReducer({
-  'USERS_LOADED': (state, action) => ({ 
+  'UsersLoaded': (state, action) => ({ 
     users: R.compose(mapUser, R.reject(userEq(state.userId)))(action.payload) 
   }),
-  'SELECTED_USERS_CHANGED': (state, action) => {
+  'SelectedUsersChanged': (state, action) => {
     return {
       users: state.users.map(u => {
         if (u.userId === action.payload){
@@ -18,11 +18,11 @@ export default buildReducer({
       })
     }
   },
-  'LOGGED_IN': (state, action) => {
+  'LoggedIn': (state, action) => {
     window.localStorage.setItem('veggy', JSON.stringify({username: action.payload.username, timerId: action.payload.timerId, userId: action.payload.userId}))
     return {needLogin: false, username: action.payload.username}
   },
-  'WAIT_FOR_LOGIN': () => {
+  'WaitForLogin': () => {
     return { waitingForLogin: true }
   },
 })

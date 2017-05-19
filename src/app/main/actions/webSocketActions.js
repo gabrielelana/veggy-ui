@@ -6,7 +6,7 @@ function webSocketActions(data){
   case 'PomodoroStarted':
     pomodoroTicker.start(settings.duration)
     return { 
-      type: 'POMODORO_STARTED', 
+      type: 'PomodoroStarted', 
       payload: {
         timerId: data.timer_id,
         pomodoroId: data.pomodoro_id,
@@ -16,7 +16,7 @@ function webSocketActions(data){
   case 'PomodoroCompleted':
     pomodoroTicker.stop()
     return { 
-      type: 'POMODORO_COMPLETED', 
+      type: 'PomodoroCompleted', 
       payload: {
         timerId: data.timer_id,
         pomodoroId: data.pomodoro_id
@@ -25,7 +25,7 @@ function webSocketActions(data){
   case 'PomodoroSquashed':
     pomodoroTicker.stop()
     return { 
-      type: 'POMODORO_SQUASHED', 
+      type: 'PomodoroSquashed', 
       payload: {
         timerId: data.timer_id,
         pomodoroId: data.pomodoro_id
@@ -34,7 +34,7 @@ function webSocketActions(data){
   case 'PomodoroVoided':
     pomodoroTicker.stop()
     return { 
-      type: 'POMODORO_VOIDED', 
+      type: 'PomodoroVoided', 
       payload: {
         timerId: data.timer_id,
         pomodoroId: data.pomodoro_id
@@ -42,7 +42,7 @@ function webSocketActions(data){
     }
   case 'LoggedIn':
     return { 
-      type: 'LOGGED_IN', 
+      type: 'LoggedIn', 
       payload: {
         loggedIn: true, 
         timerId: data.timer_id,

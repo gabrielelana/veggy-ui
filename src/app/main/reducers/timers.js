@@ -3,7 +3,7 @@ import buildReducer from '../../../redux/buildReducer'
 const findShares = (users, sharedWith) => users.filter(u => sharedWith.indexOf(u.timerId) > -1).map(u => u.username)
 
 export default buildReducer({
-  'TIMERS_LOADED': (state, action) => { 
+  'TimersLoaded': (state, action) => { 
     return {
       timers: action.payload.map(t => {
         return {
@@ -16,7 +16,7 @@ export default buildReducer({
       })
     }
   },
-  'POMODORO_STARTED': (state, action) => {
+  'PomodoroStarted': (state, action) => {
     return {
       timers: [...state.timers, {
         id: action.payload.pomodoroId, 
@@ -26,7 +26,7 @@ export default buildReducer({
       }]
     }
   },
-  'POMODORO_COMPLETED': (state, action) => {
+  'PomodoroCompleted': (state, action) => {
     return {
       timers: state.timers.map(t => {
         if (t.id === action.payload.pomodoroId){
@@ -36,7 +36,7 @@ export default buildReducer({
       })
     }
   },
-  'POMODORO_SQUASHED': (state, action) => {
+  'PomodoroSquashed': (state, action) => {
     return {
       timers: state.timers.map(t => {
         if (t.id === action.payload.pomodoroId){
@@ -46,7 +46,7 @@ export default buildReducer({
       })
     }
   },
-  'POMODORO_VOIDED': (state, action) => {
+  'PomodoroVoided': (state, action) => {
     return {
       timers: state.timers.filter(t => t.id !== action.payload.pomodoroId)
     }

@@ -1,25 +1,25 @@
 var controls = require('../../src/app/main/reducers/controls')
 
-test('POMODORO_STARTED should return buttons status', () => {
-  const state = controls({}, {type: 'POMODORO_STARTED'})
+test('PomodoroStarted should return buttons status', () => {
+  const state = controls({}, {type: 'PomodoroStarted'})
   expect(state.startDisabled).toBeTruthy()
   expect(state.squashDisabled).toBeFalsy()
 })
 
-test('POMODORO_SQUASHED should return buttons status', () => {
-  const state = controls({}, {type: 'POMODORO_SQUASHED'})
+test('PomodoroSquashed should return buttons status', () => {
+  const state = controls({}, {type: 'PomodoroSquashed'})
   expect(state.startDisabled).toBeFalsy()
   expect(state.squashDisabled).toBeTruthy()
 })
 
-test('POMODORO_COMPLETED should return buttons status', () => {
-  const state = controls({}, {type: 'POMODORO_COMPLETED'})
+test('PomodoroCompleted should return buttons status', () => {
+  const state = controls({}, {type: 'PomodoroCompleted'})
   expect(state.startDisabled).toBeFalsy()
   expect(state.squashDisabled).toBeTruthy()
 })
 
-test('POMODORO_VOIDED should return buttons status', () => {
-  const state = controls({}, {type: 'POMODORO_VOIDED'})
+test('PomodoroVoided should return buttons status', () => {
+  const state = controls({}, {type: 'PomodoroVoided'})
   expect(state.startDisabled).toBeFalsy()
   expect(state.squashDisabled).toBeTruthy()
 })

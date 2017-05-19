@@ -3,46 +3,46 @@ const display = require('../../src/app/main/reducers/display')
 
 describe('Display reducers', () => {
   
-  test('POMODORO_STARTED should return the timerId and pomodoroId', () => {
+  test('PomodoroStarted should return the timerId and pomodoroId', () => {
     const actionPayload = { timerId: '123', pomodoroId: '456'}
-    const state = display({}, {type: 'POMODORO_STARTED', payload: actionPayload})
+    const state = display({}, {type: 'PomodoroStarted', payload: actionPayload})
     expect(state.timerId).toBe('123')
     expect(state.pomodoroId).toBe('456')
     expect(state.ticking).toBeTruthy()
   })
 
-  test('POMODORO_STARTED shared wtesth others, isShared should be true', () => {
+  test('PomodoroStarted shared wtesth others, isShared should be true', () => {
     const actionPayload = { timerId: '123', pomodoroId: '456', sharedWith: ['foo']}
-    const state = display({}, {type: 'POMODORO_STARTED', payload: actionPayload})
+    const state = display({}, {type: 'PomodoroStarted', payload: actionPayload})
     expect(state.isShared).toBeTruthy()
   })
 
-  test('POMODORO_COMPLETED should reset time', () => {
-    const state = display({}, {type: 'POMODORO_COMPLETED', payload: {}})
+  test('PomodoroCompleted should reset time', () => {
+    const state = display({}, {type: 'PomodoroCompleted', payload: {}})
     expect('25:00').toBe(state.time)
     expect(state.ticking).toBeFalsy()
   })
 
-  test('POMODORO_SQUASHED should reset time', () => {
-    const state = display({}, {type: 'POMODORO_SQUASHED'})
+  test('PomodoroSquashed should reset time', () => {
+    const state = display({}, {type: 'PomodoroSquashed'})
     expect('25:00').toBe(state.time)
     expect(state.ticking).toBeFalsy()
   })
 
-  test('POMODORO_VOIDED should reset time', () => {
-    const state = display({}, {type: 'POMODORO_VOIDED'})
+  test('PomodoroVoided should reset time', () => {
+    const state = display({}, {type: 'PomodoroVoided'})
     expect('25:00').toBe(state.time)
     expect(state.ticking).toBeFalsy()
   })
 
-  test('UPDATE_TIMER should update the time', () => {
-    const state = display({}, {type: 'UPDATE_TIMER', payload: {time: 930000}})
+  test('UpdateTimer should update the time', () => {
+    const state = display({}, {type: 'UpdateTimer', payload: {time: 930000}})
     expect('15:30').toBe(state.time)
     expect(state.ticking).toBeTruthy()
   })
 
-  test('RESUME_TIMER should return new timer status', () => {
-    const state = display({}, {type: 'RESUME_TIMER', payload: {time: 604000, timerId: '123', pomodoroId: '456'}})
+  test('ResumeTimer should return new timer status', () => {
+    const state = display({}, {type: 'ResumeTimer', payload: {time: 604000, timerId: '123', pomodoroId: '456'}})
     expect('10:04').toBe(state.time)
     expect('123').toBe(state.timerId)
     expect('456').toBe(state.pomodoroId)

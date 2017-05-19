@@ -4,11 +4,11 @@ import ws from '../../../redux/webSocketStream'
 
 const userActions = {
   toggleSelectedUsers(user){
-    dispatcher.dispatch({type: 'SELECTED_USERS_CHANGED', payload: user})
+    dispatcher.dispatch({type: 'SelectedUsersChanged', payload: user})
   },
   login(username) {
     sendCommand({command: 'Login', username: username}, () => {
-      dispatcher.dispatch({type: 'WAIT_FOR_LOGIN'})
+      dispatcher.dispatch({type: 'WaitForLogin'})
     })
     ws.sendCommand(`login:${username}`)
   }

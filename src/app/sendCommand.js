@@ -15,7 +15,7 @@ export default function sendCommand(payload, cb) {
       .send(payload)
       .end((err, res) => {
         if (err){
-          dispatcher.dispatch({type: 'API_ERROR', payload: err})
+          dispatcher.dispatch({type: 'ApiError', payload: err})
         } 
         if (typeof(cb) === 'function'){
           cb(err, res)
