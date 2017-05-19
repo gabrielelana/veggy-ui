@@ -1,48 +1,49 @@
 import pomodoroTicker from './pomodoroTicker'
 import settings from 'settings'
+import * as Action from '../action'
 
 function webSocketActions(data){
   switch(data.event){
-  case 'PomodoroStarted':
+  case Action.PomodoroStarted:
     pomodoroTicker.start(settings.duration)
     return { 
-      type: 'PomodoroStarted', 
+      type: Action.PomodoroStarted, 
       payload: {
         timerId: data.timer_id,
         pomodoroId: data.pomodoro_id,
         sharedWith: data.shared_with
       }
     }
-  case 'PomodoroCompleted':
+  case Action.PomodoroCompleted:
     pomodoroTicker.stop()
     return { 
-      type: 'PomodoroCompleted', 
+      type: Action.PomodoroCompleted, 
       payload: {
         timerId: data.timer_id,
         pomodoroId: data.pomodoro_id
       }
     }  
-  case 'PomodoroSquashed':
+  case Action.PomodoroSquashed:
     pomodoroTicker.stop()
     return { 
-      type: 'PomodoroSquashed', 
+      type: Action.PomodoroSquashed, 
       payload: {
         timerId: data.timer_id,
         pomodoroId: data.pomodoro_id
       }
     }
-  case 'PomodoroVoided':
+  case Action.PomodoroVoided:
     pomodoroTicker.stop()
     return { 
-      type: 'PomodoroVoided', 
+      type: Action.PomodoroVoided, 
       payload: {
         timerId: data.timer_id,
         pomodoroId: data.pomodoro_id
       }
     }
-  case 'LoggedIn':
+  case Action.LoggedIn:
     return { 
-      type: 'LoggedIn', 
+      type: Action.LoggedIn, 
       payload: {
         loggedIn: true, 
         timerId: data.timer_id,

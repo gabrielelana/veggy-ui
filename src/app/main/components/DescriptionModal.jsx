@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import Modal from './Modal'
+import Modal from '../../Modal'
 
 class DescriptionModal extends Component {
   constructor(props) { 

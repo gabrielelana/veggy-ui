@@ -1,15 +1,16 @@
 import buildReducer from '../../../redux/buildReducer'
+import * as Action from '../action'
 
 export default buildReducer({
-  'Init': (state, action) => ({
+  [Action.Init]: (state, action) => ({
     userId: action.payload.userId,
     username: action.payload.username,
     isLoggedIn: true,
     timerId: action.payload.timerId
   }),
-  'NeedLogin': () => ({needLogin: true}),
-  'StartRequested': () => ({ needDescription: true}),
-  'StartCanceled': () => ({ needDescription: false }),
-  'PomodoroStarted': () => ({ needDescription: false }),
+  [Action.NeedLogin]: () => ({needLogin: true}),
+  [Action.StartRequested]: () => ({ needDescription: true}),
+  [Action.StartCanceled]: () => ({ needDescription: false }),
+  [Action.PomodoroStarted]: () => ({ needDescription: false }),
 })
 

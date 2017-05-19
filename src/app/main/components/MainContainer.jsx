@@ -11,6 +11,7 @@ import NavBar from '../../NavBar'
 import LoginModal from './LoginModal'
 import DescriptionModal from './DescriptionModal'
 import dispatcher from '../../../redux/dispatcher'
+import * as Action from '../action'
 
 class MainContainer extends React.Component {
   constructor(props){
@@ -28,7 +29,7 @@ class MainContainer extends React.Component {
     timerActions.startPomodoro(this.props.timerId, this.props.users, description)
   }
   handleStartRequest(){
-    dispatcher.dispatch({type: 'StartRequested', payload: {}})
+    dispatcher.dispatch({type: Action.StartRequested, payload: {}})
   }
   handleSquash() {
     timerActions.squash(this.props.timerId, this.props.pomodoroId, this.props.isShared)
@@ -40,7 +41,7 @@ class MainContainer extends React.Component {
     usersActions.login(username)
   }
   handleCancelStart() {
-    dispatcher.dispatch({type: 'StartCanceled', payload: {}})
+    dispatcher.dispatch({type: Action.StartCanceled, payload: {}})
   }
   render(){ 
     return (

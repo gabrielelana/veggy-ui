@@ -1,11 +1,11 @@
-var R = require('ramda')
-var users = require('../../src/app/main/reducers/users')
-
+import R from 'ramda'
+import users from '../../src/app/main/reducers/users'
+import * as Action from '../../src/app/main/action'
 
 describe('Users reducer', () => {
    it('UsersLoaded should return the list without current user', () => {
     const initialState = {userId: '1'}
-    const state = users(initialState, {type: 'UsersLoaded', payload: [
+    const state = users(initialState, {type: Action.UsersLoaded, payload: [
       {user_id: '1', name: 'ema'},
       {user_id: '2', name: 'ale'},
       {user_id: '3', name: 'ste'},
@@ -23,7 +23,7 @@ describe('Users reducer', () => {
         {userId: '3', name: 'ste'},
         {userId: '4', name: 'mel'}
       ]}
-    const state = users(initialState, {type: 'SelectedUsersChanged', payload: '2'})
+    const state = users(initialState, {type: Action.SelectedUsersChanged, payload: '2'})
     const user2 = state.users.find(u => u.userId === '2')
     expect(user2.selected).toBe(true)
   })

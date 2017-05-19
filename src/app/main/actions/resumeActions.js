@@ -4,22 +4,23 @@ import settings from 'settings'
 import dispatcher from '../../../redux/dispatcher'
 import ws from '../../../redux/webSocketStream'
 import pomodoroTicker from './pomodoroTicker'
+import * as Action from '../action'
 
 function getUsers(){
   return request.get(`${settings.host}/projections/latest-pomodori`)
     .then(res => {
-      dispatcher.dispatch({type: 'UsersLoaded', payload: res.body})
+      dispatcher.dispatch({type: Action.UsersLoaded, payload: res.body})
     })
-    .catch(err => dispatcher.dispatch({type: 'ApiError', payload: err}))
+    .catch(err => dispatcher.dispatch({type: Action.ApiError, payload: err}))
 }
 
 function getTimers(userInfo){
   const today = moment().format('YYYY-MM-DD')
   request.get(`${settings.host}/projections/pomodori-of-the-day?day=${today}&timer_id=${userInfo.timerId}`)
     .then(res => {
-      dispatcher.dispatch({type: 'TimersLoaded', payload: res.body})
+      dispatcher.dispatch({type: Action.TimersLoaded, payload: res.body})
     })
-    .catch(err => dispatcher.dispatch({type: 'ApiError', payload: err}))
+    .catch(err => dispatcher.dispatch({type: Action.ApiError, payload: err}))
 }
 
 function resumeTimer(userInfo){
@@ -32,7 +33,7 @@ function resumeTimer(userInfo){
         
         pomodoroTicker.start(elapsed)
         
-        dispatcher.dispatch({type: 'ResumeTimer', payload: {
+        dispatcher.dispatch({type: Action.ResumeTimer, payload: {
           userInfo, 
           time: elapsed,
           timerId: res.body.timer_id,
@@ -43,7 +44,7 @@ function resumeTimer(userInfo){
     })
     .catch(err => {
       if (err.status !== 404){
-        dispatcher.dispatch({type: 'ApiError', payload: err})
+        dispatcher.dispatch({type: Action.ApiError, payload: err})
       }
     })
 }
@@ -55,9 +56,9 @@ const resumeActions = {
       ws.sendCommand(`login:${userInfo.username}`)
       getUsers().then(getTimers(userInfo))
       resumeTimer(userInfo)
-      dispatcher.dispatch({type: 'Init', payload: userInfo})
+      dispatcher.dispatch({type: Action.Init, payload: userInfo})
     } else {
-      dispatcher.dispatch({type: 'NeedLogin', payload: {}})
+      dispatcher.dispatch({type: Action.NeedLogin, payload: {}})
     }
   }
 }

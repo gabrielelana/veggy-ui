@@ -1,27 +1,28 @@
 import buildReducer from '../../../redux/buildReducer'
+import * as Action from '../action'
 
 export default buildReducer({
-  'ApiError': (state, action) => ({ 
+  [Action.ApiError]: (state, action) => ({ 
     message: `There was an error calling the API: ${action.payload}`, 
     messageType: 'error' 
   }),
-  'PomodoroCompleted': () => ({ 
+  [Action.PomodoroCompleted]: () => ({ 
     message: 'Good job! Your pomodoro is completed', 
     messageType: 'info' 
   }),
-  'PomodoroSquashed': () => ({ 
+  [Action.PomodoroSquashed]: () => ({ 
     message: 'Ouch! Your pomodoro has been interrupted', 
     messageType: 'warn' 
   }),
-  'PomodoroVoided': () => ({ 
+  [Action.PomodoroVoided]: () => ({ 
     message: 'There was some problem with your pomorodo. Probably some other user squashed it.', 
     messageType: 'warn' 
   }),
-  'CommandFailed': (state, action) => ({ 
+  [Action.CommandFailed]: (state, action) => ({ 
     message: `There was an error: ${action.payload.why}`, 
     messageType: 'error' 
   }),
-  'DismissMessage': () => ({ 
+  [Action.DismissMessage]: () => ({ 
     message: '', 
     messageType: 'none' 
   }),
