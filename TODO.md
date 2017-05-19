@@ -13,7 +13,7 @@
 - [x] Refactoring `webSocketActions`: convertire a map e vedere se spostare le chiamate al timer
 - [ ] Ripassare i reducer per vedere quali prop dello stato servono e quali no (es. `isLoggedIn`)
 - [ ] Refactoring `ResumeActions` troppa roba e poco funzionale
-- [ ] Refactoring `MessageBar`, `NavBar` e altri in functions
+- [x] Refactoring `MessageBar`, `NavBar` e altri in functions
 - [ ] Better use of INITIAL_STATE
 - [ ] Refactoring `TimerActions` (lines 7,8,9 portare fuori dal metodo)
 - [ ] Tags projection
