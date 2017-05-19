@@ -3,10 +3,10 @@ import * as Action from '../action'
 
 export default buildReducer({
   [Action.Init]: (state, action) => ({
-    userId: action.payload.userId,
+    user_id: action.payload.user_id,
     username: action.payload.username,
     isLoggedIn: true,
-    timerId: action.payload.timerId
+    timer_id: action.payload.timer_id
   }),
   [Action.NeedLogin]: () => ({needLogin: true}),
   [Action.StartRequested]: () => ({ needDescription: true}),

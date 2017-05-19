@@ -8,12 +8,12 @@ describe('<TaskList />', () => {
     const timers = [{
       id: 1,
       startedAt: '2010-04-09 11:10',
-      sharedWith: [],
+      shared_with: [],
       status: 'completed'
     },{
       id: 2,
       startedAt: '2010-04-11 22:20',
-      sharedWith: [],
+      shared_with: [],
       status: 'ticking'
     }]
     const component = renderer.create(<TaskList timers={timers} />)

@@ -26,13 +26,13 @@ class MainContainer extends React.Component {
     resumeActions.wireup()
   }
   handleStart(description) {
-    timerActions.startPomodoro(this.props.timerId, this.props.users, description)
+    timerActions.startPomodoro(this.props.timer_id, this.props.users, description)
   }
   handleStartRequest(){
     dispatcher.dispatch({type: Action.StartRequested, payload: {}})
   }
   handleSquash() {
-    timerActions.squash(this.props.timerId, this.props.pomodoroId, this.props.isShared)
+    timerActions.squash(this.props.timer_id, this.props.pomodoro_id, this.props.isShared)
   }
   handleToggleUser(user) {
     usersActions.toggleSelectedUsers(user)

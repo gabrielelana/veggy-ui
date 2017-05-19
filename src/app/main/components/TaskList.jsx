@@ -25,11 +25,11 @@ TaskList.defaultProps = {
 }
 
 function TaskRow(props){
-  var sharedWith = props.sharedWith.map(w => <span className="tag is-info" key={w} >{`${w}`}</span>)
+  var shared_with = props.shared_with.map(w => <span className="tag is-info" key={w} >{`${w}`}</span>)
   return (
     <tr>
       <td>{moment(props.startedAt).format('DD-MM-YYYY hh:mm:ss')}</td>
-      <td>{sharedWith}</td>
+      <td>{shared_with}</td>
       <td className="centered">{getStatusIcon(props.status)}</td>
     </tr>)
 }

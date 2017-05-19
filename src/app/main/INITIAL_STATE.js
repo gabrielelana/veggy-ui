@@ -2,15 +2,15 @@ import settings from 'settings'
 import stringifyTime from './actions/stringifyTime'
 
 const INITIAL_STATE = { 
-  userId: 'fake-user',
+  user_id: 'fake-user',
   username: 'fake-user',
   isLoggedIn: false,
   isShared: false,
   startDisabled: false, 
   squashDisabled: true,
   time: stringifyTime(settings.duration),
-  timerId: null,
-  pomodoroId: null,
+  timer_id: null,
+  pomodoro_id: null,
   message: '',
   timers: [],
   users: [],

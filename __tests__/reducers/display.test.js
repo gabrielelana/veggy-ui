@@ -3,16 +3,16 @@ import * as Action from '../../src/app/main/action'
 
 describe('Display reducers', () => {
   
-  test('PomodoroStarted should return the timerId and pomodoroId', () => {
-    const actionPayload = { timerId: '123', pomodoroId: '456'}
+  test('PomodoroStarted should return the timer_id and pomodoro_id', () => {
+    const actionPayload = { timer_id: '123', pomodoro_id: '456'}
     const state = display({}, {type: Action.PomodoroStarted, payload: actionPayload})
-    expect(state.timerId).toBe('123')
-    expect(state.pomodoroId).toBe('456')
+    expect(state.timer_id).toBe('123')
+    expect(state.pomodoro_id).toBe('456')
     expect(state.ticking).toBeTruthy()
   })
 
   test('PomodoroStarted shared wtesth others, isShared should be true', () => {
-    const actionPayload = { timerId: '123', pomodoroId: '456', sharedWith: ['foo']}
+    const actionPayload = { timer_id: '123', pomodoro_id: '456', shared_with: ['foo']}
     const state = display({}, {type: Action.PomodoroStarted, payload: actionPayload})
     expect(state.isShared).toBeTruthy()
   })
@@ -42,10 +42,10 @@ describe('Display reducers', () => {
   })
 
   test('ResumeTimer should return new timer status', () => {
-    const state = display({}, {type: Action.ResumeTimer, payload: {time: 604000, timerId: '123', pomodoroId: '456'}})
+    const state = display({}, {type: Action.ResumeTimer, payload: {time: 604000, timer_id: '123', pomodoro_id: '456'}})
     expect('10:04').toBe(state.time)
-    expect('123').toBe(state.timerId)
-    expect('456').toBe(state.pomodoroId)
+    expect('123').toBe(state.timer_id)
+    expect('456').toBe(state.pomodoro_id)
     expect(state.ticking).toBeTruthy()
   })
 

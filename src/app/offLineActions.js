@@ -2,24 +2,24 @@ import webSocketActions from './main/actions/webSocketActions'
 import dispatcher from '../redux/dispatcher'
 import settings from 'settings'
 import Action from './main/action'
-var timerId = null
+var timer_id = null
 
 export function startOffLinePomodoro(payload){
   dispatcher.dispatch(webSocketActions({event: Action.PomodoroStarted, timer_id: payload.timer_id, pomodoro_id: payload.pomodoro_id, shared_with: [] }))
-  timerId = setTimeout(() => {
+  timer_id = setTimeout(() => {
     dispatcher.dispatch(webSocketActions({event: Action.PomodoroCompleted, timer_id: payload.timer_id, pomodoro_id: payload.pomodoro_id, shared_with:[] }))
-    timerId = null
+    timer_id = null
   }, settings.duration)
 }
 
 export function squashOffLinePomodoro(payload){
-  clearTimeout(timerId)
-  timerId = null
+  clearTimeout(timer_id)
+  timer_id = null
   dispatcher.dispatch(webSocketActions({event: Action.PomodoroSquashed, timer_id: payload.timer_id, pomodoro_id: payload.pomodoro_id, shared_with:[] }))
 }
 
 export function isTicking(){
-  return timerId !== null
+  return timer_id !== null
 }
 
 

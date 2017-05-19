@@ -16,7 +16,7 @@ function getUsers(){
 
 function getTimers(userInfo){
   const today = moment().format('YYYY-MM-DD')
-  request.get(`${settings.host}/projections/pomodori-of-the-day?day=${today}&timer_id=${userInfo.timerId}`)
+  request.get(`${settings.host}/projections/pomodori-of-the-day?day=${today}&timer_id=${userInfo.timer_id}`)
     .then(res => {
       dispatcher.dispatch({type: Action.TimersLoaded, payload: res.body})
     })
@@ -25,7 +25,7 @@ function getTimers(userInfo){
 
 function resumeTimer(userInfo){
   request
-    .get(`${settings.host}/projections/latest-pomodoro?timer_id=${userInfo.timerId}`)
+    .get(`${settings.host}/projections/latest-pomodoro?timer_id=${userInfo.timer_id}`)
     .then(res => {
       if (res.body.status === 'started'){
         const startedAt = moment(res.body.started_at)
@@ -36,8 +36,8 @@ function resumeTimer(userInfo){
         dispatcher.dispatch({type: Action.ResumeTimer, payload: {
           userInfo, 
           time: elapsed,
-          timerId: res.body.timer_id,
-          pomodoroId: res.body.pomodoro_id,
+          timer_id: res.body.timer_id,
+          pomodoro_id: res.body.pomodoro_id,
 
         }})
       }

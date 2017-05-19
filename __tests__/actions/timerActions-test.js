@@ -35,7 +35,7 @@ describe('timerActions', () => {
                       shared_with: ['456', '789']
                     }).reply(201, { });   
 
-    timerActions.startPomodoro('123', [{timerId:'456', selected: true}, {timerId:'789', selected: true}])
+    timerActions.startPomodoro('123', [{timer_id:'456', selected: true}, {timer_id:'789', selected: true}])
     expect(request.isDone()).toBe(true)
   })
 })

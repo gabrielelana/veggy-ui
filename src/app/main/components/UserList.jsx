@@ -1,7 +1,7 @@
 const UserList = ({users, onToggleUser}) => {
   const userRows = users.map(u => (
-      <UserRow key={u.userId} 
-        onSelect={() => onToggleUser(u.userId)} 
+      <UserRow key={u.user_id} 
+        onSelect={() => onToggleUser(u.user_id)} 
         selected={u.selected} 
         username={u.username} />
       ))

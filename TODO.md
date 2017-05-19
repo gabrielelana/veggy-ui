@@ -8,7 +8,9 @@
 - [x] Check uso `Object.assign` il primo parametro deve essere `{}`
 - [x] Uniform action naming style with server
 - [x] Spostare contenuto cartella `serverPush` in redux
-- [ ] Togliere `webSocketActions`. Di fatto e' una mappa inutile.
+- [ ] After login does not load data
+- [x] Togliere `webSocketActions`. Di fatto e' una mappa inutile.
+- [x] Refactoring `webSocketActions`: convertire a map e vedere se spostare le chiamate al timer
 - [ ] Ripassare i reducer per vedere quali prop dello stato servono e quali no (es. `isLoggedIn`)
 - [ ] Refactoring `ResumeActions` troppa roba e poco funzionale
 - [ ] Refactoring `MessageBar`, `NavBar` e altri in functions
@@ -20,7 +22,6 @@
 - [ ] Prepare some charts&diagrams to explain the global architecture
 - [ ] More tests
 - [ ] Partitioning the reducers (based on INITIAL_STATE root properties): every reducer must receive only its part of state (or - output its part of state?). Probably output it's better since it can happen that input is necessary to access different part - of the state
-- [ ] Refactoring `webSocketActions`: convertire a map e vedere se spostare le chiamate al timer
 
 ## Questions for Gabriele
 - /latest-pomodori should return the descriptions 

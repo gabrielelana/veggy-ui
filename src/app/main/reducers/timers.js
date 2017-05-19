@@ -1,7 +1,7 @@
 import buildReducer from '../../../redux/buildReducer'
 import * as Action from '../action'
 
-const findShares = (users, sharedWith) => users.filter(u => sharedWith.indexOf(u.timerId) > -1).map(u => u.username)
+const findShares = (users, shared_with) => users.filter(u => shared_with.indexOf(u.timer_id) > -1).map(u => u.username)
 
 export default buildReducer({
   [Action.TimersLoaded]: (state, action) => { 
@@ -11,7 +11,7 @@ export default buildReducer({
           id: t.pomodoro_id, 
           status: t.status, 
           startedAt: t.started_at,
-          sharedWith: findShares(state.users||[], t.shared_with),
+          shared_with: findShares(state.users||[], t.shared_with),
           description: t.description
         }
       })
@@ -20,17 +20,17 @@ export default buildReducer({
   [Action.PomodoroStarted]: (state, action) => {
     return {
       timers: [...state.timers, {
-        id: action.payload.pomodoroId, 
+        id: action.payload.pomodoro_id, 
         status: 'started', 
         startedAt: new Date(),
-        sharedWith: findShares(state.users, action.payload.sharedWith)
+        shared_with: findShares(state.users, action.payload.shared_with)
       }]
     }
   },
   [Action.PomodoroCompleted]: (state, action) => {
     return {
       timers: state.timers.map(t => {
-        if (t.id === action.payload.pomodoroId){
+        if (t.id === action.payload.pomodoro_id){
           return Object.assign({}, t, {status: 'completed'})
         }
         return t
@@ -40,7 +40,7 @@ export default buildReducer({
   [Action.PomodoroSquashed]: (state, action) => {
     return {
       timers: state.timers.map(t => {
-        if (t.id === action.payload.pomodoroId){
+        if (t.id === action.payload.pomodoro_id){
           return Object.assign({}, t, {status:'squashed'})
         }
         return t
@@ -49,7 +49,7 @@ export default buildReducer({
   },
   [Action.PomodoroVoided]: (state, action) => {
     return {
-      timers: state.timers.filter(t => t.id !== action.payload.pomodoroId)
+      timers: state.timers.filter(t => t.id !== action.payload.pomodoro_id)
     }
   }
 })

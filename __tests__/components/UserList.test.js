@@ -6,11 +6,11 @@ describe('<UserList />', () => {
   
   it('should display the tasks', () => {
     const users = [{
-      userId: 1,
+      user_id: 1,
       selected: false,
       username: 'ema'
     },{
-      userId: 2,
+      user_id: 2,
       selected: true,
       username: 'gabriele'
     }]
