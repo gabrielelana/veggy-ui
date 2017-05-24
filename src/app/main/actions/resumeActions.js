@@ -33,7 +33,6 @@ function getTags(userInfo){
   const today = moment().format('YYYY-MM-DD')
   return request.get(`${settings.host}/projections/tags-of-the-day?day=${today}&timer_id=${userInfo.timer_id}`)
     .then(res => {
-      console.log('TAGS', res.body)
       dispatcher.dispatch({type: Action.TagsLoaded, payload: res.body})
     })
     .catch(err => dispatcher.dispatch({type: Action.ApiError, payload: err}))

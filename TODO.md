@@ -16,7 +16,7 @@
 - [x] Refactoring `MessageBar`, `NavBar` e altri in functions
 - [ ] Better use of INITIAL_STATE
 - [x] Refactoring `TimerActions` (lines 7,8,9 portare fuori dal metodo)
-- [ ] Tags projection
+- [x] Tags projection
 - [ ] Service worker for offline state
 - [x] Add default props to variuos 'general purpose' components
 - [ ] Prepare some charts&diagrams to explain the global architecture
