@@ -20,7 +20,6 @@ export default buildReducer({
     }
   },
   [Action.LoggedIn]: (state, action) => {
-    window.localStorage.setItem('veggy', JSON.stringify({username: action.payload.username, timer_id: action.payload.timer_id, user_id: action.payload.user_id}))
     return {need_login: false, username: action.payload.username}
   },
   [Action.WaitForLogin]: () => {

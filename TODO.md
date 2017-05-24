@@ -8,7 +8,7 @@
 - [x] Check uso `Object.assign` il primo parametro deve essere `{}`
 - [x] Uniform action naming style with server
 - [x] Spostare contenuto cartella `serverPush` in redux
-- [ ] After login does not load data
+- [x] After login does not load data
 - [x] Togliere `webSocketActions`. Di fatto e' una mappa inutile.
 - [x] Refactoring `webSocketActions`: convertire a map e vedere se spostare le chiamate al timer
 - [x] Ripassare i reducer per vedere quali prop dello stato servono e quali no (es. `isLoggedIn`)
