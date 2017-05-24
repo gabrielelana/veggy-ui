@@ -13,6 +13,7 @@ const INITIAL_STATE = {
   message: '',
   timers: [],
   users: [],
+  tags: [],
   need_login: false,
   need_description: false
 }

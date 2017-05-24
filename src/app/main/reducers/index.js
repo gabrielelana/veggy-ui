@@ -5,6 +5,7 @@ const reducers = [
   require('./messages'),
   require('./timers'),
   require('./users'),
+  require('./tags')
 ]
 
 export default reducers

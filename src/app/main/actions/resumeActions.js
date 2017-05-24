@@ -29,6 +29,17 @@ function getTimers(userInfo){
     .catch(err => dispatcher.dispatch({type: Action.ApiError, payload: err}))
 }
 
+function getTags(userInfo){
+  const today = moment().format('YYYY-MM-DD')
+  return request.get(`${settings.host}/projections/tags-of-the-day?day=${today}&timer_id=${userInfo.timer_id}`)
+    .then(res => {
+      console.log('TAGS', res.body)
+      dispatcher.dispatch({type: Action.TagsLoaded, payload: res.body})
+    })
+    .catch(err => dispatcher.dispatch({type: Action.ApiError, payload: err}))
+}
+
+
 function resumeTimer(userInfo){
   return request
     .get(`${settings.host}/projections/latest-pomodoro?timer_id=${userInfo.timer_id}`)
@@ -51,7 +62,7 @@ const resumeActions = {
     if (window.localStorage.getItem('veggy')) {
       const user = JSON.parse(window.localStorage.getItem('veggy'))
       ws.sendCommand(`login:${user.username}`)
-      Promise.all([ getUsers(), getTimers(user), resumeTimer(user)]).then(() => dispatcher.dispatch({type: Action.Init, payload: user}))      
+      Promise.all([ getUsers(), getTimers(user), getTags(user), resumeTimer(user)]).then(() => dispatcher.dispatch({type: Action.Init, payload: user}))      
     } else {
       dispatcher.dispatch({type: Action.NeedLogin, payload: {}})
     }

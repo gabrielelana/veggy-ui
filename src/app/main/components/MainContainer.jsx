@@ -4,6 +4,7 @@ import Display from './Display'
 import Controls from './Controls'
 import TaskList from './TaskList'
 import UserList from './UserList'
+import TagList from './TagList'
 import timerActions from '../actions/timerActions'
 import resumeActions from '../actions/resumeActions'
 import usersActions from '../actions/usersActions'
@@ -60,6 +61,7 @@ class MainContainer extends React.Component {
           </div>
           <div className="columns">
             <TaskList timers={this.props.timers}/>
+            <TagList tags={this.props.tags} />
             <UserList users={this.props.users} onToggleUser={this.handleToggleUser}/>
           </div>
           <div className="columns">
