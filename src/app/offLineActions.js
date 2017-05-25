@@ -1,7 +1,7 @@
 import webSocketActions from './main/actions/webSocketActions'
 import dispatcher from '../redux/dispatcher'
 import settings from 'settings'
-import Action from './main/action'
+import * as Action from './main/action'
 var timer_id = null
 
 export function startOffLinePomodoro(payload){

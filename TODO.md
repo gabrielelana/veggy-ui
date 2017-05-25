@@ -14,7 +14,7 @@
 - [x] Ripassare i reducer per vedere quali prop dello stato servono e quali no (es. `isLoggedIn`)
 - [x] Refactoring `ResumeActions` troppa roba e poco funzionale
 - [x] Refactoring `MessageBar`, `NavBar` e altri in functions
-- [ ] Better use of INITIAL_STATE
+- [x] Better use of INITIAL_STATE
 - [x] Refactoring `TimerActions` (lines 7,8,9 portare fuori dal metodo)
 - [x] Tags projection
 - [ ] Service worker for offline state
