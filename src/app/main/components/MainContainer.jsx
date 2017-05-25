@@ -48,14 +48,14 @@ class MainContainer extends React.Component {
     return (
       <div>
         <DescriptionModal isActive={this.props.need_description} onStart={this.handleStart} onCancel={this.handleCancelStart} />
-        <LoginModal isActive={this.props.need_login} onLogin={this.handleLogin} waiting={this.props.waitingForLogin}/>
+        <LoginModal isActive={this.props.need_login} onLogin={this.handleLogin} waiting={this.props.waiting_for_login}/>
         <NavBar username={this.props.username} />
         <div className="container" style={{marginTop: '20px'}}>
           <div className="columns">
             <Display time={this.props.time} is_shared={this.props.is_shared} />
             <Controls 
-              start_disabled={this.props.start_disabled} 
-              squash_disabled={this.props.squash_disabled} 
+              startDisabled={this.props.start_disabled} 
+              squashDßisabled={this.props.squash_disabled} 
               onStart={this.handleStartRequest} 
               onSquash={this.handleSquash} />
           </div>

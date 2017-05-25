@@ -23,6 +23,6 @@ export default buildReducer({
     return {need_login: false, username: action.payload.username}
   },
   [Action.WaitForLogin]: () => {
-    return { waitingForLogin: true }
+    return { waiting_for_login: true }
   },
 })

@@ -25,3 +25,9 @@ test('PomodoroVoided should return buttons status', () => {
   expect(state.squash_disabled).toBeTruthy()
 })
 
+test('ResumeTimer should return buttons status', () => {
+  const state = controls({}, {type: Action.PomodoroStarted})
+  expect(state.start_disabled).toBeTruthy()
+  expect(state.squash_disabled).toBeFalsy()
+})
+

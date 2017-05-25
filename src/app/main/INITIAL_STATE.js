@@ -17,7 +17,7 @@ const INITIAL_STATE = {
   tags: [],
   need_login: false,
   need_description: false,
-  waitingForLogin: false
+  waiting_for_login: false
 }
 
 export default INITIAL_STATE
