@@ -19,8 +19,8 @@
 - [x] Tags projection
 - [ ] Service worker for offline state
 - [x] Add default props to variuos 'general purpose' components
-- [ ] Prepare some charts&diagrams to explain the global architecture
-- [ ] More tests
+- [+] Prepare some charts&diagrams to explain the global architecture
+- [x] More tests
 - [ ] Partitioning the reducers (based on INITIAL_STATE root properties): every reducer must receive only its part of state (or - output its part of state?). Probably output it's better since it can happen that input is necessary to access different part - of the state
 - [ ] Production check (webpack)
 

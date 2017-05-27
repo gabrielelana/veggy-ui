@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node www",
     "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --progress --content-base dist/",
-    "prod": "BABEL_ENV=production ./node_modules/webpack/bin/webpack.js --config webpack-production.config.js  --progress --profile --colors",
+    "prod": "BABEL_ENV=production ./node_modules/webpack/bin/webpack.js --config webpack-production.config.js  --progress --profile --colors -p",
     "test": "BABEL_ENV=test ./node_modules/mocha/bin/_mocha --compilers js:babel-register --require tests/.setup.js 'tests/**/*-test.js'"
   },
   "jest": {
