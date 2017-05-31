@@ -22,6 +22,7 @@ export default buildReducer({
     return {
       timers: [...state.timers, {
         id: action.payload.pomodoro_id, 
+        description: action.payload.description,
         status: 'started', 
         startedAt: new Date(),
         shared_with: findShares(state.users, action.payload.shared_with)

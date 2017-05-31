@@ -8,6 +8,7 @@ const TaskList = ({timers}) => {
         <thead>
           <tr>
             <th>Started at</th>
+            <th>Description</th>
             <th>Shared</th>
             <th className="centered">Status</th>
           </tr>
@@ -29,6 +30,7 @@ function TaskRow(props){
   return (
     <tr>
       <td>{moment(props.startedAt).format('DD-MM-YYYY hh:mm:ss')}</td>
+      <td>{props.description}</td>
       <td>{shared_with}</td>
       <td className="centered">{getStatusIcon(props.status)}</td>
     </tr>)
