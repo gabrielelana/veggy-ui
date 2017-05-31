@@ -1,5 +1,7 @@
 import React from 'react'
-import actionStream from '../redux/actionStream'
+import PropTypes from 'prop-types'
+import dispatcher from '../redux/dispatcher'
+import {DismissMessage} from './globalActionNames'
 
 const types = {
   info: 'notification is-success',
@@ -10,24 +12,22 @@ function getTypeClass(type){
   return types[type]
 }
 
-const MessageBar = React.createClass({
-  getInitialState() {
-    return { show: false }
-  },
-  getDefaultProps() {
-    return { timeout: 4000, message: '' };
-  },
+class MessageBar extends React.Component {
+  constructor() {
+    super()
+    this.state = { show: false }
+  }
   componentWillReceiveProps(props) {
     if (props.message.length > 0){
       this.setState({show: true})
       setTimeout(() => {
-        actionStream.push({type: 'DISMISS_MESSAGE', payload: {}})
+        dispatcher.dispatch({type: DismissMessage, payload: {}})
         this.setState({show: false})
       }, this.props.timeout)
     }
-  },
+  }
   render(){ 
-    const displayStyle = {display:'none'}
+    const displayStyle = { display:'none' }
     if (this.state.show){
       displayStyle.display = 'block'
     }
@@ -38,8 +38,16 @@ const MessageBar = React.createClass({
           {this.props.message}
         </div>
       </div>
-      )
+    )
   }
-})
+}
+
+MessageBar.defaultProps = {
+  timeout: 4000
+}
+
+MessageBar.propTypes = {
+  message: PropTypes.string.isRequired
+}
 
 export default MessageBar

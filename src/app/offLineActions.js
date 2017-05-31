@@ -1,25 +1,25 @@
-import webSocketActions from '../serverPush/webSocketActions'
-import actionStream from '../redux/actionStream'
+import webSocketActions from './main/actions/webSocketActions'
+import dispatcher from '../redux/dispatcher'
 import settings from 'settings'
-
-var timerId = null
+import * as Action from './main/action'
+var timer_id = null
 
 export function startOffLinePomodoro(payload){
-  actionStream.push(webSocketActions({event: 'PomodoroStarted', timer_id: payload.timer_id, pomodoro_id: payload.pomodoro_id, shared_with: [] }))
-  timerId = setTimeout(() => {
-    actionStream.push(webSocketActions({event: 'PomodoroCompleted', timer_id: payload.timer_id, pomodoro_id: payload.pomodoro_id, shared_with:[] }))
-    timerId = null
+  dispatcher.dispatch(webSocketActions({event: Action.PomodoroStarted, timer_id: payload.timer_id, pomodoro_id: payload.pomodoro_id, shared_with: [] }))
+  timer_id = setTimeout(() => {
+    dispatcher.dispatch(webSocketActions({event: Action.PomodoroCompleted, timer_id: payload.timer_id, pomodoro_id: payload.pomodoro_id, shared_with:[] }))
+    timer_id = null
   }, settings.duration)
 }
 
 export function squashOffLinePomodoro(payload){
-  clearTimeout(timerId)
-  timerId = null
-  actionStream.push(webSocketActions({event: 'PomodoroSquashed', timer_id: payload.timer_id, pomodoro_id: payload.pomodoro_id, shared_with:[] }))
+  clearTimeout(timer_id)
+  timer_id = null
+  dispatcher.dispatch(webSocketActions({event: Action.PomodoroSquashed, timer_id: payload.timer_id, pomodoro_id: payload.pomodoro_id, shared_with:[] }))
 }
 
 export function isTicking(){
-  return timerId !== null
+  return timer_id !== null
 }
 
 

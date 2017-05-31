@@ -1,25 +1,14 @@
-.waiting{
-  width: 100%;
-  height: 100%;
-  background-color: rgba(180, 180, 180, 0.7);
-  position: absolute;
-  z-index: 100;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.selectedRow{
+.selectedRow {
   background-color: $primary
 }
 
-.shared-icon{
+.shared-icon {
   line-height: 48px;
   color: #aeb1b5;
   margin-left: 20px;
+}
 
+.centered {
+  text-align: 'center'
 }

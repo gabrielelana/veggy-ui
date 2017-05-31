@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserList /> should display the tasks 1`] = `
+<div
+  className="column"
+>
+  <nav
+    className="panel"
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+      }
+    }
+  >
+    <p
+      className="panel-heading"
+    >
+      Users
+    </p>
+    <a
+      className=" panel-block"
+      href="#"
+      onClick={[Function]}
+    >
+      <span
+        className="panel-icon"
+      >
+        <i
+          className="fa fa-user"
+        />
+      </span>
+      ema
+    </a>
+    <a
+      className="selectedRow panel-block"
+      href="#"
+      onClick={[Function]}
+    >
+      <span
+        className="panel-icon"
+      >
+        <i
+          className="fa fa-user"
+        />
+      </span>
+      gabriele
+    </a>
+  </nav>
+</div>
+`;

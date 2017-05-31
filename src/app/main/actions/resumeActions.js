@@ -1,50 +1,31 @@
 import request from 'superagent'
-import {hashHistory} from 'react-router'
 import moment from 'moment'
 import settings from 'settings'
-import actionStream from '../../../redux/actionStream'
-import ws from '../../../serverPush/webSocketStream'
+import dispatcher from '../../../redux/dispatcher'
+import ws from '../../../redux/webSocketStream'
 import pomodoroTicker from './pomodoroTicker'
+import * as Action from '../action'
+import {getUsers, getTimers, getTags} from './loaders'
 
-function getUsers(){
-  return request.get(`${settings.host}/projections/latest-pomodori`)
-    .then(res => {
-      actionStream.push({type: 'USERS_LOADED', payload: res.body})
-    })
-    .catch(err => actionStream.push({type: 'API_ERROR', payload: err}))
-}
-
-function getTimers(userInfo){
-  const today = moment().format('YYYY-MM-DD')
-  request.get(`${settings.host}/projections/pomodori-of-the-day?day=${today}&timer_id=${userInfo.timerId}`)
-    .then(res => {
-      actionStream.push({type: 'TIMERS_LOADED', payload: res.body})
-    })
-    .catch(err => actionStream.push({type: 'API_ERROR', payload: err}))
+function getElapsed(time) {
+  const startedAt = moment(time)
+  const elapsed = settings.duration - moment().diff(startedAt)
+  return elapsed
 }
 
 function resumeTimer(userInfo){
-  request
-    .get(`${settings.host}/projections/latest-pomodoro?timer_id=${userInfo.timerId}`)
+  return request
+    .get(`${settings.host}/projections/latest-pomodoro?timer_id=${userInfo.timer_id}`)
     .then(res => {
       if (res.body.status === 'started'){
-        const startedAt = moment(res.body.started_at)
-        const elapsed = settings.duration - moment().diff(startedAt)
-        
+        const elapsed = getElapsed(res.body.started_at)
         pomodoroTicker.start(elapsed)
-        
-        actionStream.push({type: 'RESUME_TIMER', payload: {
-          userInfo, 
-          time: elapsed,
-          timerId: res.body.timer_id,
-          pomodoroId: res.body.pomodoro_id,
-
-        }})
+        dispatcher.dispatch({type: Action.ResumeTimer, payload: { time: elapsed, timer_id: res.body.timer_id, pomodoro_id: res.body.pomodoro_id }})
       }
     })
     .catch(err => {
       if (err.status !== 404){
-        actionStream.push({type: 'API_ERROR', payload: err})
+        dispatcher.dispatch({type: Action.ApiError, payload: err})
       }
     })
 }
@@ -52,13 +33,11 @@ function resumeTimer(userInfo){
 const resumeActions = {
   wireup(){
     if (window.localStorage.getItem('veggy')) {
-      const userInfo = JSON.parse(window.localStorage.getItem('veggy'))
-      ws.sendCommand(`login:${userInfo.username}`)
-      getUsers().then(getTimers(userInfo))
-      resumeTimer(userInfo)
-      actionStream.push({type: 'INIT', payload: userInfo})
+      const user = JSON.parse(window.localStorage.getItem('veggy'))
+      ws.sendCommand(`login:${user.username}`)
+      Promise.all([ getUsers(), getTimers(user), getTags(user), resumeTimer(user)]).then(() => dispatcher.dispatch({type: Action.Init, payload: user}))      
     } else {
-      hashHistory.push('/login')
+      dispatcher.dispatch({type: Action.NeedLogin, payload: {}})
     }
   }
 }

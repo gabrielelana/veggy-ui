@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MessageBar /> should display the message passed via props 1`] = `
+<div
+  className="column is-half is-offset-one-quarter is-gapless"
+  id="messageBox"
+>
+  <div
+    className="notification is-danger"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    We could be heroes
+  </div>
+</div>
+`;

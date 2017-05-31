@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TagList /> should display tags 1`] = `
+<div
+  className="column is-one-third"
+>
+  <table
+    className="table"
+  >
+    <thead>
+      <tr>
+        <th>
+          Tag
+        </th>
+        <th>
+          Pomodori
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          #foo
+        </td>
+        <td>
+          4
+        </td>
+      </tr>
+      <tr>
+        <td>
+          #bar
+        </td>
+        <td>
+          7
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

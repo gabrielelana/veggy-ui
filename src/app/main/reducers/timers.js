@@ -1,53 +1,57 @@
+import R from 'ramda'
 import buildReducer from '../../../redux/buildReducer'
+import * as Action from '../action'
 
-const findShares = (users, sharedWith) => users.filter(u => sharedWith.indexOf(u.timerId) > -1).map(u => u.username)
+const findShares = (users, shared_with) => R.compose(R.map(u => u.username), R.filter(u => R.contains(u.timer_id, shared_with)))(users)
 
 export default buildReducer({
-  'TIMERS_LOADED': (state, action) => { 
+  [Action.TimersLoaded]: (state, action) => { 
     return {
       timers: action.payload.map(t => {
         return {
           id: t.pomodoro_id, 
           status: t.status, 
           startedAt: t.started_at,
-          sharedWith: findShares(state.users||[], t.shared_with)
+          shared_with: findShares(state.users||[], t.shared_with),
+          description: t.description
         }
       })
     }
   },
-  'POMODORO_STARTED': (state, action) => {
+  [Action.PomodoroStarted]: (state, action) => {
     return {
       timers: [...state.timers, {
-        id: action.payload.pomodoroId, 
+        id: action.payload.pomodoro_id, 
+        description: action.payload.description,
         status: 'started', 
         startedAt: new Date(),
-        sharedWith: findShares(state.users, action.payload.sharedWith)
+        shared_with: findShares(state.users, action.payload.shared_with)
       }]
     }
   },
-  'POMODORO_COMPLETED': (state, action) => {
+  [Action.PomodoroCompleted]: (state, action) => {
     return {
       timers: state.timers.map(t => {
-        if (t.id === action.payload.pomodoroId){
-          return Object.assign(t, {status: 'completed'})
+        if (t.id === action.payload.pomodoro_id){
+          return Object.assign({}, t, {status: 'completed'})
         }
         return t
       })
     }
   },
-  'POMODORO_SQUASHED': (state, action) => {
+  [Action.PomodoroSquashed]: (state, action) => {
     return {
       timers: state.timers.map(t => {
-        if (t.id === action.payload.pomodoroId){
-          return Object.assign(t, {status:'squashed'})
+        if (t.id === action.payload.pomodoro_id){
+          return Object.assign({}, t, {status:'squashed'})
         }
         return t
       })
     }
   },
-  'POMODORO_VOIDED': (state, action) => {
+  [Action.PomodoroVoided]: (state, action) => {
     return {
-      timers: state.timers.filter(t => t.id !== action.payload.pomodoroId)
+      timers: state.timers.filter(t => t.id !== action.payload.pomodoro_id)
     }
   }
 })

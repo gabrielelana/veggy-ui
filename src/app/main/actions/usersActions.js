@@ -1,9 +1,18 @@
-import actionStream from '../../../redux/actionStream'
+import dispatcher from '../../../redux/dispatcher'
+import sendCommand from '../../sendCommand'
+import ws from '../../../redux/webSocketStream'
+import * as Action from '../action'
 
-const timerActions = {
+const userActions = {
   toggleSelectedUsers(user){
-    actionStream.push({type: 'SELECTED_USERS_CHANGED', payload: user})
+    dispatcher.dispatch({type: Action.SelectedUsersChanged, payload: user})
+  },
+  login(username) {
+    sendCommand({command: 'Login', username: username}, () => {
+      dispatcher.dispatch({type: Action.WaitForLogin})
+    })
+    ws.sendCommand(`login:${username}`)
   }
 }
 
-export default timerActions
+export default userActions

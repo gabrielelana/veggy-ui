@@ -1,1 +1,8 @@
-module.exports = ['react', 'react-dom', 'react-router', 'superagent', 'ramda', 'xstream', 'moment']
+module.exports = [
+  'react', 
+  'react-dom', 
+  'prop-types', 
+  'superagent', 
+  'ramda', 
+  'moment', 
+  'bulma']

@@ -1,7 +1,7 @@
-const UserList = props => {
-  const users = props.users.map(u => (
-      <User key={u.userId} 
-        onSelect={() => props.onToggleUser(u.userId)} 
+const UserList = ({users, onToggleUser}) => {
+  const userRows = users.map(u => (
+      <UserRow key={u.user_id} 
+        onSelect={() => onToggleUser(u.user_id)} 
         selected={u.selected} 
         username={u.username} />
       ))
@@ -12,21 +12,21 @@ const UserList = props => {
         <p className="panel-heading">
           Users
         </p>
-        {users}
+        {userRows}
       </nav>
     </div>
   )
 }
 
-const User = props => {
-  const rowStyle = props.selected?'selectedRow':''
+const UserRow = ({username, selected, onSelect}) => {
+  const rowStyle = selected?'selectedRow':''
   
   return (
-    <a className={`${rowStyle} panel-block`} href="#" onClick={props.onSelect} >
+    <a className={`${rowStyle} panel-block`} href="#" onClick={onSelect} >
       <span className="panel-icon">
         <i className="fa fa-user"></i>
       </span>
-      {props.username}
+      {username}
     </a>)
 }
 

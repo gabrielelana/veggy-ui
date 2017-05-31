@@ -3,7 +3,8 @@ import settings from 'settings'
 import R from 'ramda'
 import moment from 'moment'
 import {startOffLinePomodoro, squashOffLinePomodoro, isTicking} from './offLineActions'
-import actionStream from '../redux/actionStream'
+import Action from './main/action'
+import dispatcher from '../redux/dispatcher'
 
 const offlineCommands = []
 
@@ -15,7 +16,7 @@ export default function sendCommand(payload, cb) {
       .send(payload)
       .end((err, res) => {
         if (err){
-          actionStream.push({type: 'API_ERROR', payload: err})
+          dispatcher.dispatch({type: Action.ApiError, payload: err})
         } 
         if (typeof(cb) === 'function'){
           cb(err, res)
@@ -44,7 +45,7 @@ function manageOffLineCommands(payload) {
 
 window.addEventListener("online", sendIfNotTicking)
 
-function sendIfNotTicking(){
+function sendIfNotTicking() {
   if (isTicking()) {
     setTimeout(sendIfNotTicking, 5000)
   } else {
@@ -52,7 +53,7 @@ function sendIfNotTicking(){
   } 
 }
 
-function sendOfflineCommands(){
+function sendOfflineCommands() {
   offlineCommands
     .filter(cmd => cmd.command === 'StartPomodoro')
     .forEach(cmd => {

@@ -1,11 +1,8 @@
 import ReactDOM from 'react-dom'
-import {Route, Router, hashHistory } from 'react-router'
+import ws from '../redux/webSocketStream.js'
+import Main from './main'
 
 require('../sass/style.scss')
+ws.connect()
 
-ReactDOM.render((
-  <Router history={hashHistory}>
-    <Route path="/" component={require('./main')} />
-    <Route path="/login" component={require('./login')} />
-  </Router>
-  ), document.getElementById('app'))
+ReactDOM.render(<Main />, document.getElementById('app'))

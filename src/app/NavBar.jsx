@@ -1,14 +1,26 @@
 import React from 'react'
 
-const NavBar = React.createClass({
-
-  getInitialState(){
-    return {connectionStatusClass: 'fa fa-link'}
-  },
+class NavBar extends React.Component {
+  constructor(){
+    super()
+    this.state = {connectionStatusClass: 'fa fa-link'}
+    this.setOnline = this.setOnline.bind(this)
+    this.setOffline = this.setOffline.bind(this)
+  }
   componentDidMount() {
-    window.addEventListener("offline", () => { this.setState({connectionStatusClass: 'fa fa-chain-broken'}) });
-    window.addEventListener("online", () => { this.setState({connectionStatusClass: 'fa fa-link'})});
-  },
+    window.addEventListener("offline", this.setOffline)
+    window.addEventListener("online", this.setOnline)
+  }
+  componentWillUnmount() {
+    window.removeEventListener(this.setOnline)
+    window.removeEventListener(this.setOffline)
+  }
+  setOnline() {
+    this.setState({connectionStatusClass: 'fa fa-link'})
+  }
+  setOffline() {
+    this.setState({connectionStatusClass: 'fa fa-chain-broken'}) 
+  }
   render(){
     return (
       <nav className="nav">
@@ -31,8 +43,8 @@ const NavBar = React.createClass({
           </a>
         </div>
       </nav>
-      )
+    )
   }
-})
+}
 
 export default NavBar

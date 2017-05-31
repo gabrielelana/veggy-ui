@@ -1,8 +1,10 @@
 import buildReducer from '../../../redux/buildReducer'
+import * as Action from '../action'
 
 export default buildReducer({
-  'POMODORO_STARTED': () => ({ startDisabled: true, squashDisabled: false }),
-  'POMODORO_COMPLETED': () => ({ startDisabled: false, squashDisabled: true }),
-  'POMODORO_SQUASHED': () => ({ startDisabled: false, squashDisabled: true }),
-  'POMODORO_VOIDED': () => ({ startDisabled: false, squashDisabled: true }),
+  [Action.PomodoroStarted]: () => ({ start_disabled: true, squash_disabled: false }),
+  [Action.ResumeTimer]: () => ({ start_disabled: true, squash_disabled: false }),
+  [Action.PomodoroCompleted]: () => ({ start_disabled: false, squash_disabled: true }),
+  [Action.PomodoroSquashed]: () => ({ start_disabled: false, squash_disabled: true }),
+  [Action.PomodoroVoided]: () => ({ start_disabled: false, squash_disabled: true }),
 })

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Display /> should display the time passed via props 1`] = `
+<div
+  className="column is-three-quarters"
+>
+  <div
+    className="box has-text-centered"
+  >
+    <h1
+      className="title is-1"
+      id="time"
+    >
+      11:04
+    </h1>
+  </div>
+</div>
+`;

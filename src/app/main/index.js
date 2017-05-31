@@ -1,8 +1,8 @@
-import LayoutContainer from './components/LayoutContainer'
+import MainContainer from './components/MainContainer'
 import reducers from './reducers'
-import Wrapper from '../../redux/Wrapper'
+import WithState from '../../redux/WithState'
 import INITIAL_STATE from './INITIAL_STATE'
 
-const Main = Wrapper(LayoutContainer, reducers, INITIAL_STATE)
+const Main = WithState(MainContainer, reducers, INITIAL_STATE)
 
 export default Main

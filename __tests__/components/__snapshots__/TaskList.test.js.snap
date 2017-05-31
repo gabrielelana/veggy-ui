@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TaskList /> should display the tasks 1`] = `
+<div
+  className="column is-one-third"
+>
+  <table
+    className="table"
+  >
+    <thead>
+      <tr>
+        <th>
+          Started at
+        </th>
+        <th>
+          Shared
+        </th>
+        <th
+          className="centered"
+        >
+          Status
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          09-04-2010 11:10:00
+        </td>
+        <td />
+        <td
+          className="centered"
+        >
+          <span
+            className="icon"
+          >
+            <i
+              className="pi-pomodoro-done"
+            />
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          11-04-2010 10:20:00
+        </td>
+        <td />
+        <td
+          className="centered"
+        >
+          <span
+            className="icon"
+          >
+            <i
+              className={undefined}
+            />
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
