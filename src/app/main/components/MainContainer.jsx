@@ -55,7 +55,7 @@ class MainContainer extends React.Component {
             <Display time={this.props.time} is_shared={this.props.is_shared} />
             <Controls 
               startDisabled={this.props.start_disabled} 
-              squashDßisabled={this.props.squash_disabled} 
+              squashDisabled={this.props.squash_disabled} 
               onStart={this.handleStartRequest} 
               onSquash={this.handleSquash} />
           </div>

@@ -16,7 +16,7 @@ function connect(){
   }
   connection.onmessage = (evt) => {
     const data = JSON.parse(evt.data)
-    if (data.message !== 'pong') {
+    if (data.message !== 'pong' && data.message !== 'ok') {
       dispatcher.dispatch(wsa(data))
     }
   }

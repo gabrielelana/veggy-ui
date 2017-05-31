@@ -14,7 +14,4 @@ const dispatcher = {
   }
 }
 
-
-
-
-module.exports = dispatcher;
+export default dispatcher;

@@ -5,39 +5,13 @@ import dispatcher from '../../../redux/dispatcher'
 import ws from '../../../redux/webSocketStream'
 import pomodoroTicker from './pomodoroTicker'
 import * as Action from '../action'
+import {getUsers, getTimers, getTags} from './loaders'
 
 function getElapsed(time) {
   const startedAt = moment(time)
   const elapsed = settings.duration - moment().diff(startedAt)
   return elapsed
 }
-
-function getUsers(){
-  return request.get(`${settings.host}/projections/latest-pomodori`)
-    .then(res => {
-      dispatcher.dispatch({type: Action.UsersLoaded, payload: res.body})
-    })
-    .catch(err => dispatcher.dispatch({type: Action.ApiError, payload: err}))
-}
-
-function getTimers(userInfo){
-  const today = moment().format('YYYY-MM-DD')
-  return request.get(`${settings.host}/projections/pomodori-of-the-day?day=${today}&timer_id=${userInfo.timer_id}`)
-    .then(res => {
-      dispatcher.dispatch({type: Action.TimersLoaded, payload: res.body})
-    })
-    .catch(err => dispatcher.dispatch({type: Action.ApiError, payload: err}))
-}
-
-function getTags(userInfo){
-  const today = moment().format('YYYY-MM-DD')
-  return request.get(`${settings.host}/projections/tags-of-the-day?day=${today}&timer_id=${userInfo.timer_id}`)
-    .then(res => {
-      dispatcher.dispatch({type: Action.TagsLoaded, payload: res.body})
-    })
-    .catch(err => dispatcher.dispatch({type: Action.ApiError, payload: err}))
-}
-
 
 function resumeTimer(userInfo){
   return request
